@@ -293,7 +293,7 @@ describe('alert', () => {
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(4)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(4)
     expect(wrapper.emitted('dismiss-count-down')[3][0]).toBe(0) // 3 - 3
 
     await wrapper.vm.$nextTick()
@@ -318,48 +318,48 @@ describe('alert', () => {
 
     expect(wrapper.emitted('dismissed')).toBeUndefined()
     expect(wrapper.emitted('dismiss-count-down')).toBeDefined()
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(1)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(1)
     expect(wrapper.emitted('dismiss-count-down')[0][0]).toBe(2) // 2 - 0
 
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(2)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(2)
     expect(wrapper.emitted('dismiss-count-down')[1][0]).toBe(1) // 2 - 1
 
     // Reset countdown
     await wrapper.setProps({ show: 3 })
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(3)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(3)
     expect(wrapper.emitted('dismiss-count-down')[2][0]).toBe(3) // 3 - 0
 
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(4)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(4)
     expect(wrapper.emitted('dismiss-count-down')[3][0]).toBe(2) // 3 - 1
 
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(5)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(5)
     expect(wrapper.emitted('dismiss-count-down')[4][0]).toBe(1) // 3 - 2
 
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(6)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(6)
     expect(wrapper.emitted('dismiss-count-down')[5][0]).toBe(0) // 3 - 3
 
     // Just to make sure there aren't any more timers pending
     vi.runAllTimers()
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(6)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(6)
 
     await wrapper.vm.$nextTick()
     await new Promise(resolve => requestAnimationFrame(resolve))
     expect(wrapper.emitted('dismissed')).toBeDefined()
-    expect(wrapper.emitted('dismissed').length).toBe(1)
+    expect(wrapper.emitted('dismissed')?.length).toBe(1)
     expect(wrapper.element.nodeType).toBe(Node.COMMENT_NODE)
   })
 
@@ -379,30 +379,30 @@ describe('alert', () => {
 
     expect(wrapper.emitted('dismissed')).toBeUndefined()
     expect(wrapper.emitted('dismiss-count-down')).toBeDefined()
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(1)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(1)
     expect(wrapper.emitted('dismiss-count-down')[0][0]).toBe(2) // 2 - 0
 
     vi.advanceTimersByTime(1000)
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(2)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(2)
     expect(wrapper.emitted('dismiss-count-down')[1][0]).toBe(1) // 2 - 1
 
     await wrapper.find('button').trigger('click')
     await new Promise(resolve => requestAnimationFrame(resolve))
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(3)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(3)
     expect(wrapper.emitted('dismiss-count-down')[2][0]).toBe(0)
 
     // Should not emit any new countdown values
     vi.runAllTimers()
     await wrapper.vm.$nextTick()
 
-    expect(wrapper.emitted('dismiss-count-down').length).toBe(3)
+    expect(wrapper.emitted('dismiss-count-down')?.length).toBe(3)
 
     await wrapper.vm.$nextTick()
     await new Promise(resolve => requestAnimationFrame(resolve))
     expect(wrapper.emitted('dismissed')).toBeDefined()
-    expect(wrapper.emitted('dismissed').length).toBe(1)
+    expect(wrapper.emitted('dismissed')?.length).toBe(1)
     expect(wrapper.element.nodeType).toBe(Node.COMMENT_NODE)
   })
 })
