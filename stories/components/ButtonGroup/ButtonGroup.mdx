@@ -1,0 +1,44 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+
+import * as ButtonGroup from './ButtonGroup.stories';
+
+<Meta of={ButtonGroup} />
+
+
+# Button Group
+
+> Group a series of buttons together on a single line with `<b-button-group>`.
+
+## Overview
+
+Button Groups are an easy way to group a series of buttons together.
+
+<Canvas of={ButtonGroup.Overview} />
+
+## Sizing
+
+Set the `size` prop to `lg` or `sm` to render larger or smaller, respectively, buttons. There is no
+need to specify the size on the individual buttons.
+
+<Canvas of={ButtonGroup.Sizing} />
+
+## Vertical variation
+
+Make a set of buttons appear vertically stacked rather than horizontally by setting the `vertical`
+prop. Split button dropdowns are not supported here.
+
+<Canvas of={ButtonGroup.VerticalVariation} />
+
+## Dropdown menu support
+
+Add [`<b-dropdown>`](/docs/components-dropdown--docs) menus directly inside your `<b-button-group>`. Note
+that split dropdown menus are not supported when prop `vertical` is set.
+
+<Canvas of={ButtonGroup.DropdownSupport} />
+
+## See also
+
+Also check out the [`<b-button-toolbar>`](/docs/components-button-toolbar--docs) component for generating
+toolbars containing button groups and input groups.
+
