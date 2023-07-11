@@ -29,14 +29,14 @@ export default {
   <button
     class="close py-3' absolute bottom-0 right-0 top-0 px-4" :class=" {
       [`text-${textVariant}`]: textVariant,
-      'text-blue-600': 'primary' === textVariant,
-      'text-gray-600': 'secondary' === textVariant,
-      'text-green-500': 'success' === textVariant,
-      'text-red-600': 'danger' === textVariant,
+      'text-primary': 'primary' === textVariant,
+      'text-secondary': 'secondary' === textVariant,
+      'text-success': 'success' === textVariant,
+      'text-danger': 'danger' === textVariant,
       'text-yellow-500': 'warning' === textVariant,
-      'text-teal-500': 'info' === textVariant,
-      'text-gray-100': 'light' === textVariant,
-      'text-gray-900': 'dark' === textVariant,
+      'text-info': 'info' === textVariant,
+      'text-light': 'light' === textVariant,
+      'text-dark': 'dark' === textVariant,
       'text-white': 'white' === textVariant,
       'text-gray-700': 'muted' === textVariant,
     }" type="button" :disabled="disabled" :aria-label="ariaLabel"

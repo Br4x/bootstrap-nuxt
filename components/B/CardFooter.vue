@@ -1,4 +1,6 @@
 <script setup>
+import { cardFooterProps } from '@/constants/props'
+
 defineProps(cardFooterProps)
 </script>
 

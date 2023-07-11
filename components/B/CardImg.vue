@@ -1,7 +1,7 @@
 <script setup>
-defineProps(cardImgProps)
+import { cardImgProps } from '@/constants/props'
 
-const { cardImgProps } = useProps()
+defineProps(cardImgProps)
 </script>
 
 <template>

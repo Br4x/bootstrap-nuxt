@@ -1,7 +1,8 @@
 <script setup lang="ts">
-const props = defineProps(linkProps)
+import { useCurrentElement } from '@vueuse/core'
+import { linkProps } from '@/constants/props'
 
-const { linkProps } = useProps()
+const props = defineProps(linkProps)
 
 const $el = useCurrentElement()
 

@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <component :is="textTag" class="card-text mb-0">
+  <component :is="textTag" class="card-text mb-4">
     <slot />
   </component>
 </template>

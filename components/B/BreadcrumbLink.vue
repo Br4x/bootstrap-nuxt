@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { props as linkProps } from '@/components/B/Link.vue'
+import { linkProps } from '@/constants/props'
 
 const props = defineProps({
   ...linkProps,

@@ -1,7 +1,8 @@
 <script setup>
+import { imgProps } from '@/constants/props'
+
 const props = defineProps(imgProps)
 
-const { imgProps } = useProps()
 const { toInteger, identity, concat } = useUtils()
 
 const src = ref(props.src)

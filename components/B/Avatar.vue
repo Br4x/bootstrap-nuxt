@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import BLink, { props as linkProps } from '@/components/B/Link.vue'
+import BLink from '@/components/B/Link.vue'
 import BButton from '@/components/B/Button.vue'
+import { linkProps } from '@/constants/props'
 
 const props = defineProps({
   ...linkProps,
@@ -115,14 +116,14 @@ function onClick(event: any) {
     :is="button ? BButton : isLink ? BLink : 'span'" :class="{
       [`b-avatar-${computedSize}`]: computedSize && SIZES.indexOf(computedSize) !== -1,
       [`badge-${computedVariant}`]: !button && variant,
-      'bg-blue-500 text-white hover:bg-blue-600': variant === 'primary',
-      'bg-gray-600 text-white hover:bg-gray-700': variant === 'secondary',
-      'bg-green-500 text-white hover:green-600': variant === 'success',
-      'bg-red-600 text-white hover:bg-red-700': variant === 'danger',
-      'bg-orange-400 text-black hover:bg-orange-500': variant === 'warning',
-      'bg-teal-500 text-white hover:bg-teal-600': variant === 'info',
-      'bg-gray-100 text-gray-800 hover:bg-gray-200': variant === 'light',
-      'bg-gray-900 text-white': variant === 'dark',
+      'bg-blue-500 text-white hover:bg-primary': variant === 'primary',
+      'bg-secondary text-white hover:bg-gray-700': variant === 'secondary',
+      'bg-success text-white hover:green-600': variant === 'success',
+      'bg-danger text-white hover:bg-red-700': variant === 'danger',
+      'bg-warning text-black hover:bg-orange-500': variant === 'warning',
+      'bg-info text-white hover:bg-teal-600': variant === 'info',
+      'bg-light text-gray-800 hover:bg-gray-200': variant === 'light',
+      'bg-dark text-white': variant === 'dark',
       'rounded-1/2': !square && !rounded,
       'rounded-lg': computedRounded === 'lg',
       'rounded-t': computedRounded === 'top',
@@ -158,14 +159,14 @@ function onClick(event: any) {
     <span
       v-if="badge || badge === '' || slots.badge" class="b-avatar-badge absolute z-[1] min-h-[1.5em] min-w-[1.5em] rounded-[10em] p-[0.25em] text-[70%] font-bold leading-none" :class="{
         [`badge-${badgeVariant}`]: badgeVariant,
-        'bg-blue-500 text-white hover:bg-blue-600': badgeVariant === 'primary',
-        'bg-gray-600 text-white hover:bg-gray-700': badgeVariant === 'secondary',
-        'bg-green-500 text-white hover:green-600': badgeVariant === 'success',
-        'bg-red-600 text-white hover:bg-red-700': badgeVariant === 'danger',
-        'bg-orange-400 text-black hover:bg-orange-500': badgeVariant === 'warning',
-        'bg-teal-500 text-white hover:bg-teal-600': badgeVariant === 'info',
-        'bg-gray-100 text-gray-800 hover:bg-gray-200': badgeVariant === 'light',
-        'bg-gray-900 text-white': badgeVariant === 'dark',
+        'bg-blue-500 text-white hover:bg-primary': badgeVariant === 'primary',
+        'bg-secondary text-white hover:bg-gray-700': badgeVariant === 'secondary',
+        'bg-success text-white hover:green-600': badgeVariant === 'success',
+        'bg-danger text-white hover:bg-red-700': badgeVariant === 'danger',
+        'bg-warning text-black hover:bg-orange-500': badgeVariant === 'warning',
+        'bg-info text-white hover:bg-teal-600': badgeVariant === 'info',
+        'bg-light text-gray-800 hover:bg-gray-200': badgeVariant === 'light',
+        'bg-dark text-white': badgeVariant === 'dark',
       }" :style="badgeStyle"
     >
       <slot v-if="slots.badge" name="badge" />

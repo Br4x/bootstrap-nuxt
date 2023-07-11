@@ -1,5 +1,5 @@
 <template>
-  <footer class="w-full bg-white md:fixed md:bottom-0 dark:bg-gray-900">
+  <footer class="w-full bg-white md:fixed md:bottom-0 dark:bg-dark">
     <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 lg:px-8 sm:px-6">
       <div class="lg:flex lg:items-center lg:justify-between">
         <div class="flex justify-center text-teal-600 sm:justify-start dark:text-teal-300">
@@ -54,7 +54,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 mt-16 gap-8 border-t border-gray-100 pt-16 lg:grid-cols-6 md:grid-cols-4 dark:border-gray-800"
+        class="grid grid-cols-1 mt-16 gap-8 border-t border-light pt-16 lg:grid-cols-6 md:grid-cols-4 dark:border-gray-800"
       >
         <column class="gap-4 text-center text-sm sm:text-left">
           <subtitle>
@@ -78,7 +78,7 @@
         </column>
 
         <div class="text-center sm:text-left">
-          <p class="text-lg font-medium text-gray-900 dark:text-white">
+          <p class="text-lg font-medium text-dark dark:text-white">
             Our Services
           </p>
 
@@ -110,7 +110,7 @@
         </div>
 
         <div class="text-center sm:text-left">
-          <p class="text-lg font-medium text-gray-900 dark:text-white">
+          <p class="text-lg font-medium text-dark dark:text-white">
             Resources
           </p>
 
@@ -148,7 +148,7 @@
         </div>
 
         <div class="text-center sm:text-left">
-          <p class="text-lg font-medium text-gray-900 dark:text-white">
+          <p class="text-lg font-medium text-dark dark:text-white">
             Helpful Links
           </p>
 
@@ -175,7 +175,7 @@
 
                 <span class="relative h-2 w-2 flex">
                   <span class="absolute h-full w-full inline-flex animate-ping rounded-full bg-teal-400 opacity-75" />
-                  <span class="relative h-2 w-2 inline-flex rounded-full bg-teal-500" />
+                  <span class="relative h-2 w-2 inline-flex rounded-full bg-info" />
                 </span>
               </a>
             </li>
@@ -183,7 +183,7 @@
         </div>
 
         <div class="text-center lg:col-span-2 md:col-span-4 sm:text-left">
-          <p class="text-lg font-medium text-gray-900 dark:text-white">
+          <p class="text-lg font-medium text-dark dark:text-white">
             Stay in Touch
           </p>
 
@@ -214,7 +214,7 @@
         </div>
       </div>
 
-      <div class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between dark:border-gray-800">
+      <div class="mt-16 border-t border-light pt-6 sm:flex sm:items-center sm:justify-between dark:border-gray-800">
         <p class="text-center text-sm text-gray-500 sm:text-left dark:text-gray-400">
           Copyright &copy; 2022. All rights reserved.
         </p>
@@ -223,7 +223,7 @@
           <li>
             <a
               href="/" rel="noreferrer" target="_blank"
-              class="text-teal-700 transition dark:text-teal-500 hover:text-teal-700/75 dark:hover:text-teal-500/75"
+              class="text-teal-700 transition dark:text-info hover:text-teal-700/75 dark:hover:text-info/75"
             >
               <span class="sr-only">Facebook</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -239,7 +239,7 @@
           <li>
             <a
               href="/" rel="noreferrer" target="_blank"
-              class="text-teal-700 transition dark:text-teal-500 hover:text-teal-700/75 dark:hover:text-teal-500/75"
+              class="text-teal-700 transition dark:text-info hover:text-teal-700/75 dark:hover:text-info/75"
             >
               <span class="sr-only">Instagram</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -255,7 +255,7 @@
           <li>
             <a
               href="/" rel="noreferrer" target="_blank"
-              class="text-teal-700 transition dark:text-teal-500 hover:text-teal-700/75 dark:hover:text-teal-500/75"
+              class="text-teal-700 transition dark:text-info hover:text-teal-700/75 dark:hover:text-info/75"
             >
               <span class="sr-only">Twitter</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -269,7 +269,7 @@
           <li>
             <a
               href="/" rel="noreferrer" target="_blank"
-              class="text-teal-700 transition dark:text-teal-500 hover:text-teal-700/75 dark:hover:text-teal-500/75"
+              class="text-teal-700 transition dark:text-info hover:text-teal-700/75 dark:hover:text-info/75"
             >
               <span class="sr-only">GitHub</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -285,7 +285,7 @@
           <li>
             <a
               href="/" rel="noreferrer" target="_blank"
-              class="text-teal-700 transition dark:text-teal-500 hover:text-teal-700/75 dark:hover:text-teal-500/75"
+              class="text-teal-700 transition dark:text-info hover:text-teal-700/75 dark:hover:text-info/75"
             >
               <span class="sr-only">Dribbble</span>
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">

@@ -3,7 +3,7 @@ import { UseOnline } from '@vueuse/components'
 </script>
 
 <template>
-  <header class="bg-white dark:bg-gray-900">
+  <header class="bg-white dark:bg-dark">
     <div
       class="mx-auto h-16 max-w-screen-xl flex items-center gap-8 px-4 lg:px-8 sm:px-6"
     >
@@ -79,7 +79,7 @@ import { UseOnline } from '@vueuse/components'
             </a>
 
             <a
-              class="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition sm:block hover:text-teal-600/75"
+              class="hidden rounded-md bg-light px-5 py-2.5 text-sm font-medium text-teal-600 transition sm:block hover:text-teal-600/75"
               href="/"
             >
               Register
@@ -87,7 +87,7 @@ import { UseOnline } from '@vueuse/components'
           </div>
 
           <button
-            class="block rounded bg-gray-100 p-2.5 text-gray-600 transition md:hidden hover:text-gray-600/75"
+            class="block rounded bg-light p-2.5 text-secondary transition md:hidden hover:text-secondary/75"
           >
             <span class="sr-only">Toggle menu</span>
             <svg

@@ -59,6 +59,10 @@ export function useUtils() {
   // plucks all the values off the target object, returning a new object
   // that has props that reference the original prop values
   function pluckProps(keysToPluck: any[], objToPluck: { [x: string]: any }, transformFn = identity) {
+    console.log((isArray(keysToPluck) ? keysToPluck.slice() : Object.keys(keysToPluck)).reduce((memo: { [x: string]: any }, prop: string | number) => {
+      memo[transformFn(prop)] = objToPluck[prop]
+      return memo
+    }, {}))
     return (isArray(keysToPluck) ? keysToPluck.slice() : Object.keys(keysToPluck)).reduce((memo: { [x: string]: any }, prop: string | number) => {
       memo[transformFn(prop)] = objToPluck[prop]
       return memo
@@ -162,6 +166,17 @@ export function useUtils() {
     return !isActiveElement(el)
   }
 
+  const lowerFirst = (str: String) => {
+    str = isString(str) ? str.trim() : String(str)
+    return str.charAt(0).toLowerCase() + str.slice(1)
+  }
+
+  // Uppercases the first letter of a string and returns a new string
+  const upperFirst = (str: String) => {
+    str = isString(str) ? str.trim() : String(str)
+    return str.charAt(0).toUpperCase() + str.slice(1)
+  }
+
   // Get an style property value from an element
   // Returns `null` if not found
   const getStyle = (el: HTMLElement, prop: any) => (prop && isElement(el) ? el.style[prop] || null : null)
@@ -215,6 +230,8 @@ export function useUtils() {
 
   return {
     hasInteractionObserverSupport,
+    upperFirst,
+    lowerFirst,
     omit,
     pick,
     contains,

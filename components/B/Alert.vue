@@ -98,8 +98,8 @@ function parseShow(show: any) {
         'bg-red-200 border-red-300 text-red-800': variant === 'danger',
         'bg-orange-200 border-orange-300 text-orange-800': variant === 'warning',
         'bg-teal-200 border-teal-300 text-teal-800': variant === 'info',
-        'bg-white text-gray-600': variant === 'light',
-        'bg-gray-400 border-gray-500 text-gray-900': variant === 'dark',
+        'bg-white text-secondary': variant === 'light',
+        'bg-gray-400 border-gray-500 text-dark': variant === 'dark',
       }" role="alert" aria-live="polite" aria-atomic="true"
     >
       <BButtonClose v-if="dismissible" :aria-label="dismissLabel" @click="dismiss">

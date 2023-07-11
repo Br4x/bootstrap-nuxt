@@ -1,14 +1,18 @@
 <script setup>
-defineProps({
+import { cardBodyProps, cardFooterProps, cardHeaderProps, cardImgProps, cardProps, copyProps, prefixPropName } from '@/constants/props'
+
+const props = defineProps({
   ...cardBodyProps,
   ...cardHeaderProps,
   ...cardFooterProps,
-  ...cardImgProps,
+  ...copyProps(cardImgProps, prefixPropName.bind(null, 'img')),
+  ...cardProps,
   align: String,
   noBody: Boolean,
 },
 )
-const { cardBodyProps, cardHeaderProps, cardFooterProps, cardImgProps } = useProps()
+
+const { pluckProps } = useUtils()
 
 const slots = useSlots()
 
@@ -38,11 +42,11 @@ const hasFooterSlot = computed(() => {
   >
     <template v-if="imgSrc && !imgBottom">
       <BCardImg
-        :img-src="imgSrc"
-        :img-left="imgLeft"
-        :img-right="imgRight"
-        :img-start="imgStart"
-        :img-end="imgEnd"
+        :src="imgSrc"
+        :left="imgLeft"
+        :right="imgRight"
+        :start="imgStart"
+        :end="imgEnd"
         :alt="imgAlt"
       />
     </template>
@@ -52,24 +56,24 @@ const hasFooterSlot = computed(() => {
       </template>
     </BCardHeader>
     <template v-if="!noBody">
-      <BCardBody :overlay="overlay">
+      <BCardBody v-bind="pluckProps(cardBodyProps, props)" :overlay="overlay">
         <template #default>
           <slot />
         </template>
       </BCardBody>
     </template>
-    <BCardFooter v-if="hasFooterSlot || footer || footerHtml" :footer-html="footerHtml">
+    <BCardFooter v-if="hasFooterSlot || footer || footerHtml" v-bind="pluckProps(cardFooterProps, props)" :footer-html="footerHtml">
       <template #default>
         <slot name="footer" />
       </template>
     </BCardFooter>
     <template v-if="imgSrc && imgBottom">
       <BCardImg
-        :img-src="imgSrc"
-        :img-left="imgLeft"
-        :img-right="imgRight"
-        :img-start="imgStart"
-        :img-end="imgEnd"
+        :src="imgSrc"
+        :left="imgLeft"
+        :right="imgRight"
+        :start="imgStart"
+        :end="imgEnd"
         :alt="imgAlt"
       />
     </template>

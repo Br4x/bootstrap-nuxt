@@ -1,10 +1,11 @@
 <script setup>
+import { cardTitleProps } from '@/constants/props'
+
 defineProps(cardTitleProps)
-const { cardTitleProps } = useProps()
 </script>
 
 <template>
-  <component :is="titleTag" class="card-title mb-3">
+  <component :is="titleTag" class="card-title mb-3 text-2xl">
     <slot>{{ title }}</slot>
   </component>
 </template>

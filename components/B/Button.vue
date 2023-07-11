@@ -1,10 +1,8 @@
 <script setup>
-import { props as linkProps } from '@/components/B/Link.vue'
+import { btnProps, linkProps } from '@/constants/props'
 import { CODE_ENTER, CODE_SPACE } from '@/constants/key-codes'
 
 const props = defineProps(btnProps)
-
-const { btnProps } = useProps()
 
 const attrs = useAttrs()
 
@@ -89,22 +87,22 @@ function handleClick(event) {
       `btn-${variant || 'secondary'}`,
       {
         [`btn-${size}`]: size,
-        'border-blue-600 bg-blue-600 text-white hover:bg-blue-600 ': variant === 'primary',
-        'border-gray-600 bg-gray-600 text-white hover:bg-gray-700': variant === 'secondary',
-        'border-green-500 bg-green-500 text-white hover:bg-green-600': variant === 'success',
-        'border-red-600 bg-red-600 text-white hover:bg-red-700': variant === 'danger',
-        'border-orange-400 bg-orange-400 text-black hover:bg-orange-500': variant === 'warning',
-        'border-teal-500 bg-teal-500 text-white hover:bg-teal-600': variant === 'info',
-        'border-gray-100 bg-gray-100 text-gray-800 hover:bg-gray-200': variant === 'light',
-        'border-gray-900 bg-gray-900 text-white hover:bg-gray-900': variant === 'dark',
-        'text-blue-600 bg-white hover:bg-blue-600 hover:text-white border-blue-600': variant === 'outline-primary',
-        'text-gray-600 bg-white hover:bg-gray-700 hover:text-white border-gray-600': variant === 'outline-secondary',
-        'text-green-500 bg-white hover:bg-green-600 hover:text-white border-green-500': variant === 'outline-success',
-        'text-red-600 bg-white hover:bg-red-700 hover:text-white border-red-600': variant === 'outline-danger',
-        'text-orange-400 bg-white hover:bg-orange-500 hover:text-white border-orange-400': variant === 'outline-warning',
-        'text-teal-500 bg-white hover:bg-teal-600 hover:text-white border-teal-500': variant === 'outline-info',
+        'border-primary bg-primary text-white hover:bg-primary ': variant === 'primary',
+        'border-secondary bg-secondary text-white hover:bg-gray-700': variant === 'secondary',
+        'border-success bg-success text-white hover:bg-green-600': variant === 'success',
+        'border-danger bg-danger text-white hover:bg-red-700': variant === 'danger',
+        'border-warning bg-warning text-black hover:bg-orange-500': variant === 'warning',
+        'border-info bg-info text-white hover:bg-teal-600': variant === 'info',
+        'border-light bg-light text-gray-800 hover:bg-gray-200': variant === 'light',
+        'border-dark bg-dark text-white hover:bg-dark': variant === 'dark',
+        'text-primary bg-white hover:bg-primary hover:text-white border-primary': variant === 'outline-primary',
+        'text-secondary bg-white hover:bg-gray-700 hover:text-white border-secondary': variant === 'outline-secondary',
+        'text-success bg-white hover:bg-green-600 hover:text-white border-success': variant === 'outline-success',
+        'text-danger bg-white hover:bg-red-700 hover:text-white border-danger': variant === 'outline-danger',
+        'text-warning bg-white hover:bg-orange-500 hover:text-white border-warning': variant === 'outline-warning',
+        'text-info bg-white hover:bg-teal-600 hover:text-white border-info': variant === 'outline-info',
         'text-gray-200 bg-white hover:bg-gray-200 hover:text-white border-gray-200': variant === 'outline-light',
-        'text-gray-900 bg-white hover:bg-gray-900 hover:text-white border-gray-900': variant === 'outline-dark',
+        'text-dark bg-white hover:bg-dark hover:text-white border-dark': variant === 'outline-dark',
         'btn-xs py-1 px-2 leading-tight text-xs': size === 'sm',
         'btn-xl py-3 px-4 leading-tight text-xl': size === 'lg',
         'btn-block block w-full': block,

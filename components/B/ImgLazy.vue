@@ -1,10 +1,11 @@
 <script setup>
+import { imgLazyProps } from '@/constants/props'
+
 const props = defineProps(imgLazyProps)
 
 const emit = defineEmits(['show'])
 
 const { identity, concat, hasInteractionObserverSupport, toInteger } = useUtils()
-const { imgLazyProps } = useProps()
 
 const isShown = ref(props.show)
 

@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import BCardSubTitle from '@/components/B/CardSubtitle.vue'
+import BCardSubTitle from '@/components/B/BCardSubTitle.vue'
 
 describe('card-sub-title', () => {
   it('default has tag "h6"', async () => {
