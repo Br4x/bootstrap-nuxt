@@ -27,7 +27,7 @@ const BLink = resolveComponent('BLink')
         'bg-danger text-white hover:bg-red-700': variant === 'danger',
         'bg-warning text-black hover:bg-orange-500': variant === 'warning',
         'bg-info text-white hover:bg-teal-600': variant === 'info',
-        'bg-light text-gray-800 hover:bg-gray-200': variant === 'light',
+        'bg-light text-gray-800 hover:bg-light': variant === 'light',
         'bg-dark text-white': variant === 'dark',
         'badge-pill rounded-full py-1 px-3': pill,
         active,

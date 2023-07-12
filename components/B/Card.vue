@@ -27,10 +27,11 @@ const hasFooterSlot = computed(() => {
 <template>
   <component
     :is="tag"
-    class="card relative min-w-0 flex flex-col break-words border border-1 border-gray-300 rounded bg-white"
+    class="card relative min-w-0 break-words border border-1 border-gray-300 rounded bg-white"
     :class="{
-      'flex-row': imgLeft || imgStart,
-      'flex-row-reverse': (imgRight || imgEnd) && !(imgLeft || imgStart),
+      'flex flex-col': !(imgLeft || imgStart) && !((imgRight || imgEnd) && !(imgLeft || imgStart)),
+      'flex flex-row': imgLeft || imgStart,
+      'flex flex-row-reverse': (imgRight || imgEnd) && !(imgLeft || imgStart),
       [`text-${align}`]: align,
       [`bg-${bgVariant}`]: bgVariant,
       [`border-${borderVariant}`]: borderVariant,
@@ -50,10 +51,8 @@ const hasFooterSlot = computed(() => {
         :alt="imgAlt"
       />
     </template>
-    <BCardHeader v-if="hasHeaderSlot || header || headerHtml" :header-html="headerHtml">
-      <template #default>
-        <slot name="header" />
-      </template>
+    <BCardHeader v-if="hasHeaderSlot || header || headerHtml" v-bind="pluckProps(cardHeaderProps, props)" :header-html="headerHtml || header">
+      <slot name="header" />
     </BCardHeader>
     <template v-if="!noBody">
       <BCardBody v-bind="pluckProps(cardBodyProps, props)" :overlay="overlay">
@@ -62,10 +61,8 @@ const hasFooterSlot = computed(() => {
         </template>
       </BCardBody>
     </template>
-    <BCardFooter v-if="hasFooterSlot || footer || footerHtml" v-bind="pluckProps(cardFooterProps, props)" :footer-html="footerHtml">
-      <template #default>
-        <slot name="footer" />
-      </template>
+    <BCardFooter v-if="hasFooterSlot || footer || footerHtml" v-bind="pluckProps(cardFooterProps, props)" :footer-html="footerHtml || footer">
+      <slot name="footer" />
     </BCardFooter>
     <template v-if="imgSrc && imgBottom">
       <BCardImg

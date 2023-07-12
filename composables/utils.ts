@@ -89,6 +89,8 @@ export function useUtils() {
     return args
   }
 
+  const create = (proto: object | null, optionalProps: PropertyDescriptorMap & ThisType<any>) => Object.create(proto, optionalProps)
+
   const from = (...args: any[]) => Array.from(getArray(...args))
 
   const arrayIncludes = (array: string | any[], value: any) => array.includes(value)
@@ -229,6 +231,7 @@ export function useUtils() {
   const hasInteractionObserverSupport = (window && typeof document !== 'undefined' && typeof navigator !== 'undefined') && 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
 
   return {
+    create,
     hasInteractionObserverSupport,
     upperFirst,
     lowerFirst,

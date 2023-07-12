@@ -11,6 +11,11 @@ export const hasOwnProperty = (obj: any[], prop: PropertyKey) => Object.prototyp
 // Shallow copy an object
 export const clone = (obj: any) => ({ ...obj })
 
+// Suffix can be a falsey value so nothing is appended to string
+// (helps when looping over props & some shouldn't change)
+// Use data last parameters to allow for currying
+export const suffixPropName = (suffix: String, value: string) => value + (suffix ? upperFirst(suffix) : '')
+
 // Copies props from one array/object to a new array/object
 // Prop values are also cloned as new references to prevent possible
 // mutation of original prop object values

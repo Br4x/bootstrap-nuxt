@@ -13,7 +13,7 @@ const props = defineProps(cardSubTitleProps)
       'text-danger': subTitleTextVariant === 'danger',
       'text-warning': subTitleTextVariant === 'warning',
       'text-info': subTitleTextVariant === 'info',
-      'text-gray-200': subTitleTextVariant === 'light',
+      'text-light': subTitleTextVariant === 'light',
       'text-dark': subTitleTextVariant === 'dark',
     }]"
   >

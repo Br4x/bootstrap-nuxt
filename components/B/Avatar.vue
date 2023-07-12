@@ -122,7 +122,7 @@ function onClick(event: any) {
       'bg-danger text-white hover:bg-red-700': variant === 'danger',
       'bg-warning text-black hover:bg-orange-500': variant === 'warning',
       'bg-info text-white hover:bg-teal-600': variant === 'info',
-      'bg-light text-gray-800 hover:bg-gray-200': variant === 'light',
+      'bg-light text-gray-800 hover:bg-light': variant === 'light',
       'bg-dark text-white': variant === 'dark',
       'rounded-1/2': !square && !rounded,
       'rounded-lg': computedRounded === 'lg',
@@ -165,7 +165,7 @@ function onClick(event: any) {
         'bg-danger text-white hover:bg-red-700': badgeVariant === 'danger',
         'bg-warning text-black hover:bg-orange-500': badgeVariant === 'warning',
         'bg-info text-white hover:bg-teal-600': badgeVariant === 'info',
-        'bg-light text-gray-800 hover:bg-gray-200': badgeVariant === 'light',
+        'bg-light text-gray-800 hover:bg-light': badgeVariant === 'light',
         'bg-dark text-white': badgeVariant === 'dark',
       }" :style="badgeStyle"
     >

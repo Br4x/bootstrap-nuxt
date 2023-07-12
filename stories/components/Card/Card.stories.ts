@@ -113,9 +113,9 @@ export const Images: Story = {
     components: { BCard, BCardText, BCardGroup },
     props: Object.keys(argTypes),
     template: `
-    <div>
+    <div class="flex flex-col gap-4">
         <div>
-            <h4>Top and Bottom</h4>
+            <h4 class="w-full text-2xl mb-2">Top and Bottom</h4>
             <b-card-group deck>
                 <b-card img-src="https://placekitten.com/1000/300" img-alt="Card image" img-top>
                     <b-card-text>
@@ -130,8 +130,8 @@ export const Images: Story = {
                 </b-card>
             </b-card-group>
         </div>
-        <div class="mt-4">
-            <h4>Left and Right (or Start and End)</h4>
+        <div>
+            <h4 class="w-full text-2xl my-4">Left and Right (or Start and End)</h4>
             <b-card img-src="https://placekitten.com/300/300" img-alt="Card image" img-left class="mb-3">
                 <b-card-text>
                     Some quick example text to build on the card and make up the bulk of the card's content.
@@ -192,7 +192,7 @@ export const HeaderAndFooter: Story = {
   
       <b-card title="Title" header-tag="header" footer-tag="footer">
         <template #header>
-          <h6 class="mb-0">Header Slot</h6>
+          <b>Header Slot</b>
         </template>
         <b-card-text>Header and footers using slots.</b-card-text>
         <b-button href="#" variant="primary">Go somewhere</b-button>

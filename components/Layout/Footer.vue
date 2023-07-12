@@ -198,7 +198,7 @@
                 <label for="email" class="sr-only">Email</label>
 
                 <input
-                  class="w-full border-gray-200 rounded-full bg-white px-6 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+                  class="w-full border-light rounded-full bg-white px-6 py-3 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white"
                   type="email" placeholder="Enter your email"
                 >
 

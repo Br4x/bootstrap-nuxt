@@ -22,7 +22,7 @@
           <div class="relative">
             <input
               type="email"
-              class="w-full border-gray-200 rounded-lg p-4 pe-12 text-sm shadow-sm"
+              class="w-full border-light rounded-lg p-4 pe-12 text-sm shadow-sm"
               placeholder="Enter email"
             >
 
@@ -51,7 +51,7 @@
           <div class="relative">
             <input
               type="password"
-              class="w-full border-gray-200 rounded-lg p-4 pe-12 text-sm shadow-sm"
+              class="w-full border-light rounded-lg p-4 pe-12 text-sm shadow-sm"
               placeholder="Enter password"
             >
 

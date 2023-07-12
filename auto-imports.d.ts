@@ -23,8 +23,6 @@ declare global {
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
   const onBeforeMount: typeof import('vue')['onBeforeMount']
-  const onBeforeRouteLeave: typeof import('vue-router')['onBeforeRouteLeave']
-  const onBeforeRouteUpdate: typeof import('vue-router')['onBeforeRouteUpdate']
   const onBeforeUnmount: typeof import('vue')['onBeforeUnmount']
   const onBeforeUpdate: typeof import('vue')['onBeforeUpdate']
   const onDeactivated: typeof import('vue')['onDeactivated']
@@ -54,10 +52,6 @@ declare global {
   const useCount: typeof import('./composables/count')['useCount']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
-  const useLink: typeof import('vue-router')['useLink']
-  const useProps: typeof import('./composables/props')['useProps']
-  const useRoute: typeof import('vue-router')['useRoute']
-  const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
   const useUserStore: typeof import('./composables/user')['useUserStore']
   const useUtils: typeof import('./composables/utils')['useUtils']
@@ -123,7 +117,6 @@ declare module 'vue' {
     readonly useCount: UnwrapRef<typeof import('./composables/count')['useCount']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useProps: UnwrapRef<typeof import('./composables/props')['useProps']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useUserStore: UnwrapRef<typeof import('./composables/user')['useUserStore']>
     readonly useUtils: UnwrapRef<typeof import('./composables/utils')['useUtils']>
@@ -183,7 +176,6 @@ declare module '@vue/runtime-core' {
     readonly useCount: UnwrapRef<typeof import('./composables/count')['useCount']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
-    readonly useProps: UnwrapRef<typeof import('./composables/props')['useProps']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useUserStore: UnwrapRef<typeof import('./composables/user')['useUserStore']>
     readonly useUtils: UnwrapRef<typeof import('./composables/utils')['useUtils']>

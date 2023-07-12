@@ -38,7 +38,7 @@ const { pluckProps } = useUtils()
         'text-danger': bodyTextVariant === 'danger',
         'text-warning': bodyTextVariant === 'warning',
         'text-info': bodyTextVariant === 'info',
-        'text-gray-200': bodyTextVariant === 'light',
+        'text-light': bodyTextVariant === 'light',
         'text-dark': bodyTextVariant === 'dark',
       },
 
