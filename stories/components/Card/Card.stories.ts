@@ -1,5 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BCardSubTitle from '@/components/B/CardSubtitle.vue'
+import BListGroupItem from '@/components/B/ListGroupItem.vue'
+import BListGroup from '@/components/B/ListGroup.vue'
+import BRow from '@/components/B/Row.vue'
+import BCol from '@/components/B/Col.vue'
+import BCardSubTitle from '@/components/B/CardSubTitle.vue'
 import BCardTitle from '@/components/B/CardTitle.vue'
 import BButton from '@/components/B/Button.vue'
 import BCardFooter from '@/components/B/CardFooter.vue'
@@ -10,6 +14,8 @@ import BCardText from '@/components/B/CardText.vue'
 import vitestResults from '@/tests/unit/results.json'
 import BCard from '@/components/B/Card.vue'
 import BCardBody from '@/components/B/CardBody.vue'
+import BNav from '@/components/B/Nav.vue'
+import BNavItem from '@/components/B/NavItem.vue'
 
 const meta = {
   title: 'Components/Card',
@@ -208,7 +214,7 @@ export const HeaderAndFooter: Story = {
 
 export const KitchenSinkExample: Story = {
   render: (args, { argTypes }) => ({
-    components: { BCard, BCardText, BCardImg, BCardBody, BCardFooter, BCardTitle, BCardSubTitle },
+    components: { BCard, BCardText, BCardImg, BCardBody, BCardFooter, BCardTitle, BCardSubTitle, BListGroup, BListGroupItem },
     props: Object.keys(argTypes),
     template: `
     <div>
@@ -254,7 +260,7 @@ export const KitchenSinkExample: Story = {
 
 export const HorizontalCardLayout: Story = {
   render: (args, { argTypes }) => ({
-    components: { BCard, BCardText, BCardImg, BCardBody, BCardFooter },
+    components: { BCard, BCardText, BCardImg, BCardBody, BCardFooter, BCol, BRow },
     props: Object.keys(argTypes),
     template: `
     <div>
@@ -275,5 +281,201 @@ export const HorizontalCardLayout: Story = {
         </b-card>
     </div>
                   `,
+  }),
+}
+
+export const TextVariants: Story = {
+  render: (args, { argTypes }) => ({
+    components: { BCard, BCardText, BButton },
+    props: Object.keys(argTypes),
+    template: `
+    <b-card bg-variant="dark" text-variant="white" title="Card Title">
+      <b-card-text>
+        With supporting text below as a natural lead-in to additional content.
+      </b-card-text>
+      <b-button href="#" variant="primary">Go somewhere</b-button>
+    </b-card>
+    `,
+  }),
+}
+
+export const SolidVariants: Story = {
+  render: (args, { argTypes }) => ({
+    components: { BCard, BCardText, BCardGroup },
+    props: Object.keys(argTypes),
+    template: `
+    <div>
+      <div>
+        <b-card-group deck>
+          <b-card bg-variant="primary" text-variant="white" header="Primary" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card bg-variant="secondary" text-variant="white" header="Secondary" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card bg-variant="success" text-variant="white" header="Success" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+      <div class="mt-3">
+        <b-card-group deck>
+          <b-card bg-variant="info" text-variant="white" header="Info" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card bg-variant="warning" text-variant="white" header="Warning" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card bg-variant="danger" text-variant="white" header="Danger" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+      <div class="mt-3">
+        <b-card-group deck>
+          <b-card bg-variant="light" header="Light" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card bg-variant="dark" header="Dark" text-variant="white" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card header="Default" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+    </div>
+    `,
+  }),
+}
+
+export const Bordered: Story = {
+  render: (args, { argTypes }) => ({
+    components: { BCard, BCardText, BCardGroup },
+    props: Object.keys(argTypes),
+    template: `
+    <div>
+      <div>
+        <b-card-group deck>
+          <b-card
+            border-variant="primary"
+            header="Primary"
+            header-bg-variant="primary"
+            header-text-variant="white"
+            align="center"
+          >
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card
+            border-variant="secondary"
+            header="Secondary"
+            header-border-variant="secondary"
+            align="center"
+          >
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card border-variant="success" header="Success" align="center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+      <div class="mt-3">
+        <b-card-group deck>
+          <b-card border-variant="info" header="Info" align="center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card
+            border-variant="warning"
+            header="Warning"
+            header-bg-variant="transparent"
+            align="center"
+          >
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card
+            border-variant="danger"
+            header="Danger"
+            header-border-variant="danger"
+            header-text-variant="danger"
+            align="center"
+          >
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+      <div class="mt-3">
+        <b-card-group deck class="mb-3">
+          <b-card border-variant="light" header="Light" class="text-center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+
+          <b-card border-variant="dark" header="Dark" align="center">
+            <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          </b-card>
+        </b-card-group>
+      </div>
+    </div>
+    `,
+  }),
+}
+
+export const HeaderAndFooterVariants: Story = {
+  render: (args, { argTypes }) => ({
+    components: { BCard, BCardText, BCardGroup },
+    props: Object.keys(argTypes),
+    template: `
+    <div>
+      <b-card
+        header="Card Header"
+        header-text-variant="white"
+        header-tag="header"
+        header-bg-variant="dark"
+        footer="Card Footer"
+        footer-tag="footer"
+        footer-bg-variant="success"
+        footer-border-variant="dark"
+        title="Title"
+        style="max-width: 20rem;"
+      >
+        <b-card-text>Header and footers variants.</b-card-text>
+      </b-card>
+    </div>
+    `,
+  }),
+}
+
+export const NavIntegration: Story = {
+  render: (args, { argTypes }) => ({
+    components: { BCard, BCardText, BCardGroup, BNav, BNavItem },
+    props: Object.keys(argTypes),
+    template: `
+    <div>
+      <b-card title="Card Title" body-class="text-center" header-tag="nav">
+        <template #header>
+          <b-nav card-header tabs>
+            <b-nav-item active>Active</b-nav-item>
+            <b-nav-item>Inactive</b-nav-item>
+            <b-nav-item disabled>Disabled</b-nav-item>
+          </b-nav>
+        </template>
+
+        <b-card-text>
+          With supporting text below as a natural lead-in to additional content.
+        </b-card-text>
+
+        <b-button variant="primary">Go somewhere</b-button>
+      </b-card>
+    </div>
+    `,
   }),
 }

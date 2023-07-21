@@ -49,7 +49,7 @@ export function useUtils() {
 
   // Return a shallow copy of object with the specified properties only
   // See: https://gist.github.com/bisubus/2da8af7e801ffd813fab7ac221aa7afc
-  const pick = (obj, props) => {
+  const pick = (obj: { [x: string]: any }, props: string | string[]) => {
     return Object.keys(obj)
       .filter(key => props.includes(key))
       .reduce((result, key) => ({ ...result, [key]: obj[key] }), {})
@@ -59,10 +59,6 @@ export function useUtils() {
   // plucks all the values off the target object, returning a new object
   // that has props that reference the original prop values
   function pluckProps(keysToPluck: any[], objToPluck: { [x: string]: any }, transformFn = identity) {
-    console.log((isArray(keysToPluck) ? keysToPluck.slice() : Object.keys(keysToPluck)).reduce((memo: { [x: string]: any }, prop: string | number) => {
-      memo[transformFn(prop)] = objToPluck[prop]
-      return memo
-    }, {}))
     return (isArray(keysToPluck) ? keysToPluck.slice() : Object.keys(keysToPluck)).reduce((memo: { [x: string]: any }, prop: string | number) => {
       memo[transformFn(prop)] = objToPluck[prop]
       return memo

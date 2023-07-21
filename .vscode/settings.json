@@ -7,5 +7,6 @@
     "*.css": "postcss"
   },
   "editor.formatOnSave": false,
+  "scss.lint.unknownAtRules": "ignore",
   "cSpell.enabled": false
 }

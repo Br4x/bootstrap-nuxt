@@ -9,7 +9,7 @@ const { pluckProps } = useUtils()
 <template>
   <component
     :is="bodyTag"
-    class="card-body flex-auto p-6"
+    class="card-body min-h-[1px] flex-auto p-5"
     :class="[
       {
         'card-img-overlay absolute inset-y-0 inset-x-0 p-6': overlay,
@@ -40,11 +40,9 @@ const { pluckProps } = useUtils()
         'text-info': bodyTextVariant === 'info',
         'text-light': bodyTextVariant === 'light',
         'text-dark': bodyTextVariant === 'dark',
+        'text-white': bodyTextVariant === 'white',
       },
 
-      `bg-${bodyBgVariant}`,
-      `border-${bodyBorderVariant}`,
-      `text-${bodyTextVariant}`,
       bodyClass,
     ]"
   >
@@ -57,3 +55,9 @@ const { pluckProps } = useUtils()
     <slot />
   </component>
 </template>
+
+<style type="scss">
+.card-link + .card-link {
+  @apply ml-5;
+}
+</style>

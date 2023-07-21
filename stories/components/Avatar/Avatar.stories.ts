@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import BListGroupItem from '@/components/B/ListGroupItem.vue'
+import BListGroup from '@/components/B/ListGroup.vue'
 import vitestResults from '@/tests/unit/results.json'
 import BAvatar from '@/components/B/Avatar.vue'
 import BAvatarGroup from '@/components/B/AvatarGroup.vue'
@@ -87,7 +89,7 @@ type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
   render: (args, { argTypes }) => ({
-    components: { BAvatar, BBadge },
+    components: { BAvatar, BBadge, BListGroup, BListGroupItem },
     props: Object.keys(argTypes),
     template: `
     <div>
@@ -100,22 +102,22 @@ export const Overview: Story = {
       </div>
       <p>Using in components (list group) example:<p/>
       <b-list-group style="max-width: 300px;">
-        <b-list-group-item class="d-flex align-items-center">
+        <b-list-group-item class="flex items-center">
           <b-avatar class="mr-3"/>
           <span class="mr-auto">J. Circlehead</span>
           <b-badge>5</b-badge>
         </b-list-group-item>
-        <b-list-group-item class="d-flex align-items-center">
+        <b-list-group-item class="flex items-center">
           <b-avatar variant="primary" text="BV" class="mr-3"/>
           <span class="mr-auto">BootstrapVue</span>
           <b-badge>12</b-badge>
         </b-list-group-item>
-        <b-list-group-item class="d-flex align-items-center">
+        <b-list-group-item class="flex items-center">
           <b-avatar variant="info" src="https://placekitten.com/300/300" class="mr-3"/>
           <span class="mr-auto">Super Kitty</span>
           <b-badge>9</b-badge>
         </b-list-group-item>
-        <b-list-group-item class="d-flex align-items-center">
+        <b-list-group-item class="flex items-center">
           <b-avatar variant="success" icon="people-fill" class="mr-3"/>
           <span class="mr-auto">ACME group</span>
           <b-badge>7</b-badge>
@@ -260,7 +262,7 @@ export const Rounding: Story = {
 
 export const Button: Story = {
   render: (args, { argTypes }) => ({
-    components: { BAvatar },
+    components: { BAvatar, BListGroup, BListGroupItem },
     props: Object.keys(argTypes),
     template: `
     <b-list-group>
@@ -295,7 +297,7 @@ export const Button: Story = {
 
 export const Link: Story = {
   render: (args, { argTypes }) => ({
-    components: { BAvatar },
+    components: { BAvatar, BListGroup, BListGroupItem },
     props: Object.keys(argTypes),
     template: `
     <b-list-group>
