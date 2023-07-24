@@ -1,14 +1,189 @@
 {
-  "numTotalTestSuites": 0,
-  "numPassedTestSuites": 0,
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
   "numFailedTestSuites": 0,
   "numPendingTestSuites": 0,
-  "numTotalTests": 0,
-  "numPassedTests": 0,
+  "numTotalTests": 15,
+  "numPassedTests": 15,
   "numFailedTests": 0,
   "numPendingTests": 0,
   "numTodoTests": 0,
-  "startTime": 1689175963778,
+  "startTime": 1689941623485,
   "success": true,
-  "testResults": []
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav has expected default structure",
+          "status": "passed",
+          "title": "has expected default structure",
+          "duration": 11,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav renders custom root element when prop tag set",
+          "status": "passed",
+          "title": "renders custom root element when prop tag set",
+          "duration": 3,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav renders default slot content",
+          "status": "passed",
+          "title": "renders default slot content",
+          "duration": 8,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies pill style",
+          "status": "passed",
+          "title": "applies pill style",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies tab style",
+          "status": "passed",
+          "title": "applies tab style",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies vertical style",
+          "status": "passed",
+          "title": "applies vertical style",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies justify style when justified",
+          "status": "passed",
+          "title": "applies justify style when justified",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav doesn't apply justify style when vertical",
+          "status": "passed",
+          "title": "doesn't apply justify style when vertical",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies fill style style when fill set",
+          "status": "passed",
+          "title": "applies fill style style when fill set",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav doesn't apply fill style when vertical",
+          "status": "passed",
+          "title": "doesn't apply fill style when vertical",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies alignment correctly",
+          "status": "passed",
+          "title": "applies alignment correctly",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav doesn't apply alignment when vertical",
+          "status": "passed",
+          "title": "doesn't apply alignment when vertical",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies small style",
+          "status": "passed",
+          "title": "applies small style",
+          "duration": 2,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies card-header-tabs class when tabs and card-header props set",
+          "status": "passed",
+          "title": "applies card-header-tabs class when tabs and card-header props set",
+          "duration": 1,
+          "failureMessages": []
+        },
+        {
+          "ancestorTitles": [
+            "",
+            "nav"
+          ],
+          "fullName": " nav applies card-header-pills class when pills and card-header props set",
+          "status": "passed",
+          "title": "applies card-header-pills class when pills and card-header props set",
+          "duration": 1,
+          "failureMessages": []
+        }
+      ],
+      "startTime": 1689941887314,
+      "endTime": 1689941887354,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/br4x/flutter/nuxt-starter/tests/unit/components/nav.test.ts"
+    }
+  ]
 }

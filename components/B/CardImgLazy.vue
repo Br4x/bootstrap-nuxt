@@ -2,10 +2,9 @@
 import { cardImgProps, imgLazyProps } from '@/constants/props'
 
 const props = defineProps({
-  ...omit(imgLazyProps, Object.keys(cardImgProps)),
-  ...omit(cardImgProps, ['src', 'alt', 'width', 'height']),
+  ...imgLazyProps,
+  ...cardImgProps,
 })
-const { omit } = useUtils()
 </script>
 
 <template>

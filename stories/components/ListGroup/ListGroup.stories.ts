@@ -26,7 +26,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const ListGroup: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -42,7 +42,7 @@ export const ListGroup: Story = {
 }
 
 export const ActiveItems: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -58,7 +58,7 @@ export const ActiveItems: Story = {
 }
 
 export const DisabledItems: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -74,7 +74,7 @@ export const DisabledItems: Story = {
 }
 
 export const ActionableListGroupItems: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -89,7 +89,7 @@ export const ActionableListGroupItems: Story = {
 }
 
 export const ButtonGroupItems: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -104,7 +104,7 @@ export const ButtonGroupItems: Story = {
 }
 
 export const ContextualVariants: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -124,7 +124,7 @@ export const ContextualVariants: Story = {
 }
 
 export const ActiveContextualVariants: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -144,7 +144,7 @@ export const ActiveContextualVariants: Story = {
 }
 
 export const withBadges: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup, BBadge },
     props: Object.keys(argTypes),
     template: `
@@ -169,7 +169,7 @@ export const withBadges: Story = {
 }
 
 export const ListGroupsInsideCards: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup, BCard, BCardGroup, BCardBody },
     props: Object.keys(argTypes),
     template: `
@@ -207,7 +207,7 @@ export const ListGroupsInsideCards: Story = {
 }
 
 export const AlwaysHorizontalListGroups: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -223,7 +223,7 @@ export const AlwaysHorizontalListGroups: Story = {
 }
 
 export const HorizontalAtBreakpoints: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `
@@ -239,7 +239,7 @@ export const HorizontalAtBreakpoints: Story = {
 }
 
 export const withCustomContent: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BListGroupItem, BListGroup },
     props: Object.keys(argTypes),
     template: `

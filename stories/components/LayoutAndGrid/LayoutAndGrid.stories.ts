@@ -69,7 +69,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const HowItWorks: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -85,7 +85,7 @@ export const HowItWorks: Story = {
 }
 
 export const EqualWidthColumns: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -106,7 +106,7 @@ export const EqualWidthColumns: Story = {
 }
 
 export const EqualWidthMultiLines: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -124,7 +124,7 @@ export const EqualWidthMultiLines: Story = {
 }
 
 export const SettingOneColumnWidth: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -146,7 +146,7 @@ export const SettingOneColumnWidth: Story = {
 }
 
 export const VariableWidthContent: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -168,7 +168,7 @@ export const VariableWidthContent: Story = {
 }
 
 export const AllBreakpoints: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -190,7 +190,7 @@ export const AllBreakpoints: Story = {
 }
 
 export const StackedToHorizontal: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -211,7 +211,7 @@ export const StackedToHorizontal: Story = {
 }
 
 export const MixAndMatch: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -240,7 +240,7 @@ export const MixAndMatch: Story = {
 }
 
 export const VerticalAlignment: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -289,7 +289,7 @@ export const VerticalAlignment: Story = {
 }
 
 export const SelfAlignment: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -309,7 +309,7 @@ export const SelfAlignment: Story = {
 }
 
 export const HorizontalAlignment: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -344,7 +344,7 @@ export const HorizontalAlignment: Story = {
 }
 
 export const OrderingColumns: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -366,7 +366,7 @@ export const OrderingColumns: Story = {
 }
 
 export const OffsettingColumns: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -390,7 +390,7 @@ export const OffsettingColumns: Story = {
 }
 
 export const ResetOffsetForLargerBreakPoints: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -410,7 +410,7 @@ export const ResetOffsetForLargerBreakPoints: Story = {
 }
 
 export const MarginUtilitiesOnColumns: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -435,7 +435,7 @@ export const MarginUtilitiesOnColumns: Story = {
 }
 
 export const NestingGrid: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -455,7 +455,7 @@ export const NestingGrid: Story = {
 }
 
 export const RowColumns: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `
@@ -499,7 +499,7 @@ export const RowColumns: Story = {
 }
 
 export const RowColumnsWithBreakpoints: Story = {
-  render: (args, { argTypes }) => ({
+  render: (args: any, { argTypes }: any) => ({
     components: { BRow, BCol, BContainer },
     props: Object.keys(argTypes),
     template: `

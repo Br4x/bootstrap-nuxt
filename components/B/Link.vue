@@ -23,9 +23,9 @@ function blur() {
 </script>
 
 <template>
-  <NuxtLink :class="{ active, disabled }" :to="href" :rel="rel" :target="target" :aria-disabled="disabled ? 'true' : null" @click="onClick">
+  <nuxt-link :class="{ active, disabled }" :to="href" :rel="rel" :target="target" :aria-disabled="disabled ? 'true' : null" @click="onClick">
     <slot />
-  </NuxtLink>
+  </nuxt-link>
 </template>
 
 <style lang="scss" scoped>

@@ -119,9 +119,11 @@ export function useUtils() {
 
   const isTag = (tag: any, name: any) => tag.toString().toLowerCase() === name.toString().toLowerCase()
 
-  const requestAF = (
-    window.requestAnimationFrame || (cb => setTimeout(cb, 16))
-  ).bind(window)
+  /* const requestAF = (
+    (window && window.requestAnimationFrame) || (cb => setTimeout(cb, 16))
+  ).bind(window) */
+
+  const requestAF = () => {}
 
   const stopEvent = (
     event: Event,
@@ -224,7 +226,7 @@ export function useUtils() {
   // Edge 15 and UC Browser lack support for `isIntersecting`
   // but we an use `intersectionRatio > 0` instead
   // 'isIntersecting' in window.IntersectionObserverEntry.prototype &&
-  const hasInteractionObserverSupport = (window && typeof document !== 'undefined' && typeof navigator !== 'undefined') && 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
+  const hasInteractionObserverSupport = (typeof window !== 'undefined' && typeof document !== 'undefined' && typeof navigator !== 'undefined') && 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
 
   return {
     create,
