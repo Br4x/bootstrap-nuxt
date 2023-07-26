@@ -1,0 +1,185 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as FormRatingStory from './FormRating.stories';
+
+<Meta of={FormRatingStory} />
+
+# Form Rating
+
+> BootstrapVue's custom star rating component, `<b-form-rating>`, is for entering or displaying a
+> rating value. The component is fully WAI-ARIA accessible and supports keyboard control.
+
+## Overview
+
+Rating values range from `1` to the number of stars allowed (default stars is `5`, minimum stars is
+`3`). Since `<b-form-rating>` uses the Bootstrap class `form-control`, it can easily be placed
+inside [input groups](/docs/components/input-group).
+
+There are two main modes for `<b-form-rating>`: interactive and readonly.
+
+Interactive mode allows the user to chose a rating from `1` to the number of stars (default `5`) in
+_whole number_ increments.
+
+**Interactive rating (input mode):**
+
+<Canvas of={FormRatingStory.Overview} />
+
+Readonly mode is used for displaying an aggregated rating, and supports `half` stars.
+
+**Readonly (non-interactive) rating:**
+
+<Canvas of={FormRatingStory.Overview1} />
+
+## Styling
+
+### Variant and color
+
+Easily apply one of the Bootstrap theme color variants to the rating icon via the `variant` prop.
+The default is to use the default form control text color.
+
+<Canvas of={FormRatingStory.VariantAndColor} />
+
+To apply a _custom color_, use the `color` prop which accepts a standard CSS color name, HEX color
+value (`#...`) or RGB/RGBA (`rgb(...)`/`rgba(...)`) color value:
+
+<Canvas of={FormRatingStory.VariantAndColor1} />
+
+**Notes:**
+
+- The prop `color` takes precedence over the `variant` prop
+- Variants translate to the `text-{variant}` utility class on the icon
+
+### Number of stars
+
+By default, `<b-form-rating>` defaults to `5` stars. You can change the number of stars via the
+`stars` prop. The minimum allowed stars is `3`.
+
+<Canvas of={FormRatingStory.NumberOfStars} />
+
+### Show value
+
+By default `<b-form-rating>` does not display the current numerical value. To show the current value
+simply set the `show-value` prop to `true`. To control the precision (number of digits after the
+decimal) simply set the `precision` prop to the number of digits after the decimal to show. The
+`precision` setting is useful when showing an aggregated or average rating value in `readonly` mode.
+
+<Canvas of={FormRatingStory.ShowValue} />
+
+**With precision set:**
+
+<Canvas of={FormRatingStory.ShowValue1} />
+
+#### Show maximum value
+
+<span class="badge badge-info small">2.13.0+</span>
+
+Optionally show the maximum rating possible by also setting the prop `show-value-max` to `true`:
+
+<Canvas of={FormRatingStory.ShowMaximumValue} />
+
+### Control sizing
+
+Fancy a small or large rating control? Simply set the prop `size` to either `'sm'` or `'lg'`
+respectively.
+
+<Canvas of={FormRatingStory.ControlSizing} />
+
+### Inline mode
+
+By default, `<b-form-rating>` occupies 100% width of the parent container. In some situations you
+may prefer the custom input to occupy on the space required for it's contents. Simply set the
+`inline` prop to `true` to render the component in inline mode:
+
+<Canvas of={FormRatingStory.InlineMode} />
+
+### Borderless
+
+By default, `<b-form-rating>` has standard Bootstrap form-control styling. To disable the default
+form-control border, simply set the `no-border` prop to `true`.
+
+<Canvas of={FormRatingStory.Borderless} />
+
+**Notes:**
+
+- For accessibility reasons a focus ring will show when the rating component has focus, regardless
+  of the `no-border` setting.
+
+### Disabled
+
+If you require additional information before a user can chose a ratings value, simply set the
+`disabled` prop to `true` to disable any user interactivity on the component:
+
+<Canvas of={FormRatingStory.Disabled} />
+
+### Readonly
+
+Readonly ratings remain focusable, but are not interactive. This state is useful for displaying an
+aggregated or average ratings value. Fractional values are allowed and will result in the displaying
+of _half icons_ when the `value` is not a whole number (the half icon threshold is `0.5`).
+
+<Canvas of={FormRatingStory.Readonly} />
+
+### Clear button
+
+Optionally show a clear icon via the `show-clear` prop. The value will be set to `null` when the
+clear icon is clicked.
+
+<Canvas of={FormRatingStory.ClearButton} />
+
+**Notes:**
+
+- The clear icon will _not_ be shown when the props `readonly` or `disabled` are set.
+
+### Icons
+
+By default `<b-form-rating>` uses the [Bootstrap Icons](/docs/icons) icons `'star'`, `'star-half'`,
+`'star-fill'`, and the icon `'x'` (for the optional clear button). You can specify alternate
+Bootstrap Icons to use via the `icon-empty`, `icon-half`, `icon-full`, and `icon-clear` props. These
+props accept a Bootstrap Icon <samp>kebab-case</samp> name, and requires that the corresponding icon
+component be registered/installed either locally or globally.
+
+<Canvas of={FormRatingStory.Icons} />
+
+Alternatively, you an supply your own content via the `'icon-empty'`, `'icon-half'`, `'icon-full'`,
+and `'icon-clear'` scoped slots.
+
+## Form submission
+
+If you intend to submit the rating value via standard form submission, set the `name` prop to the
+desired form field name. A hidden input will be generated with the current value (or an empty string
+if there is no value).
+
+## Using in input groups
+
+The following is an example of placing `<b-form-rating>` in an input group:
+
+<Canvas of={FormRatingStory.UsingInInputGroups} />
+
+## Internationalization
+
+When a `locale` is specified, the displayed value (when the `show-value` prop is `true`) will be in
+the browser's default locale. To change the locale, simple set the `locale` prop to the preferred
+locale, or an array of preferred locales (most preferred locale first). This will affect the
+optional displayed value and the left-to-right or right-to-left orientation of the component.
+
+<Canvas of={FormRatingStory.Internationalization} />
+
+## Implementation notes
+
+The ratings control uses the Bootstrap v4 `form-control*`, `d-*` (display), `border-*` and
+`text-{variant}` classes, as well as BootstrapVue's custom CSS for proper styling.
+
+The root element of the control is an `<output>` element, which allows a `<label>` element to be
+associated with it.
+
+## Accessibility
+
+To screen reader users `<b-form-rating>` appears as a _slider_ type input input.
+
+Keyboard navigation is employed to select the rating value, and mimics the keyboard controls of
+`range` inputs:
+
+- <kbd>Left</kbd> or <kbd>Down</kbd> will decrement the rating value by `1`
+- <kbd>Right</kbd> or <kbd>Up</kbd> will increment the rating value by `1`
+- When the [`locale`](#internationalization) resolves to a right-to-left language, the
+  <kbd>Left</kbd> and <kbd>Right</kbd> behaviour is reversed.

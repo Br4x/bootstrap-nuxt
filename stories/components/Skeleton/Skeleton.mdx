@@ -1,0 +1,75 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as SkeletonStory from './Skeleton.stories';
+
+<Meta of={SkeletonStory} />
+
+# Skeleton
+
+> `<b-skeleton>` is a BootstrapVue custom component, that allows you to display a loading state for
+> several component types while your data is being fetched or computed.
+
+**Example: Basic usage**
+
+<Canvas of={SkeletonStory.Skeleton} />
+
+## Types
+
+`<b-skeleton>` supports various basic types, to represent various components in your project.
+
+<Canvas of={SkeletonStory.Types} />
+
+## Skeleton animations
+
+`<b-skeleton>` supports different animations. You can set them per component or change it globally
+in the [settings](/docs/reference/settings).
+
+<Canvas of={SkeletonStory.SkeletonAnimations} />
+
+## Helper components
+
+Utilize `<b-skeleton>` helper components to quickly scaffold existing components.
+
+### Table
+
+`<b-skeleton-table>` allows you to scaffold a basic table structure by utilizing the `rows` and
+`columns` props to define the size of the table. You can pass props directly to the table via the
+`table-props` property, which supports the same props as `<b-table-simple>`. Refer to the
+`<b-table-simple>` [documentation](/docs/components/table#comp-ref-b-table-simple) for a complete
+list.
+
+<Canvas of={SkeletonStory.Table} />
+
+### Image
+
+Utilize `<b-skeleton-img>` to represent images. It utilizes a 16:9 aspect ratio by default, for a
+responsive sizing. You can overwrite this by applying `no-aspect` and utilize the `height` and
+`width` props to set your own sizing.
+
+<Canvas of={SkeletonStory.Image} />
+
+#### Card Image
+
+Use `<b-skeleton-img>` to represent images in `<b-card>`. Remember to set the `card-img` prop to the
+position of the image. This will apply the proper border-radius.
+
+<Canvas of={SkeletonStory.CardImage} />
+
+## Icons
+
+`<b-skeleton-icon>` can also be used as placeholder for icons. If you need to use any icon props,
+you can pass them via the `icon-props` property.
+
+<Canvas of={SkeletonStory.Icons} />
+
+**Note:** The `throb` animation does not work with `b-skeleton-icon`.
+
+## Styling and customization
+
+The `<b-skeleton>` component and helper components utilizes Bootstrap SCSS variables, as much as
+possible to best match the styling and sizing of the native components. This means if you've
+customized Bootstrap SCSS, the skeleton components should adapt to fit your custom theming.
+
+We've also provided a few custom SCSS variables, that can be used to further customize the styling
+of the various `<b-skeleton>` components. You can read more about how to change these variables in
+the [theming section](/docs/reference/theming#bootstrapvue-sass-variables).

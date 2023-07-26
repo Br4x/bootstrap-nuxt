@@ -1,4 +1,10 @@
 <script setup lang="ts">
+async function test() {
+  await $fetch('/api/lol', {
+    method: 'POST',
+    body: 'lol',
+  })
+}
 </script>
 
 <template>
@@ -15,7 +21,7 @@
         </p>
       </div>
 
-      <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+      <div class="mx-auto mb-0 mt-8 max-w-md space-y-4">
         <div>
           <label for="email" class="sr-only">Email</label>
 
@@ -89,11 +95,12 @@
           <button
             type="submit"
             class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+            @click="test()"
           >
             Sign in
           </button>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>

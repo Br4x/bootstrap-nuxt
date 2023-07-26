@@ -1,0 +1,105 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as ProgressStory from './Progress.stories';
+
+<Meta of={ProgressStory} />
+
+# Progress
+
+> Use our custom progress component for displaying simple or complex progress bars, featuring
+> support for horizontally stacked bars, animated backgrounds, and text labels.
+
+<Canvas of={ProgressStory.Progress} />
+
+## Value
+
+Set the maximum value with the `max` prop (default is `100`), and the current value via the `value`
+prop (default `0`).
+
+When creating multiple bars in a single process, place the value prop on the individual
+`<b-progress-bar>` sub components (see the **Multiple Bars** section below for more details)
+
+## Labels
+
+Add labels to your progress bars by either enabling `show-progress` (percentage of max) or
+`show-value`for the current absolute value. You may also set the precision (number of digits after
+the decimal) via the `precision` prop (default is `0`digits after the decimal).
+
+<Canvas of={ProgressStory.Labels} />
+
+### Custom progress label
+
+Need more control over the label? Provide your own label by using the default slot within a
+`<b-progress-bar>` sub-component, or by using the `label` or `label-html` property on
+`<b-progress-bar>`:
+
+<Canvas of={ProgressStory.CustomProgressLabel} />
+
+Precedence order for label methods (top-most has precedence):
+
+- default slot of `<b-progress-bar>`
+- `label` prop of `<b-progress-bar>`
+- `show-progress` prop of `<b-progress-bar>`
+- `show-value` prop of `<b-progress-bar>`
+- `show-progress` prop of `<b-progress>`
+- `show-value` prop of `<b-progress>`
+- no label
+
+## Width and height
+
+`<b-progress>` will always expand to the maximum with of its parent container. To change the width,
+place `<b-progress>` in a standard Bootstrap column or apply one of the standard Bootstrap width
+classes.
+
+<Canvas of={ProgressStory.WidthAndHeight} />
+
+The height of the progress bar can be controlled with the `height` prop. The height value should be
+a standard CSS dimension (`px`, `rem`, `em`, etc.). The default height is `1rem`.
+
+<Canvas of={ProgressStory.WidthAndHeight1} />
+
+## Backgrounds
+
+Use background variants to change the appearance of individual progress bars. The default variant is
+`primary`.
+
+### Solid background variants
+
+<Canvas of={ProgressStory.SolidBackgroundVariants} />
+
+### Striped backgrounds
+
+Set `striped` to apply a stripe via CSS gradient over the progress bar's background variant.
+
+<Canvas of={ProgressStory.StripedBackgrounds} />
+
+### Animated backgrounds
+
+The striped gradient can also be animated by setting the `animated`prop.
+
+<Canvas of={ProgressStory.AnimatedBackgrounds} />
+
+Notes:
+
+- if `animated` is true, `striped` will automatically be enabled.
+- Animated progress bars don't work in Opera 12 — as they don't support CSS3 animations.
+- The animation effect of this component is dependent on the `prefers-reduced-motion` media query.
+  See the [reduced motion section of our accessibility documentation](/docs/reference/accessibility)
+  for additional details.
+
+## Multiple bars
+
+Include multiple `<b-progress-bar>` sub-components in a `<b-progress>` component to build a
+horizontally stacked set of progress bars.
+
+<Canvas of={ProgressStory.MultipleBars} />
+
+`<b-progress-bar>` will inherit most of the props from the `<b-progress>` parent component, but you
+can override any of the props by setting them on the `<b-progress-bar>`
+
+Notes:
+
+- `height`, if specified, should always set on the `<b-progress>` component.
+- `<b-progress-bar>` will not inherit `value` from `<b-progress>`.
+
+

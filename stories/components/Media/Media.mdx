@@ -1,0 +1,47 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as MediaStory from './Media.stories';
+
+<Meta of={MediaStory} />
+
+# Media
+
+> The media object helps build complex and repetitive components where some media is positioned
+> alongside content that doesn't wrap around said media. Plus, it does this with only two required
+> classes thanks to flexbox.
+
+<Canvas of={MediaStory.Media} />
+
+## Usage
+
+<Canvas of={MediaStory.Usage} />
+
+## No body (with sub-components)
+
+<Canvas of={MediaStory.NoBodyWithSubComponents} />
+
+## Order
+
+Change the order of content in media objects by adding `right-align` property.
+
+<Canvas of={MediaStory.Order} />
+
+## Nesting
+
+You can easily nest media objects by including another `<b-media>` inside parent's body.
+
+## Vertical align
+
+Aside can be vertically aligned using `vertical-align` prop, set to `top`, `center` or `end`. The
+default alignment is `top`.
+
+## Media list
+
+Because the media object has few structural requirements, you can use this component as a list item
+in HTML lists. On your `<ul>` or `<ol>`, add the class `list-unstyled` to remove any browser default
+list styles, and then use the `<b-media>` component with `tag` prop set to `li`. As always, use
+spacing utilities wherever needed to fine tune.
+
+<Canvas of={MediaStory.MediaList} />
+
+

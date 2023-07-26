@@ -1,0 +1,120 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as SpinnerStory from './Spinner.stories';
+
+<Meta of={SpinnerStory} />
+
+# Spinner
+
+> The `<b-spinner>` component can be used to show the loading state in your projects. They're
+> rendered only with basic HTML and CSS as a lightweight Vue functional component. Their appearance,
+> alignment, and sizing can be easily customized with a few built-in props and/or Bootstrap v4
+> utility classes.
+
+Spinners can be placed just about anywhere, including inside buttons, alerts, and even `<b-table>`'s
+busy slot.
+
+<Canvas of={SpinnerStory.Spinner} />
+
+## Spinner types
+
+Bootstrap includes two types of spinners. The default spinner type is called `border` (spinning
+circle border), and the optional type `grow` (a throbber style indicator).
+
+### Border spinner
+
+Use the default `border` type spinners for a lightweight loading indicator.
+
+<Canvas of={SpinnerStory.BorderSpinner} />
+
+### Grow spinner
+
+If you don't fancy a `border` spinner, switch to the `grow` spinner by setting the prop `type` to
+`'grow'`. While it doesn't technically spin, it does repeatedly grow!
+
+<Canvas of={SpinnerStory.GrowSpinner} />
+
+## Spinner color variants
+
+Spinners use `currentColor` for their color, meaning it inherits the current font color. You can
+customize the color using the standard text color variants using the `variant` prop, or place
+classes or styles on the component to change its color.
+
+The `variant` prop translates the variant name to the Bootstrap v4 class `.text-{variant}`, so if
+you have custom defined text color variants, feel free to use them via the `variant` prop.
+
+<Canvas of={SpinnerStory.SpinnerColorVariants} />
+
+**Why not use `border-color` utilities?** Each `border` spinner specifies a `transparent` border for
+at least one side, so `.border-{color}` utilities would override that.
+
+## Size
+
+Set the prop `small` to `true` to make a smaller spinner that can quickly be used within other
+components.
+
+<Canvas of={SpinnerStory.Size} />
+
+Or, use custom CSS or inline styles to change the dimensions as needed.
+
+<Canvas of={SpinnerStory.Size1} />
+
+## Alignment
+
+Spinners in Bootstrap are built with `rem`s, `currentColor`, and `display: inline-flex`. This means
+they can easily be resized, recolored, and quickly aligned.
+
+### Margin
+
+Use margin utilities like `.m-5` for easy spacing.
+
+<Canvas of={SpinnerStory.Margin} />
+
+## Placement
+
+Use flexbox utilities, float utilities, or text alignment utility classes to place spinners exactly
+where you need them in any situation.
+
+### Flex
+
+Using flex utility classes:
+
+<Canvas of={SpinnerStory.Flex} />
+
+### Floats
+
+Using float utility classes:
+
+<Canvas of={SpinnerStory.Floats} />
+
+### Text align
+
+Using text alignment utility classes:
+
+<Canvas of={SpinnerStory.TextAlign} />
+
+## Spinners in buttons
+
+Use spinners within buttons to indicate an action is currently processing or taking place. You may
+also swap the label text out of the spinner element and utilize button text as needed.
+
+<Canvas of={SpinnerStory.SpinnersInButtons} />
+
+## Spinner accessibility
+
+Place a hidden label text inside the spinner for screen reader users, via the `label` prop or
+`label` slot. The content will be placed _inside_ the spinner wrapped in a `<span>` element that has
+the class `sr-only`, which will make the label available to screen reader users.
+
+For accessibility purposes, each spinner will automatically have a `role="status"` attribute when a
+label is provided. You can easily customize the role if required via prop `role`. The specified
+`role` will not be applied when no label is provided.
+
+As well, when no label is provided, the spinner will automatically have the attribute
+`aria-hidden="true"` to hide the spinner from screen reader users.
+
+## See also
+
+An alternative to the `<b-spinner>` component are [animated icons](/docs/icons/#animated-icons).
+
+

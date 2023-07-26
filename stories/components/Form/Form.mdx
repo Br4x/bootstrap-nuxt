@@ -1,0 +1,177 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as FormStory from './Form.stories';
+
+<Meta of={FormStory} />
+
+# Form
+
+> BootstrapVue form component and helper components that optionally support inline form styles and
+> validation states. Pair them up with other BootstrapVue form control components for an easy
+> customized, and responsive, layout with a consistent look and feel.
+
+## Introduction to forms and controls
+
+Be sure to use an appropriate `type` on all inputs (e.g., `email` for email address or `number` for
+numerical information) to take advantage of newer input controls like email verification, number
+selection, and more.
+
+Here's a quick example to demonstrate BootstrapVue's form styles. Keep reading for documentation on
+supported components, form layout, and more.
+
+<Canvas of={FormStory.IntroductionToFormsAndControls} />
+
+## Inline form
+
+Use the `inline` prop on `<b-form>` to display a series of labels, form controls, and buttons on a
+single horizontal row. Form controls within inline forms vary slightly from their default states.
+
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide
+  alignment control with spacing and flexbox utilities.
+- Controls and input groups receive `width: auto` to override the Bootstrap default width: 100%.
+- Controls **only appear inline in viewports that are at least 576px wide** to account for narrow
+  viewports on mobile devices.
+
+You may need to manually address the width and alignment of individual form controls with
+[spacing utilities](/docs/reference/spacing-classes) (as shown below). Lastly, be sure to always
+include a `<label>` with each form control, even if you need to hide it from non-screenreader
+visitors with class `.sr-only`.
+
+<Canvas of={FormStory.InlineForm} />
+
+Custom form controls and selects are also supported.
+
+<Canvas of={FormStory.InlineForm1} />
+
+**Note:** _`<b-form-group>` is not supported in `inline` forms due to layout conflicts._
+
+### Alternatives to hidden labels
+
+Assistive technologies such as screen readers will have trouble with your forms if you don't include
+a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class.
+There are further alternative methods of providing a label for assistive technologies, such as the
+`aria-label`, `aria-labelledby` or `title` attributes. If none of these are present, assistive
+technologies may resort to using the `placeholder` attribute, if present, but note that use of
+`placeholder` as a replacement for other labelling methods is not advised.
+
+## Related form control and layout components
+
+See also:
+
+- [`<b-form-input>`](/docs/components/form-input) Textual and text-like inputs
+- [`<b-form-textarea>`](/docs/components/form-textarea) Text area inputs
+- [`<b-form-select>`](/docs/components/form-select) Select input
+- [`<b-form-radio>`](/docs/components/form-radio) Radio Inputs
+- [`<b-form-checkbox>`](/docs/components/form-checkbox) Checkbox Inputs
+- [`<b-form-file>`](/docs/components/form-file) File Input
+- [`<b-form-datepicker>`](/docs/components/form-datepicker) Date picker input
+- [`<b-form-spinbutton>`](/docs/components/form-spinbutton) Numerical range spinbutton input
+- [`<b-form-tags>`](/docs/components/form-tags) Customizable tag input
+- [`<b-form-timepicker>`](/docs/components/form-timepicker) Time picker custom form input
+- [`<b-form-rating>`](/docs/components/form-rating) Star rating custom form input and display
+- [`<b-button>`](/docs/components/button) Buttons
+- [`<b-form-group>`](/docs/components/form-group) Form Input wrapper to generate form-groups that
+  support labels, help text and feedback
+- [`<b-input-group>`](/docs/components/input-group) Form Inputs with add-ons
+- [`<b-form-row>`](/docs/components/layout) Create grid rows and columns with tighter margins
+  (available via the [Layout and grid components](/docs/components/layout))
+
+## Form helper components
+
+The following helper components are available with the `Form` plugin:
+
+- `<b-form-text>` Help text blocks for inputs
+- `<b-form-invalid-feedback>` Invalid feedback text blocks for input `invalid` states
+- `<b-form-valid-feedback>` Valid feedback text blocks for input `valid` states
+- `<b-form-datalist>` Easily create a `<datalist>` for use with `<b-form-input>` or plain `<input>`
+
+### Form text helper
+
+Display a block of help text below an input with the `<b-form-text>` helper component. text is
+displayed with a muted color and slightly smaller font-size.
+
+**Tip:** Help text should be explicitly associated with the form control it relates to using the
+`aria-describedby` attribute. This will ensure that assistive technologies, such as screen readers,
+will announce this help text when the user focuses or enters the control.
+
+<Canvas of={FormStory.FormTextHelper} />
+
+### Feedback helpers
+
+The `<b-form-valid-feedback>` and `<b-form-invalid-feedback>` helper components will display
+feedback (based on input state) as a block of colored text. They rely on being placed after an input
+(sibling) and will show based on the browser native validation state of the input. To force them to
+show, set the prop `force-show` to `true`, or bind the controls `state` to the `state` prop of the
+feedback helper, or set the `was-validated` class on a parent element (such as a form). See the
+**Validation** section below for additional details.
+
+Use the optional Boolean prop `tooltip` to change the display from a block to a static tooltip
+style. The feedback will typically appear below the form control. When this mode is enabled, it is
+important that the parent container have a `position: relative:` css style (or `position-relative`
+class). Note that tooltip style feedback may, since its positioning is static, obscure other inputs,
+labels, etc.
+
+**Note:** Some form controls, such as
+[`<b-form-radio>`](/docs/components/form-radio#contextual-states),
+[`<b-form-checkbox>`](/docs/components/form-checkbox#contextual-states), and
+[`<b-form-file>`](/docs/components/form-file) have wrapper elements which will prevent the feedback
+text from automatically showing (as the feedback component is not a direct sibling of the form
+control's input). Use the feedback component's `state` prop (bound to the state of the form control)
+or the `force-show` prop to display the feedback.
+
+<Canvas of={FormStory.FeedbackHelpers} />
+
+### Datalist helper
+
+For browsers that support
+[`<datalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) elements, the
+`<b-form-datalist>` helper component will allow you to quickly create a `<datalist>` and child
+`<option>` elements via an array passed to the `options` prop.
+
+You may also manually provide `<option>` elements inside `<b-form-datalist>`. They will appear below
+any `<option>` elements generated from the `options` prop.
+
+<Canvas of={FormStory.DatalistHelper} />
+
+`<b-form-datalist>` is also available via the shorter alias of `<b-datalist>`.
+
+See also:
+
+- [`<b-form-input> datalist`](/docs/components/form-input#datalist-support) for datalist usage.
+- [`<b-form-select>` `options` prop](/docs/components/form-select#options-property) docs for details
+  on the formats and helper props associated with `options`.
+
+## Validation
+
+Disable browser native HTML5 validation by setting the `novalidate` prop to true on `<b-form>`.
+
+Set the `validated` prop, on `<b-form>`, to `true` to add the Bootstrap v4 `.was-validated` class to
+the form to trigger validation states
+
+All of the form controls support a `state` prop, which can be used to set the form control into one
+of three contextual states:
+
+- `false` (denotes invalid state) is great for when there's a blocking or required field. A user
+  must fill in this field properly to submit the form.
+- `true` (denotes valid state) is ideal for situations when you have per-field validation throughout
+  a form and want to encourage a user through the rest of the fields.
+- `null` Displays no validation state (neither valid nor invalid)
+
+Refer to the
+[Bootstrap v4 Form Validation Documentation](https://getbootstrap.com/docs/4.5/components/forms/#validation)
+for details on the new Bootstrap v4 validation states.
+
+### Validation mechanisms
+
+Using 3<sup>rd</sup> party Vue-based validation libraries with BootstrapVue:
+
+- BootstrapVue [Form validation reference section](/docs/reference/validation)
+
+Additional resources:
+
+- [Bootstrap v4: Form Validation Documentation](https://getbootstrap.com/docs/4.5/components/forms/#validation)
+- [MDN: Learn Form Validation - Using JavaScript API](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation#Validating_forms_using_JavaScript)
+- [MDN: HTML5 Constraint Validation](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation)
+- [MDN: Validity State API](https://developer.mozilla.org/en-US/docs/Web/API/ValidityState)
+
+

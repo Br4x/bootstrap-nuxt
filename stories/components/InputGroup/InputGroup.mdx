@@ -1,0 +1,133 @@
+
+import { Canvas, Meta } from '@storybook/blocks';
+import * as InputGroupStory from './InputGroup.stories';
+
+<Meta of={InputGroupStory} />
+
+# Input Group
+
+> Easily extend form controls by adding text, buttons, or button groups on either side of textual
+> inputs.
+
+<Canvas of={InputGroupStory.InputGroup} />
+
+## Usage
+
+You can attach addons using either props, named slots and/or sub-components.
+
+### Using `prepend` and `append` props
+
+Values will be internally wrapped by a `<b-input-group-text>` to display correctly.
+
+<Canvas of={InputGroupStory.UsingPrependAndAppendProps} />
+
+### Using named slots
+
+if you want better control over addons, you can use `prepend` and `append` slots instead.
+
+The slot content will automatically be wrapped by
+[`<b-input-group-prepend>` or `<b-input-group-append>`](#using-sub-components) to display correctly.
+
+<Canvas of={InputGroupStory.UsingNamedSlots} />
+
+### Using sub-components
+
+Use the `<b-input-group-prepend>` or `<b-input-group-append>` to add arbitrary addons wherever you
+like, and use these components to group buttons in your input group. Single buttons must always be
+wrapped in these components for proper styling.
+
+<Canvas of={InputGroupStory.UsingSubComponents} />
+
+Set the `is-text` prop on `<b-input-group-prepend>` or `<b-input-group-append>` if the content is
+textual in nature to apply proper styling. Alternatively, place the `<b-input-group-text>`
+subcomponent inside of the `<b-input-group-prepend>` or `<b-input-group-append>`. This also applies
+when you want to use on of [BootstrapVue's icons](/docs/icons).
+
+## Supported form-controls
+
+The following are the form controls supported as the input-group's _main_ input element:
+
+- [`<b-form-input>`](/docs/components/form-input)
+- [`<b-form-textarea>`](/docs/components/form-textarea)
+- [`<b-form-select>`](/docs/components/form-select)
+- [`<b-form-file>`](/docs/components/form-file)
+- [`<b-form-rating>`](/docs/components/form-rating)
+- [`<b-form-tags>`](/docs/components/form-tags)
+- [`<b-form-spinbutton>`](/docs/components/form-spinbutton)
+- [`<b-form-datepicker>`](/docs/components/form-datepicker)
+- [`<b-form-timepicker>`](/docs/components/form-timepicker)
+
+**Notes:**
+
+- BootstrapVue uses custom SCSS/CSS to handling sizing the `<b-form-file>` input when it is placed
+  in a `<b-input-group>` which has a [`size`](#control-sizing) specified.
+- BootstrapVue uses custom SCSS/CSS when `<b-form-input type="range">` is placed in a
+  `<b-input-group>`.
+- BootstrapVue's custom components (i.e. `<b-form-spinbutton>`, `<b-form-rating>`, `<b-form-tags>`,
+  etc.) require BootstrapVue's custom SCSS/CSS.
+
+## Checkbox and radio addons
+
+Place any checkbox or radio within an input group's addon instead of text.
+
+**Note:** Bootstrap v4.x recommends using native radio and checkbox inputs over custom radios and
+checkboxes, but it is possible to use as `<b-form-radio>` and `<b-form-checkbox>` with a few utility
+classes applied.
+
+### Native checkbox and radio addons
+
+<Canvas of={InputGroupStory.NativeCheckboxAndRadioAddons} />
+
+### Custom radio, checkbox, and switch addons
+
+Using `<b-form-checkbox>` and `<b-form-radio>` components as addons, using Bootstrap
+[utility classes](/docs/reference/utility-classes) for additional styling to get them to "fit" in
+the addon:
+
+<Canvas of={InputGroupStory.CustomRadioCheckboxAndSwitchAddons} />
+
+In the above example, we have use the `.sr-only` class on a `<span>` to visually hide the custom
+control's label content (while making them still accessible to screen reader users), and used the
+utility class `.mr-n2` to add a negative right margin to compensate for the "gutter" space between
+the control and the hidden label.
+
+## Multiple inputs
+
+<Canvas of={InputGroupStory.MultipleInputs} />
+
+## Multiple addons
+
+Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+
+<Canvas of={InputGroupStory.MultipleAddons} />
+
+## Dropdown addons
+
+<Canvas of={InputGroupStory.DropdownAddons} />
+
+## Control sizing
+
+Set height using the `size` prop to `sm` or `lg` for small or large respectively. There is no need
+to set size on the individual inputs or buttons. Note however, you _will be required_ to also set
+the size on dropdowns.
+
+<Canvas of={InputGroupStory.ControlSizing} />
+
+To control width, place the input inside standard Bootstrap grid column.
+
+### Sizing custom radio, checkbox and switch addons
+
+If using `<b-form-radio>` or `<b-form-checkbox>` as addons, additional utility classes may be
+required to make everything fit correctly, depending on the size chosen:
+
+<Canvas of={InputGroupStory.SizingCustomRadioCheckboxAndSwitchAddons} />
+
+Specifically, when using the `sm` size on `<b-input-group>` you will need to add a negative bottom
+margin, via the use of the `.mb-n1` [utility class](/docs/reference/utility-classes).
+
+## Contextual states
+
+Bootstrap v4 currently **does not** support contextual state styling (i.e. valid or invalid) of
+input groups. However, the inputs inside the input group do support contextual state.
+
+
