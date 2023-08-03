@@ -74,10 +74,10 @@ export const Carousel: Story = {
       }
     },
     methods: {
-      onSlideStart(slide) {
+      onSlideStart() {
         this.sliding = true
       },
-      onSlideEnd(slide) {
+      onSlideEnd() {
         this.sliding = false
       },
     },
