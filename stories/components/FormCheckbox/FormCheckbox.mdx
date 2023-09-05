@@ -37,16 +37,8 @@ If both `html` and `text` are provided, `html` will take precedence. Only basic/
 supported in the `html` field (components will not work). Note that not all browsers will render
 inline html (i.e. `<i>`, `<strong>`, etc.) inside `<option>` elements of a `<select>`.
 
-<p class="alert alert-danger">
-  <strong>Be cautious</strong> of placing user supplied content in the <code>html</code> field,
-  as it may make you vulnerable to
-  <a class="alert-link" href="https://en.wikipedia.org/wiki/Cross-site_scripting">
-  <abbr title="Cross Site Scripting Attacks">XSS attacks</abbr></a>, if you do not first
-  <a class="alert-link" href="https://en.wikipedia.org/wiki/HTML_sanitization">sanitize</a> the
-  user supplied string.
-</p>
 
-<!-- eslint-disable no-unused-vars -->
+
 
 ```js
 const options = ['A', 'B', 'C', { text: 'D', value: { d: 1 }, disabled: true }, 'E', 'F']
@@ -59,7 +51,6 @@ You can mix using strings and [objects](#options-as-an-array-of-objects) in the 
 Internally, BootstrapVue will convert the above array to the following array (the
 [array of objects](#options-as-an-array-of-objects)) format:
 
-<!-- eslint-disable no-unused-vars -->
 
 ```js
 const options = [
@@ -74,7 +65,6 @@ const options = [
 
 ### Options as an array of objects
 
-<!-- eslint-disable no-unused-vars -->
 
 ```js
 const options = [
@@ -92,7 +82,6 @@ the `html` property, you **must** supply a `value` property.
 Internally, BootstrapVue will convert the above array to the following array (the
 [array of objects](#options-as-an-array-of-objects)) format:
 
-<!-- eslint-disable no-unused-vars -->
 
 ```js
 const options = [

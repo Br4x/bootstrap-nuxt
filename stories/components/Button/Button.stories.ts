@@ -1,65 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BButtonGroup from '@/components/B/ButtonGroup.vue'
+import BButton from '@/components/BButton.vue'
+import BButtonGroup from '@/components/BButtonGroup.vue'
+import BCol from '@/components/BCol.vue'
+import BRow from '@/components/BRow.vue'
 
 const meta = {
   title: 'Components/Button',
   component: BButton,
   parameters: {
     vitest: {
-      testFile: 'button.test.tsx',
+      testFile: 'button.spec.ts',
       testResults: vitestResults,
     },
-  },
-  argTypes: {
-    active: { action: { type: 'boolean' } },
-    disabled: { action: { type: 'boolean' } },
-    target: {
-      control: {
-        type: 'text',
-      },
-    },
-    rel: {
-      control: {
-        type: 'text',
-      },
-    },
-    href: {
-      control: {
-        type: 'text',
-      },
-    },
-    alt: {
-      control: {
-        type: 'text',
-      },
-    },
-    ariaLabel: {
-      control: {
-        type: 'text',
-      },
-    },
-    block: { action: { type: 'boolean' } },
-    pill: { action: { type: 'boolean' } },
-    pressed: { action: { type: 'boolean' } },
-    size: {
-      control: {
-        type: 'text',
-      },
-    },
-    squared: { action: { type: 'boolean' } },
-    tag: {
-      control: {
-        type: 'text',
-      },
-    },
-    type: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: { control: 'select', options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'], defaultValue: 'primary' },
   },
 } satisfies Meta<typeof BButton>
 
@@ -96,7 +49,7 @@ export const ElementTypes: Story = {
 
 export const Sizings: Story = {
   render: (args, { argTypes }) => ({
-    components: { BButton },
+    components: { BButton, BCol, BRow },
     props: Object.keys(argTypes),
     template: `
     <b-row>

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BSpinner from '@/components/B/Spinner.vue'
-import BButton from '@/components/B/Button.vue'
+import BSpinner from '@/components/BSpinner.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/Spinner',
   component: BSpinner,
   parameters: {
     vitest: {
-      testFile: 'spinner.test.tsx',
+      testFile: 'spinner.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -34,7 +34,7 @@ export const Spinner: Story = {
   <b-spinner variant="success" type="grow" label="Spinning"></b-spinner>
 </div>
 
-<!-- b-spinners.vue -->
+
 `,
 
     setup() {
@@ -55,7 +55,7 @@ export const BorderSpinner: Story = {
   <b-spinner label="Loading..."></b-spinner>
 </div>
 
-<!-- b-spinner-border.vue -->
+
 `,
 
     setup() {
@@ -76,7 +76,7 @@ export const GrowSpinner: Story = {
   <b-spinner type="grow" label="Loading..."></b-spinner>
 </div>
 
-<!-- b-spinner-grow.vue -->
+
 `,
 
     setup() {
@@ -137,7 +137,7 @@ export const Size: Story = {
   <b-spinner small label="Small Spinner" type="grow"></b-spinner>
 </div>
 
-<!-- b-spinner-sizes.vue -->
+
 `,
 
     setup() {
@@ -159,7 +159,7 @@ export const Size1: Story = {
   <b-spinner style="width: 3rem; height: 3rem;" label="Large Spinner" type="grow"></b-spinner>
 </div>
 
-<!-- b-spinner-sizes-custom.vue -->
+
 `,
 
     setup() {
@@ -180,7 +180,7 @@ export const Margin: Story = {
   <b-spinner class="m-5" label="Busy"></b-spinner>
 </div>
 
-<!-- b-spinner-margin.vue -->
+
 `,
 
     setup() {
@@ -208,7 +208,7 @@ export const Flex: Story = {
   </div>
 </div>
 
-<!-- b-spinner-flex.vue -->
+
 `,
 
     setup() {
@@ -229,7 +229,7 @@ export const Floats: Story = {
   <b-spinner class="float-right" label="Floated Right"></b-spinner>
 </div>
 
-<!-- b-spinner-floats.vue -->
+
 `,
 
     setup() {
@@ -250,7 +250,7 @@ export const TextAlign: Story = {
   <b-spinner variant="primary" label="Text Centered"></b-spinner>
 </div>
 
-<!-- b-spinner-text-align.vue -->
+
 `,
 
     setup() {
@@ -279,7 +279,7 @@ export const SpinnersInButtons: Story = {
   </b-button>
 </div>
 
-<!-- b-spinner-buttons.vue -->
+
 `,
 
     setup() {

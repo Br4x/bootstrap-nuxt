@@ -1,25 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BForm from '@/components/B/Form.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BFormCheckboxGroup from '@/components/B/FormCheckboxGroup.vue'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BButton from '@/components/B/Button.vue'
-import BCard from '@/components/B/Card.vue'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BFormText from '@/components/B/FormText.vue'
-import BFormInvalidFeedback from '@/components/B/FormInvalidFeedback.vue'
-import BFormValidFeedback from '@/components/B/FormValidFeedback.vue'
-import BFormDatalist from '@/components/B/FormDatalist.vue'
+import BForm from '@/components/BForm.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BFormCheckboxGroup from '@/components/BFormCheckboxGroup.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BButton from '@/components/BButton.vue'
+import BCard from '@/components/BCard.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
+import BFormText from '@/components/BFormText.vue'
+import BFormInvalidFeedback from '@/components/BFormInvalidFeedback.vue'
+import BFormValidFeedback from '@/components/BFormValidFeedback.vue'
+import BFormDatalist from '@/components/BFormDatalist.vue'
 
 const meta = {
   title: 'Components/Form',
   component: BForm,
   parameters: {
     vitest: {
-      testFile: 'form.test.tsx',
+      testFile: 'form.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -50,7 +50,7 @@ export const IntroductionToFormsAndControls: Story = {
           type="email"
           placeholder="Enter email"
           required
-        ></b-form-input>
+        />
       </b-form-group>
 
       <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
@@ -59,7 +59,7 @@ export const IntroductionToFormsAndControls: Story = {
           v-model="form.name"
           placeholder="Enter name"
           required
-        ></b-form-input>
+        />
       </b-form-group>
 
       <b-form-group id="input-group-3" label="Food:" label-for="input-3">
@@ -68,7 +68,7 @@ export const IntroductionToFormsAndControls: Story = {
           v-model="form.food"
           :options="foods"
           required
-        ></b-form-select>
+        />
       </b-form-group>
 
       <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
@@ -104,11 +104,10 @@ export const IntroductionToFormsAndControls: Story = {
       }
     },
     methods: {
-      onSubmit(event) {
+      onSubmit(event: Event) {
         event.preventDefault()
-        alert(JSON.stringify(this.form))
       },
-      onReset(event) {
+      onReset(event: Event) {
         event.preventDefault()
         // Reset our form values
         this.form.email = ''
@@ -143,11 +142,11 @@ export const InlineForm: Story = {
       id="inline-form-input-name"
       class="mb-2 mr-sm-2 mb-sm-0"
       placeholder="Jane Doe"
-    ></b-form-input>
+    />
 
     <label class="sr-only" for="inline-form-input-username">Username</label>
     <b-input-group prepend="@" class="mb-2 mr-sm-2 mb-sm-0">
-      <b-form-input id="inline-form-input-username" placeholder="Username"></b-form-input>
+      <b-form-input id="inline-form-input-username" placeholder="Username"/>
     </b-input-group>
 
     <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
@@ -156,7 +155,7 @@ export const InlineForm: Story = {
   </b-form>
 </div>
 
-<!-- b-form-inline.vue -->
+
 `,
 
     setup() {
@@ -181,7 +180,7 @@ export const InlineForm1: Story = {
       class="mb-2 mr-sm-2 mb-sm-0"
       :options="[{ text: 'Choose...', value: null }, 'One', 'Two', 'Three']"
       :value="null"
-    ></b-form-select>
+    />
 
     <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember my preference</b-form-checkbox>
 
@@ -189,7 +188,7 @@ export const InlineForm1: Story = {
   </b-form>
 </div>
 
-<!-- b-form-inline-custom.vue -->
+
 `,
 
     setup() {
@@ -217,7 +216,7 @@ export const FormTextHelper: Story = {
    </b-form>
 </div>
 
-<!-- b-form-help-text.vue -->
+
 `,
 
     setup() {

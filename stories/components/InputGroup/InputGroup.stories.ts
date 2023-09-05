@@ -1,23 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BInputGroupText from '@/components/B/InputGroupText.vue'
-import BInputGroupAppend from '@/components/B/InputGroupAppend.vue'
-import BButton from '@/components/B/Button.vue'
-import BDropdown from '@/components/B/Dropdown.vue'
-import BDropdownItem from '@/components/B/DropdownItem.vue'
-import BInputGroupPrepend from '@/components/B/InputGroupPrepend.vue'
-import BIcon from '@/components/B/Icon.vue'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BFormRadio from '@/components/B/FormRadio.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BInputGroupText from '@/components/BInputGroupText.vue'
+import BInputGroupAppend from '@/components/BInputGroupAppend.vue'
+import BButton from '@/components/BButton.vue'
+import BDropdown from '@/components/BDropdown.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
+import BInputGroupPrepend from '@/components/BInputGroupPrepend.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BFormRadio from '@/components/BFormRadio.vue'
 
 const meta = {
   title: 'Components/InputGroup',
   component: BInputGroup,
   parameters: {
     vitest: {
-      testFile: 'input-group.test.tsx',
+      testFile: 'input-group.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -35,12 +34,12 @@ export const InputGroup: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Using props -->
+  
   <b-input-group size="lg" prepend="$" append=".00">
     <b-form-input></b-form-input>
   </b-input-group>
 
-  <!-- Using slots -->
+  
   <b-input-group class="mt-3">
     <template #append>
       <b-input-group-text><strong class="text-danger">!</strong></b-input-group-text>
@@ -48,7 +47,7 @@ export const InputGroup: Story = {
     <b-form-input></b-form-input>
   </b-input-group>
 
-  <!-- Using components -->
+  
   <b-input-group prepend="Username" class="mt-3">
     <b-form-input></b-form-input>
     <b-input-group-append>
@@ -58,7 +57,7 @@ export const InputGroup: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group.vue -->
+
 `,
 
     setup() {
@@ -85,7 +84,7 @@ export const UsingPrependAndAppendProps: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-using-props.vue -->
+
 `,
 
     setup() {
@@ -118,7 +117,7 @@ export const UsingNamedSlots: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-using-slots.vue -->
+
 `,
 
     setup() {
@@ -132,7 +131,7 @@ export const UsingNamedSlots: Story = {
 
 export const UsingSubComponents: Story = {
   render: (args, { argTypes }) => ({
-    components: { BInputGroup, BInputGroupPrepend, BButton, BFormInput, BInputGroupAppend, BInputGroupText, BIcon },
+    components: { BInputGroup, BInputGroupPrepend, BButton, BFormInput, BInputGroupAppend, BInputGroupText },
     props: Object.keys(argTypes),
     template: `
 <div>
@@ -147,13 +146,13 @@ export const UsingSubComponents: Story = {
       <b-button variant="outline-secondary">Button</b-button>
       <b-button variant="outline-primary">Button</b-button>
       <b-input-group-text>
-        <b-icon icon="x" />
+        <i class="w-6 w-6 i-carbon-user x" />
       </b-input-group-text>
     </b-input-group-append>
   </b-input-group>
 </div>
 
-<!-- b-input-group-addons-placement.vue -->
+
 `,
 
     setup() {
@@ -173,20 +172,20 @@ export const NativeCheckboxAndRadioAddons: Story = {
 <div>
   <b-input-group class="mb-2">
     <b-input-group-prepend is-text>
-      <input type="checkbox" aria-label="Checkbox for following text input">
+      <input type="checkbox" aria-label="Checkbox for following text input" />
     </b-input-group-prepend>
     <b-form-input aria-label="Text input with checkbox"></b-form-input>
   </b-input-group>
 
   <b-input-group>
     <b-input-group-prepend is-text>
-      <input type="radio" aria-label="Radio for following text input">
+      <input type="radio" aria-label="Radio for following text input" />
     </b-input-group-prepend>
     <b-form-input aria-label="Text input with radio input"></b-form-input>
   </b-input-group>
 </div>
 
-<!-- b-input-group-checks-radios.vue -->
+
 `,
 
     setup() {
@@ -232,7 +231,7 @@ export const CustomRadioCheckboxAndSwitchAddons: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-custom-checks-radios.vue -->
+
 `,
 
     setup() {
@@ -256,7 +255,7 @@ export const MultipleInputs: Story = {
   </b-input-group>
 </div>
 
-<!-- input-group-multiple-inputs.vue -->
+
 `,
 
     setup() {
@@ -276,14 +275,14 @@ export const MultipleAddons: Story = {
 <div>
   <b-input-group prepend="Item">
     <b-input-group-prepend is-text>
-      <input type="checkbox" aria-label="Checkbox for following text input">
+      <input type="checkbox" aria-label="Checkbox for following text input" />
     </b-input-group-prepend>
     <b-input-group-prepend is-text><b>$</b></b-input-group-prepend>
     <b-form-input type="number" aria-label="Text input with checkbox"></b-form-input>
   </b-input-group>
 </div>
 
-<!-- b-input-group-multiple-addons.vue -->
+
 `,
 
     setup() {
@@ -320,7 +319,7 @@ export const DropdownAddons: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-dropdown.vue -->
+
 `,
 
     setup() {
@@ -352,7 +351,7 @@ export const ControlSizing: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-size.vue -->
+
 `,
 
     setup() {
@@ -389,7 +388,7 @@ export const SizingCustomRadioCheckboxAndSwitchAddons: Story = {
   </b-input-group>
 </div>
 
-<!-- b-input-group-custom-checks-radios-sizing.vue -->
+
 `,
 
     setup() {

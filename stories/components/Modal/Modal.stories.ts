@@ -1,20 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BModal from '@/components/B/Modal.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
+import BButton from '@/components/BButton.vue'
+import BModal from '@/components/BModal.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
 
 const meta = {
   title: 'Components/Modal',
   component: BModal,
   parameters: {
     vitest: {
-      testFile: 'modal.test.tsx',
+      testFile: 'modal.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -39,7 +39,7 @@ export const Modal: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal.vue -->
+
 `,
 
     setup() {
@@ -57,17 +57,12 @@ export const UsingVBModalDirective: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Using modifiers -->
   <b-button v-b-modal.my-modal>Show Modal</b-button>
-
-  <!-- Using value -->
   <b-button v-b-modal="'my-modal'">Show Modal</b-button>
-
-  <!-- The modal -->
   <b-modal id="my-modal">Hello From My Modal!</b-modal>
 </div>
 
-<!-- b-modal-directive.vue -->
+
 `,
 
     setup() {
@@ -98,7 +93,7 @@ export const UsingThisbvmodalshowAndThisbvmodalhideInstanceMethods: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-bv-modal-hide-show.vue -->
+
 `,
 
     setup() {
@@ -263,7 +258,7 @@ export const PreventClosing: Story = {
         this.name = ''
         this.nameState = null
       },
-      handleOk(bvModalEvent) {
+      handleOk(bvModalEvent: Event) {
         // Prevent modal from closing
         bvModalEvent.preventDefault()
         // Trigger submit handler
@@ -312,7 +307,7 @@ export const TooltipsAndPopovers: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-popover.vue -->
+
 `,
 
     setup() {
@@ -339,7 +334,7 @@ export const ModalSizing: Story = {
   <b-modal id="modal-sm" size="sm" title="Small Modal">Hello Small Modal!</b-modal>
 </div>
 
-<!-- b-modal-sizes.vue -->
+
 `,
 
     setup() {
@@ -367,7 +362,7 @@ export const ScrollingLongContent: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-scroll-overflow.vue -->
+
 `,
 
     setup() {
@@ -395,7 +390,7 @@ export const ScrollingLongContent1: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-scrollable-content.vue -->
+
 `,
 
     setup() {
@@ -420,7 +415,7 @@ export const VerticallyCenteredModal: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-center-vertically.vue -->
+
 `,
 
     setup() {
@@ -518,6 +513,9 @@ export const Variants: Story = {
             Close
           </b-button>
         </div>
+        </template>
+    </b-modal>
+  </div>
       `,
 
     data() {
@@ -557,7 +555,7 @@ export const HidingTheBackdrop: Story = {
   </b-modal>
 </div>
 
-<!-- modal-no-backdrop.vue -->
+
 `,
 
     setup() {
@@ -587,7 +585,7 @@ export const FooterButtonSizing: Story = {
   </b-modal>
 </div>
 
-<!-- modal-footer-btn-sizes.vue -->
+
 `,
 
     setup() {
@@ -608,11 +606,33 @@ export const ExampleModalUsingCustomScopedSlots: Story = {
 
   <b-modal id="modal-scoped">
     <template #modal-header="{ close }">
-      <!-- Emulate built in modal header close button action -->
+      
       <b-button size="sm" variant="outline-danger" @click="close()">
         Close Modal
       </b-button>
       <h5>Modal Header</h5>
+      </template>
+
+    <template #default="{ hide }">
+      <p>Modal Body with button</p>
+      <b-button @click="hide()">Hide Modal</b-button>
+    </template>
+
+    <template #modal-footer="{ ok, cancel, hide }">
+      <b>Custom Footer</b>
+      <!-- Emulate built in modal footer ok and cancel button actions -->
+      <b-button size="sm" variant="success" @click="ok()">
+        OK
+      </b-button>
+      <b-button size="sm" variant="danger" @click="cancel()">
+        Cancel
+      </b-button>
+      <!-- Button with custom close trigger value -->
+      <b-button size="sm" variant="outline-secondary" @click="hide('forget')">
+        Forget it
+      </b-button>
+    </template>
+  </b-modal>
     `,
 
     setup() {
@@ -647,7 +667,7 @@ export const MultipleModalSupport: Story = {
   </b-modal>
 </div>
 
-<!-- b-modal-multiple.vue -->
+
 `,
 
     setup() {
@@ -686,11 +706,8 @@ export const OkMessageBox: Story = {
       showMsgBoxOne() {
         this.boxOne = ''
         this.$bvModal.msgBoxOk('Action completed')
-          .then((value) => {
+          .then((value: string) => {
             this.boxOne = value
-          })
-          .catch(() => {
-            // An error occurred
           })
       },
       showMsgBoxTwo() {
@@ -704,11 +721,8 @@ export const OkMessageBox: Story = {
           footerClass: 'p-2 border-top-0',
           centered: true,
         })
-          .then((value) => {
+          .then((value: string) => {
             this.boxTwo = value
-          })
-          .catch(() => {
-            // An error occurred
           })
       },
     },
@@ -748,11 +762,8 @@ export const ConfirmMessageBox: Story = {
       showMsgBoxOne() {
         this.boxOne = ''
         this.$bvModal.msgBoxConfirm('Are you sure?')
-          .then((value) => {
+          .then((value: string) => {
             this.boxOne = value
-          })
-          .catch((err) => {
-            // An error occurred
           })
       },
       showMsgBoxTwo() {
@@ -768,11 +779,8 @@ export const ConfirmMessageBox: Story = {
           hideHeaderClose: false,
           centered: true,
         })
-          .then((value) => {
+          .then((value: string) => {
             this.boxTwo = value
-          })
-          .catch((err) => {
-            // An error occurred
           })
       },
     },
@@ -851,7 +859,7 @@ export const AutoFocusOnOpen: Story = {
   </div>
 
   <div>
-    <!-- Element to gain focus when modal is opened -->
+    
     <b-form-input ref="focusThis"></b-form-input>
   </div>
 
@@ -898,9 +906,7 @@ export const KeyboardNavigation: Story = {
   id="some-modal-id"
   title="Modal with TinyMCE Editor"
   ignore-enforce-focus-selector=".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
->
-  <!-- Modal content with TinyMCE editor here -->
-</b-modal>
+/>
 `,
 
     setup() {

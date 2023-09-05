@@ -1,86 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BListGroupItem from '@/components/B/ListGroupItem.vue'
-import BListGroup from '@/components/B/ListGroup.vue'
+import BListGroupItem from '@/components/BListGroupItem.vue'
+import BListGroup from '@/components/BListGroup.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BAvatar from '@/components/B/Avatar.vue'
-import BAvatarGroup from '@/components/B/AvatarGroup.vue'
-import BBadge from '@/components/B/Badge.vue'
+import BAvatar from '@/components/BAvatar.vue'
+import BAvatarGroup from '@/components/BAvatarGroup.vue'
+import BBadge from '@/components/BBadge.vue'
 
 const meta = {
   title: 'Components/Avatar',
   component: BAvatar,
   parameters: {
     vitest: {
-      testFile: 'avatar.test.tsx',
+      testFile: 'avatar.spec.ts',
       testResults: vitestResults,
     },
-  },
-  argTypes: {
-    active: { action: { type: 'boolean' } },
-    disabled: { action: { type: 'boolean' } },
-    target: {
-      control: {
-        type: 'text',
-      },
-    },
-    rel: {
-      control: {
-        type: 'text',
-      },
-    },
-    href: {
-      control: {
-        type: 'text',
-      },
-    },
-    alt: {
-      control: {
-        type: 'text',
-      },
-    },
-    ariaLabel: {
-      control: {
-        type: 'text',
-      },
-    },
-    badge: { control: { type: 'boolean' } },
-    badgeLeft: { control: { type: 'boolean' } },
-    badgeOffset: { control: { type: 'boolean' } },
-    badgeTop: { control: { type: 'boolean' } },
-    badgeVariant: {
-      control: {
-        type: 'text',
-      },
-    },
-    button: { control: { type: 'boolean' } },
-    buttonType: {
-      control: {
-        type: 'text',
-      },
-    },
-    icon: {
-      control: {
-        type: 'text',
-      },
-    },
-    rounded: { control: { type: 'boolean' } },
-    size: {
-      control: {
-        type: 'text',
-      },
-    },
-    square: { control: { type: 'boolean' } },
-    src: {
-      control: {
-        type: 'text',
-      },
-    },
-    text: {
-      control: {
-        type: 'text',
-      },
-    },
-    variant: { control: 'select', options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'], defaultValue: 'primary' },
   },
 } satisfies Meta<typeof BAvatar>
 
@@ -93,14 +26,14 @@ export const Overview: Story = {
     props: Object.keys(argTypes),
     template: `
     <div>
-      <p>Using stand-alone:<p/>
+      <p>Using stand-alone:</p>
       <div class="mb-4">
         <b-avatar />
         <b-avatar variant="primary" text="BV"/>
         <b-avatar variant="info" src="https://placekitten.com/300/300"/>
-        <b-avatar variant="success" icon="people-fill"/>
+        <b-avatar variant="success" class="w-6 w-6 i-carbon-user people-fill"/>
       </div>
-      <p>Using in components (list group) example:<p/>
+      <p>Using in components (list group) example:</p>
       <b-list-group style="max-width: 300px;">
         <b-list-group-item class="flex items-center">
           <b-avatar class="mr-3"/>
@@ -118,7 +51,7 @@ export const Overview: Story = {
           <b-badge>9</b-badge>
         </b-list-group-item>
         <b-list-group-item class="flex items-center">
-          <b-avatar variant="success" icon="people-fill" class="mr-3"/>
+          <b-avatar variant="success" class="w-6 w-6 i-carbon-user people-fill mr-3"/>
           <span class="mr-auto">ACME group</span>
           <b-badge>7</b-badge>
         </b-list-group-item>
@@ -147,10 +80,10 @@ export const IconContent: Story = {
     props: Object.keys(argTypes),
     template: `
     <div class="mb-2 inline-flex gap-2">
-        <b-avatar icon="people-fill"/>
-        <b-avatar icon="star-fill"/>
-        <b-avatar icon="music-note"/>
-        <b-avatar icon="star-fill" size="4em"/>
+        <b-avatar class="w-6 w-6 i-carbon-user people-fill"/>
+        <b-avatar class="w-6 w-6 i-carbon-user star-fill"/>
+        <b-avatar class="w-6 w-6 i-carbon-user music-note"/>
+        <b-avatar class="w-6 w-6 i-carbon-user star-fill" size="4em"/>
     </div>
     `,
   }),
@@ -176,7 +109,7 @@ export const CustomContent: Story = {
     components: { BAvatar },
     props: Object.keys(argTypes),
     template: `
-    <b-avatar><custom-icon></custom-icon/>
+    <b-avatar><i class="i-carbon-card w-6 w-6" /></b-avatar>
     `,
   }),
 }
@@ -187,8 +120,8 @@ export const MultiLineExample: Story = {
     props: Object.keys(argTypes),
     template: `
     <div class="mb-2 inline-flex gap-2">
-    <b-avatar size="4em">Hello<br>World</b-avatar>
-    <b-avatar size="4em">你好<br>世界</b-avatar>
+    <b-avatar size="4em">Hello<br />World</b-avatar>
+    <b-avatar size="4em">你好<br />世界</b-avatar>
   </div>
     `,
   }),
@@ -275,7 +208,7 @@ export const Button: Story = {
             Button Image Avatar
         </b-list-group-item>
         <b-list-group-item>
-            <b-avatar button @click="onClick" icon="star-fill" class="align-center"/>
+            <b-avatar button @click="onClick" class="w-6 w-6 i-carbon-user align-center"/>
             Button Icon Avatar
         </b-list-group-item>
     </b-list-group>
@@ -310,7 +243,7 @@ export const Link: Story = {
             Link Image Avatar
         </b-list-group-item>
         <b-list-group-item>
-            <b-avatar href="#baz" icon="star-fill" class="align-center"/>
+            <b-avatar href="#baz" class="w-6 w-6 i-carbon-user align-center"/>
             Link Icon Avatar
         </b-list-group-item>
     </b-list-group>`,
@@ -325,7 +258,7 @@ export const BadgeAvatars: Story = {
     <div class="mb-2 inline-flex gap-2">
         <b-avatar badge/>
         <b-avatar badge badge-variant="danger" src="https://placekitten.com/300/300"/>    
-        <b-avatar badge badge-variant="warning" icon="people-fill"/>
+        <b-avatar badge badge-variant="warning" class="w-6 w-6 i-carbon-user people-fill"/>
         <b-avatar badge badge-variant="success" src="https://placekitten.com/300/300"/>
         <b-avatar badge badge-variant="dark" text="BV"/>
         <b-avatar square badge badge-variant="dark" text="BV"/>
@@ -342,7 +275,7 @@ export const BadgeContent: Story = {
         <b-avatar badge="BV"/>
         <b-avatar badge="7" variant="primary" badge-variant="dark"/>
         <b-avatar badge-variant="info" src="https://placekitten.com/300/300">
-        <template #badge><b-icon icon="star-fill"></b-icon></template>
+        <template #badge><i class="w-6 w-6 i-carbon-user star-fill" /></template>
         </b-avatar>
     </div>`,
   }),
@@ -386,14 +319,14 @@ export const AvatarGroups: Story = {
     props: Object.keys(argTypes),
     template: `
     <div class="mb-2 inline-flex gap-2">
-        <b-avatar-group size="60px">
+        <b-avatar-group size="60px" rounded>
             <b-avatar/>
             <b-avatar text="BV" variant="primary"/>
             <b-avatar src="https://placekitten.com/300/300" variant="info"/>
             <b-avatar text="OK" variant="danger"/>
             <b-avatar variant="warning"/>
             <b-avatar src="https://placekitten.com/320/320" variant="dark"/>
-            <b-avatar icon="music-note" variant="success"/>
+            <b-avatar class="w-6 w-6 i-carbon-user music-note" variant="success"/>
         </b-avatar-group>
     </div>`,
   }),

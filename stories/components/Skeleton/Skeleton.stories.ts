@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BProgress from '@/components/B/Progress.vue'
-import BProgressBar from '@/components/B/ProgressBar.vue'
-import BButton from '@/components/B/Button.vue'
-import BSkeletonWrapper from '@/components/B/SkeletonWrapper.vue'
-import BCard from '@/components/B/Card.vue'
-import BSkeleton from '@/components/B/Skeleton.vue'
-import BSkeletonTable from '@/components/B/SkeletonTable.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BSkeletonImg from '@/components/B/SkeletonImg.vue'
-import BCardBody from '@/components/B/CardBody.vue'
-import BSkeletonIcon from '@/components/B/SkeletonIcon.vue'
+import BProgress from '@/components/BProgress.vue'
+import BProgressBar from '@/components/BProgressBar.vue'
+import BButton from '@/components/BButton.vue'
+import BSkeletonWrapper from '@/components/BSkeletonWrapper.vue'
+import BCard from '@/components/BCard.vue'
+import BSkeleton from '@/components/BSkeleton.vue'
+import BSkeletonTable from '@/components/BSkeletonTable.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BSkeletonImg from '@/components/BSkeletonImg.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BSkeletonIcon from '@/components/BSkeletonIcon.vue'
 
 const meta = {
   title: 'Components/Skeleton',
   component: BSkeleton,
   parameters: {
     vitest: {
-      testFile: 'skeleton.test.tsx',
+      testFile: 'skeleton.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -47,10 +47,22 @@ export const Skeleton: Story = {
     <b-skeleton-wrapper :loading="loading">
       <template #loading>
         <b-card>
-          <b-skeleton width="85%"></b-skeleton>
-          <b-skeleton width="55%"></b-skeleton>
-          <b-skeleton width="70%"></b-skeleton>
+          <b-skeleton width="85%" />
+          <b-skeleton width="55%" />
+          <b-skeleton width="70%" />
         </b-card>
+        </template>
+
+      <b-card>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra nunc sapien,
+        non rhoncus elit tincidunt vitae. Vestibulum maximus, ligula eu feugiat molestie,
+        massa diam imperdiet odio, vitae viverra ligula est id nisi. Aliquam ut molestie est.
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+        turpis egestas. Phasellus at consequat dui. Aenean tristique sagittis quam,
+        sit amet sollicitudin neque sodales in.
+      </b-card>
+    </b-skeleton-wrapper>
+  </div>
       `,
 
     data() {
@@ -110,18 +122,16 @@ export const Types: Story = {
     props: Object.keys(argTypes),
     template: `
 <h5>Text (default)</h5>
-<b-skeleton></b-skeleton>
+<b-skeleton />
 
 <h5 class="mt-3">Avatar</h5>
-<b-skeleton type="avatar"></b-skeleton>
+<b-skeleton type="avatar" />
 
 <h5 class="mt-3">Input</h5>
-<b-skeleton type="input"></b-skeleton>
+<b-skeleton type="input" />
 
 <h5 class="mt-3">Button</h5>
-<b-skeleton type="button"></b-skeleton>
-
-<!-- b-skeleton-types.vue -->
+<b-skeleton type="button" />
 `,
 
     setup() {
@@ -140,35 +150,32 @@ export const SkeletonAnimations: Story = {
     template: `
 <h5>Wave (default)</h5>
 <b-card>
-  <b-skeleton animation="wave" width="85%"></b-skeleton>
-  <b-skeleton animation="wave" width="55%"></b-skeleton>
-  <b-skeleton animation="wave" width="70%"></b-skeleton>
+  <b-skeleton animation="wave" width="85%" />
+  <b-skeleton animation="wave" width="55%" />
+  <b-skeleton animation="wave" width="70%" />
 </b-card>
 
 <h5 class="mt-3">Fade</h5>
 <b-card>
-  <b-skeleton animation="fade" width="85%"></b-skeleton>
-  <b-skeleton animation="fade" width="55%"></b-skeleton>
-  <b-skeleton animation="fade" width="70%"></b-skeleton>
+  <b-skeleton animation="fade" width="85%" />
+  <b-skeleton animation="fade" width="55%" />
+  <b-skeleton animation="fade" width="70%" />
 </b-card>
 
 <h5 class="mt-3">Throb</h5>
 <b-card>
-  <b-skeleton animation="throb" width="85%"></b-skeleton>
-  <b-skeleton animation="throb" width="55%"></b-skeleton>
-  <b-skeleton animation="throb" width="70%"></b-skeleton>
+  <b-skeleton animation="throb" width="85%" />
+  <b-skeleton animation="throb" width="55%" />
+  <b-skeleton animation="throb" width="70%" />
 </b-card>
 
 <h5 class="mt-3">None</h5>
 <b-card>
-  <b-skeleton animation width="85%"></b-skeleton>
-  <b-skeleton animation width="55%"></b-skeleton>
-  <b-skeleton animation width="70%"></b-skeleton>
+  <b-skeleton animation width="85%" />
+  <b-skeleton animation width="55%" />
+  <b-skeleton animation width="70%" />
 </b-card>
-
-<!-- b-skeleton-animations.vue -->
 `,
-
     setup() {
       return { args }
     },
@@ -183,15 +190,12 @@ export const Table: Story = {
     components: { BSkeletonTable },
     props: Object.keys(argTypes),
     template: `
-<b-skeleton-table
-  :rows="5"
-  :columns="4"
-  :table-props="{ bordered: true, striped: true }"
-></b-skeleton-table>
-
-<!-- b-skeleton-helper-table.vue -->
-`,
-
+    <b-skeleton-table
+      :rows="5"
+      :columns="4"
+      :table-props="{ bordered: true, striped: true }"
+    />
+    `,
     setup() {
       return { args }
     },
@@ -218,7 +222,7 @@ export const Image: Story = {
   </b-col>
 </b-row>
 
-<!-- b-skeleton-helper-img.vue -->
+
 `,
 
     setup() {
@@ -280,7 +284,7 @@ export const CardImage: Story = {
   </b-col>
 </b-row>
 
-<!-- b-skeleton-helper-card-img.vue -->
+
 `,
 
     setup() {
@@ -298,16 +302,16 @@ export const Icons: Story = {
     props: Object.keys(argTypes),
     template: `
 <b-skeleton-icon
-  icon="person"
+  class="w-6 w-6 i-carbon-user person"
   :icon-props="{ fontScale: 2 }"
 ></b-skeleton-icon>
 
 <b-skeleton-icon
-  icon="person-fill"
+  class="w-6 w-6 i-carbon-user person-fill"
   :icon-props="{ fontScale: 2, variant: 'dark' }"
 ></b-skeleton-icon>
 
-<!-- b-skeleton-helper-card-icon.vue -->
+
 `,
 
     setup() {

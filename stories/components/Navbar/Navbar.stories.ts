@@ -1,26 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BNavbar from '@/components/B/Navbar.vue'
-import BNavbarBrand from '@/components/B/NavbarBrand.vue'
-import BNavbarToggle from '@/components/B/NavbarToggle.vue'
-import BCollapse from '@/components/B/Collapse.vue'
-import BNavbarNav from '@/components/B/NavbarNav.vue'
-import BNavItem from '@/components/B/NavItem.vue'
-import BNavForm from '@/components/B/NavForm.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BButton from '@/components/B/Button.vue'
-import BNavItemDropdown from '@/components/B/NavItemDropdown.vue'
-import BDropdownItem from '@/components/B/DropdownItem.vue'
-import BNavText from '@/components/B/NavText.vue'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BIcon from '@/components/B/Icon.vue'
+import BNavbar from '@/components/BNavbar.vue'
+import BNavbarBrand from '@/components/BNavbarBrand.vue'
+import BNavbarToggle from '@/components/BNavbarToggle.vue'
+import BCollapse from '@/components/BCollapse.vue'
+import BNavbarNav from '@/components/BNavbarNav.vue'
+import BNavItem from '@/components/BNavItem.vue'
+import BNavForm from '@/components/BNavForm.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BButton from '@/components/BButton.vue'
+import BNavItemDropdown from '@/components/BNavItemDropdown.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
+import BNavText from '@/components/BNavText.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
 
 const meta = {
   title: 'Components/Navbar',
   component: BNavbar,
   parameters: {
     vitest: {
-      testFile: 'navbar.test.tsx',
+      testFile: 'navbar.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -49,7 +48,7 @@ export const Navbar: Story = {
         <b-nav-item href="#" disabled>Disabled</b-nav-item>
       </b-navbar-nav>
 
-      <!-- Right aligned nav items -->
+      
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
@@ -76,7 +75,7 @@ export const Navbar: Story = {
   </b-navbar>
 </div>
 
-<!-- b-navbar.vue -->
+
 `,
 
     setup() {
@@ -88,19 +87,19 @@ export const Navbar: Story = {
   }),
 }
 
-export const BNavbarBrand: Story = {
+export const NavbarBrand: Story = {
   render: (args, { argTypes }) => ({
     components: { BNavbar, BNavbarBrand },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- As a link -->
+  
   <b-navbar variant="faded" type="light">
     <b-navbar-brand href="#">BootstrapVue</b-navbar-brand>
   </b-navbar>
 </div>
 
-<!-- b-navbar-brand-link.vue -->
+
 `,
 
     setup() {
@@ -118,13 +117,13 @@ export const BNavbarBrand1: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- As a heading -->
+  
   <b-navbar variant="faded" type="light">
     <b-navbar-brand tag="h1" class="mb-0">BootstrapVue</b-navbar-brand>
   </b-navbar>
 </div>
 
-<!-- b-navbar-brand-heading.vue -->
+
 `,
 
     setup() {
@@ -142,15 +141,15 @@ export const BNavbarBrand2: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Just an image -->
+  
   <b-navbar variant="faded" type="light">
     <b-navbar-brand href="#">
-      <img src="https://placekitten.com/g/30/30" alt="Kitten">
+      <img src="https://placekitten.com/g/30/30" alt="Kitten" />
     </b-navbar-brand>
   </b-navbar>
 </div>
 
-<!-- b-navbar-brand-image.vue -->
+
 `,
 
     setup() {
@@ -168,16 +167,16 @@ export const BNavbarBrand3: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Image and text -->
+  
   <b-navbar variant="faded" type="light">
     <b-navbar-brand href="#">
-      <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten">
+      <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten" />
       BootstrapVue
     </b-navbar-brand>
   </b-navbar>
 </div>
 
-<!-- b-navbar-brand-image-and-text.vue -->
+
 `,
 
     setup() {
@@ -189,7 +188,7 @@ export const BNavbarBrand3: Story = {
   }),
 }
 
-export const BNavText: Story = {
+export const NavText: Story = {
   render: (args, { argTypes }) => ({
     components: { BNavbar, BNavbarToggle, BNavbarBrand, BCollapse, BNavbarNav, BNavText },
     props: Object.keys(argTypes),
@@ -208,7 +207,7 @@ export const BNavText: Story = {
   </b-navbar>
 </div>
 
-<!-- b-navbar-text.vue -->
+
 `,
 
     setup() {
@@ -220,7 +219,7 @@ export const BNavText: Story = {
   }),
 }
 
-export const BNavItemDropdown: Story = {
+export const NavItemDropdown: Story = {
   render: (args, { argTypes }) => ({
     components: { BNavbar, BNavbarNav, BNavItem, BNavItemDropdown, BDropdownItem },
     props: Object.keys(argTypes),
@@ -230,7 +229,7 @@ export const BNavItemDropdown: Story = {
     <b-navbar-nav>
       <b-nav-item href="#">Home</b-nav-item>
 
-      <!-- Navbar dropdowns -->
+      
       <b-nav-item-dropdown text="Lang" right>
         <b-dropdown-item href="#">EN</b-dropdown-item>
         <b-dropdown-item href="#">ES</b-dropdown-item>
@@ -246,7 +245,7 @@ export const BNavItemDropdown: Story = {
   </b-navbar>
 </div>
 
-<!-- b-navbar-dropdown.vue -->
+
 `,
 
     setup() {
@@ -258,7 +257,7 @@ export const BNavItemDropdown: Story = {
   }),
 }
 
-export const BNavForm: Story = {
+export const NavForm: Story = {
   render: (args, { argTypes }) => ({
     components: { BNavbar, BNavForm, BFormInput, BButton },
     props: Object.keys(argTypes),
@@ -272,7 +271,7 @@ export const BNavForm: Story = {
   </b-navbar>
 </div>
 
-<!-- b-navbar-form.vue -->
+
 `,
 
     setup() {
@@ -299,7 +298,7 @@ export const BNavForm1: Story = {
   </b-navbar>
 </div>
 
-<!-- b-navbar-form-inputs.vue -->
+
 `,
 
     setup() {
@@ -313,7 +312,7 @@ export const BNavForm1: Story = {
 
 export const CustomNavbarToggle: Story = {
   render: (args, { argTypes }) => ({
-    components: { BNavbar, BNavbarBrand, BNavbarToggle, BIcon, BCollapse, BNavbarNav, BNavItem },
+    components: { BNavbar, BNavbarBrand, BNavbarToggle, BCollapse, BNavbarNav, BNavItem },
     props: Object.keys(argTypes),
     template: `
   <b-navbar toggleable type="dark" variant="dark">
@@ -321,8 +320,19 @@ export const CustomNavbarToggle: Story = {
 
     <b-navbar-toggle target="navbar-toggle-collapse">
       <template #default="{ expanded }">
-        <b-icon v-if="expanded" icon="chevron-bar-up"></b-icon>
-        <b-icon v-else icon="chevron-bar-down"></b-icon>
+        <i v-if="expanded" class="w-6 w-6 i-carbon-user chevron-bar-up" />
+        <i v-else class="w-6 w-6 i-carbon-user chevron-bar-down" />
+        </template>
+    </b-navbar-toggle>
+
+    <b-collapse id="navbar-toggle-collapse" is-nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item href="#">Link 1</b-nav-item>
+        <b-nav-item href="#">Link 2</b-nav-item>
+        <b-nav-item href="#" disabled>Disabled</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
       `,
 
     setup() {

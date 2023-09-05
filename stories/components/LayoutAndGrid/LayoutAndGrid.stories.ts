@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BContainer from '@/components/B/Container.vue'
+import BContainer from '@/components/BContainer.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
 
 const meta = {
   title: 'Components/LayoutAndGrid',
   component: BRow,
   parameters: {
     vitest: {
-      testFile: 'row.test.tsx',
+      testFile: 'row.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -216,7 +216,7 @@ export const MixAndMatch: Story = {
     props: Object.keys(argTypes),
     template: `
     <b-container>
-      <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+      
       <b-row>
         <b-col class="border-1 border-gray-400 bg-gray-200 p-4" cols="12" md="8">cols="12" md="8"</b-col>
         <b-col class="border-1 border-gray-400 bg-gray-200 p-4" cols="6" md="4">cols="6" md="4"</b-col>

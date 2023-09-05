@@ -1,31 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BOverlay from '@/components/B/Overlay.vue'
-import BCard from '@/components/B/Card.vue'
-import BCardText from '@/components/B/CardText.vue'
-import BButton from '@/components/B/Button.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BInputGroupAppend from '@/components/B/InputGroupAppend.vue'
-import BImg from '@/components/B/Img.vue'
-import BIcon from '@/components/B/Icon.vue'
-import BMedia from '@/components/B/Media.vue'
-import BSpinner from '@/components/B/Spinner.vue'
-import BForm from '@/components/B/Form.vue'
-import BInputGroupPrepend from '@/components/B/InputGroupPrepend.vue'
-import BFormFile from '@/components/B/FormFile.vue'
-import BProgress from '@/components/B/Progress.vue'
+import BOverlay from '@/components/BOverlay.vue'
+import BCard from '@/components/BCard.vue'
+import BCardText from '@/components/BCardText.vue'
+import BButton from '@/components/BButton.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BInputGroupAppend from '@/components/BInputGroupAppend.vue'
+import BImg from '@/components/BImg.vue'
+import BMedia from '@/components/BMedia.vue'
+import BSpinner from '@/components/BSpinner.vue'
+import BForm from '@/components/BForm.vue'
+import BInputGroupPrepend from '@/components/BInputGroupPrepend.vue'
+import BFormFile from '@/components/BFormFile.vue'
+import BProgress from '@/components/BProgress.vue'
 
 const meta = {
   title: 'Components/Overlay',
   component: BOverlay,
   parameters: {
     vitest: {
-      testFile: 'overlay.test.tsx',
+      testFile: 'overlay.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -239,7 +238,7 @@ export const OverlayCornerRounding: Story = {
 
 export const CustomOverlayContent: Story = {
   render: (args, { argTypes }) => ({
-    components: { BOverlay, BCard, BCardText, BButton, BIcon },
+    components: { BOverlay, BCard, BCardText, BButton },
     props: Object.keys(argTypes),
     template: `
   <div>
@@ -253,7 +252,7 @@ export const CustomOverlayContent: Story = {
       </b-card>
       <template #overlay>
         <div class="text-center">
-          <b-icon icon="stopwatch" font-scale="3" animation="cylon"></b-icon>
+          <i class="w-6 w-6 i-carbon-user stopwatch" font-scale="3" animation="cylon" />
           <p id="cancel-label">Please wait...</p>
           <b-button
             ref="cancel"
@@ -265,6 +264,9 @@ export const CustomOverlayContent: Story = {
             Cancel
           </b-button>
         </div>
+        </template>
+    </b-overlay>
+  </div>
       `,
 
     data() {
@@ -293,21 +295,27 @@ export const CustomOverlayContent: Story = {
 
 export const OverlayContentCentering: Story = {
   render: (args, { argTypes }) => ({
-    components: { BOverlay, BIcon, BCard, BCardText, BButton },
+    components: { BOverlay, BCard, BCardText, BButton },
     props: Object.keys(argTypes),
     template: `
   <div>
     <b-overlay no-center show rounded="sm">
       <template #overlay>
-        <b-icon
-          icon="stopwatch"
-          variant="info"
-          scale="2"
+        <i
+          class="w-10 w-10 i-carbon-watch stopwatch absolute top-0 right-0 bg-info"
           shift-v="8"
           shift-h="8"
-          class="position-absolute"
-          style="top: 0; right: 0"
-        ></b-icon>
+         />
+         </template>
+      <b-card title="Card with no-center overlay" aria-hidden="true">
+        <b-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua.
+        </b-card-text>
+        <b-button disabled variant="primary">Button</b-button>
+      </b-card>
+    </b-overlay>
+  </div>
       `,
 
     setup() {
@@ -374,7 +382,18 @@ export const NonWrappingMode1: Story = {
             rounded="circle"
             src="https://picsum.photos/72/72/?image=58"
             alt="Image"
-          ></b-img>
+          />
+          </template>
+        <p class="mb-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </b-media>
+      <b-overlay :show="show" no-wrap></b-overlay>
+    </b-card>
+    <b-button @click="show = !show" class="mt-3">Toggle overlay</b-button>
+  </div>
         `,
 
     data() {
@@ -434,7 +453,7 @@ export const LoadingButton: Story = {
           this.timeout = null
         }
       },
-      setTimeout(callback) {
+      setTimeout(callback: Function) {
         this.clearTimeout()
         this.timeout = setTimeout(() => {
           this.clearTimeout()
@@ -474,9 +493,20 @@ export const BusyStateInputGroup: Story = {
           <b-spinner small type="grow" variant="secondary"></b-spinner>
           <b-spinner type="grow" variant="dark"></b-spinner>
           <b-spinner small type="grow" variant="secondary"></b-spinner>
-          <!-- We add an SR only text for screen readers -->
+          
           <span class="sr-only">Please wait...</span>
         </div>
+        </template>
+      <b-input-group size="lg" :aria-hidden="busy ? 'true' : null">
+        <b-form-input v-model="value" :disabled="busy"></b-form-input>
+        <b-input-group-append>
+          <b-button ref="button" :disabled="busy" variant="primary"  @click="onClick">
+            Do something
+          </b-button>
+        </b-input-group-append>
+      </b-input-group>
+    </b-overlay>
+  </div>
       `,
 
     data() {
@@ -496,7 +526,7 @@ export const BusyStateInputGroup: Story = {
           this.timeout = null
         }
       },
-      setTimeout(callback) {
+      setTimeout(callback: Function) {
         this.clearTimeout()
         this.timeout = setTimeout(() => {
           this.clearTimeout()
@@ -526,7 +556,7 @@ export const BusyStateInputGroup: Story = {
 
 export const FormConfirmationPromptAndUploadStatus: Story = {
   render: (args, { argTypes }) => ({
-    components: { BForm, BFormGroup, BInputGroup, BInputGroupPrepend, BIcon, BFormInput, BFormFile, BButton, BOverlay, BProgress },
+    components: { BForm, BFormGroup, BInputGroup, BInputGroupPrepend, BFormInput, BFormFile, BButton, BOverlay, BProgress },
     props: Object.keys(argTypes),
     template: `
   <div>
@@ -534,7 +564,7 @@ export const FormConfirmationPromptAndUploadStatus: Story = {
       <b-form-group label="Name" label-for="form-name" label-cols-lg="2">
         <b-input-group>
           <b-input-group-prepend is-text>
-            <b-icon icon="person-fill"></b-icon>
+            <i class="w-6 w-6 i-carbon-user person-fill" />
           </b-input-group-prepend>
           <b-form-input id="form-name" :disabled="busy"></b-form-input>
         </b-input-group>
@@ -543,7 +573,7 @@ export const FormConfirmationPromptAndUploadStatus: Story = {
       <b-form-group label="Email" label-for="form-mail" label-cols-lg="2">
         <b-input-group>
           <b-input-group-prepend is-text>
-            <b-icon icon="envelope-fill"></b-icon>
+            <i class="w-6 w-6 i-carbon-user envelope-fill" />
           </b-input-group-prepend>
           <b-form-input id="form-email" type="email" :disabled="busy"></b-form-input>
         </b-input-group>
@@ -552,7 +582,7 @@ export const FormConfirmationPromptAndUploadStatus: Story = {
       <b-form-group label="Image" label-for="form-image" label-cols-lg="2">
         <b-input-group>
           <b-input-group-prepend is-text>
-            <b-icon icon="image-fill"></b-icon>
+            <i class="w-6 w-6 i-carbon-user image-fill" />
           </b-input-group-prepend>
           <b-form-file id="form-image" :disabled="busy" accept="image/*"></b-form-file>
         </b-input-group>
@@ -565,7 +595,7 @@ export const FormConfirmationPromptAndUploadStatus: Story = {
       <b-overlay :show="busy" no-wrap @shown="onShown" @hidden="onHidden">
         <template #overlay>
           <div v-if="processing" class="text-center p-4 bg-primary text-light rounded">
-            <b-icon icon="cloud-upload" font-scale="4"></b-icon>
+            <i class="w-6 w-6 i-carbon-user cloud-upload" font-scale="4" />
             <div class="mb-3">Processing...</div>
             <b-progress
               min="1"
@@ -593,6 +623,10 @@ export const FormConfirmationPromptAndUploadStatus: Story = {
               <b-button variant="outline-success" @click="onOK">OK</b-button>
             </div>
           </div>
+          </template>
+      </b-overlay>
+    </b-form>
+  </div>
         `,
 
     data() {

@@ -1,34 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import BDropdown from '@/components/BDropdown.vue'
+import BDropdownDivider from '@/components/BDropdownDivider.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BButtonGroup from '@/components/B/ButtonGroup.vue'
-import BButton from '@/components/B/Button.vue'
+import BButtonGroup from '@/components/BButtonGroup.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/ButtonGroup',
   component: BButtonGroup,
   parameters: {
     vitest: {
-      testFile: 'button-group.test.tsx',
+      testFile: 'button-group.spec.ts',
       testResults: vitestResults,
     },
-  },
-  argTypes: {
-    ariaRole: {
-      control: {
-        type: 'text',
-      },
-    },
-    size: {
-      control: {
-        type: 'text',
-      },
-    },
-    tag: {
-      control: {
-        type: 'text',
-      },
-    },
-    vertical: { action: { type: 'boolean' } },
   },
 } satisfies Meta<typeof BButtonGroup>
 
@@ -110,19 +95,19 @@ export const VerticalVariation: Story = {
 
 export const DropdownSupport: Story = {
   render: (args, { argTypes }) => ({
-    components: { BButtonGroup, BButton },
+    components: { BButtonGroup, BButton, BDropdown, BDropdownDivider, BDropdownItem },
     props: Object.keys(argTypes),
     template: `
     <div>
         <b-button-group>
             <b-button>Button</b-button>
-            <b-dropdown right text="Menu">
+            <b-dropdown dropend text="Menu">
                 <b-dropdown-item>Item 1</b-dropdown-item>
                 <b-dropdown-item>Item 2</b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>
                 <b-dropdown-item>Item 3</b-dropdown-item>
             </b-dropdown>
-            <b-dropdown right split text="Split Menu">
+            <b-dropdown dropend split text="Split Menu">
                 <b-dropdown-item>Item 1</b-dropdown-item>
                 <b-dropdown-item>Item 2</b-dropdown-item>
                 <b-dropdown-divider></b-dropdown-divider>

@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BPopover from '@/components/B/Popover.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BCard from '@/components/B/Card.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BAlert from '@/components/B/Alert.vue'
+import BButton from '@/components/BButton.vue'
+import BPopover from '@/components/BPopover.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BCard from '@/components/BCard.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BAlert from '@/components/BAlert.vue'
 
 const meta = {
   title: 'Components/Popover',
   component: BPopover,
   parameters: {
     vitest: {
-      testFile: 'popover.test.tsx',
+      testFile: 'popover.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -47,7 +47,7 @@ export const Popover: Story = {
   </b-popover>
 </div>
 
-<!-- b-popover.vue -->
+
 `,
 
     setup() {
@@ -172,7 +172,7 @@ export const VariantsAndCustomClass: Story = {
   </b-popover>
 </div>
 
-<!-- b-popover-variant.vue -->
+
 `,
 
     setup() {
@@ -292,7 +292,7 @@ export const ProgrammaticallyShowAndHidePopover2: Story = {
   </b-popover>
 </div>
 
-<!-- b-popover-show-open.vue -->
+
 `,
 
     setup() {
@@ -481,7 +481,7 @@ export const VBPopoverDirectiveUsage: Story = {
   </b-container>
 </div>
 
-<!-- b-popover-directive-placement.vue -->
+
 `,
 
     setup() {
@@ -506,7 +506,7 @@ export const AdvancedBPopoverUsageWithReactiveContent: Story = {
       </b-button>
     </div>
 
-    <!-- Output from the popover interaction -->
+    
     <b-card title="Returned values:" v-if="input1Return && input2Return">
       <p class="card-text" style="max-width: 20rem;">
         Name: <strong>{{ input1Return }}</strong><br>
@@ -514,7 +514,7 @@ export const AdvancedBPopoverUsageWithReactiveContent: Story = {
       </p>
     </b-card>
 
-    <!-- Our popover title and content render container -->
+    
     <!-- We use placement 'auto' so popover fits in the best spot on viewport -->
     <!-- We specify the same container as the trigger button, so that popover is close to button -->
     <b-popover

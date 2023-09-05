@@ -19,4 +19,8 @@ html, body , #__nuxt{
   margin: 0;
   padding: 0;
 }
+
+.bv-no-focus-ring:focus {
+  outline: none;
+}
 </style>

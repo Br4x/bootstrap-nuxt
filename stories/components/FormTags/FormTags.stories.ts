@@ -1,30 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormTags from '@/components/B/FormTags.vue'
-import BFormText from '@/components/B/FormText.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BInputGroupAppend from '@/components/B/InputGroupAppend.vue'
-import BButton from '@/components/B/Button.vue'
-import BCard from '@/components/B/Card.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BFormTag from '@/components/B/FormTag.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BFormInvalidFeedback from '@/components/B/FormInvalidFeedback.vue'
-import BDropdown from '@/components/B/Dropdown.vue'
-import BIcon from '@/components/B/Icon.vue'
-import BDropdownForm from '@/components/B/DropdownForm.vue'
-import BDropdownDivider from '@/components/B/DropdownDivider.vue'
-import BDropdownItemButton from '@/components/B/DropdownItemButton.vue'
-import BDropdownText from '@/components/B/DropdownText.vue'
+import BFormTags from '@/components/BFormTags.vue'
+import BFormText from '@/components/BFormText.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
+import BInputGroupAppend from '@/components/BInputGroupAppend.vue'
+import BButton from '@/components/BButton.vue'
+import BCard from '@/components/BCard.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BFormTag from '@/components/BFormTag.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BFormInvalidFeedback from '@/components/BFormInvalidFeedback.vue'
+import BDropdown from '@/components/BDropdown.vue'
+import BDropdownForm from '@/components/BDropdownForm.vue'
+import BDropdownDivider from '@/components/BDropdownDivider.vue'
+import BDropdownItemButton from '@/components/BDropdownItemButton.vue'
+import BDropdownText from '@/components/BDropdownText.vue'
 
 const meta = {
   title: 'Components/FormTags',
   component: BFormTags,
   parameters: {
     vitest: {
-      testFile: 'form-tags.test.tsx',
+      testFile: 'form-tags.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -43,7 +42,7 @@ export const BasicUsage: Story = {
     template: `
   <div>
     <label for="tags-basic">Type a new tag and press enter</label>
-    <b-form-tags input-id="tags-basic" v-model="value"></b-form-tags>
+    <b-form-tags input-id="tags-basic" v-model="value" />
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 `,
@@ -75,7 +74,7 @@ export const TagCreationUsingSeparators: Story = {
       separator=" ,;"
       placeholder="Enter new tags separated by space, comma or semicolon"
       no-add-on-enter
-    ></b-form-tags>
+     />
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 `,
@@ -109,7 +108,7 @@ export const LastTagRemovalViaBackspaceKeypress: Story = {
       placeholder="Enter new tags separated by space"
       remove-on-delete
       no-add-on-enter
-    ></b-form-tags>
+     />
     <b-form-text id="tags-remove-on-delete-help" class="mt-2">
       Press <kbd>Backspace</kbd> to remove the last tag entered
     </b-form-text>
@@ -146,7 +145,7 @@ export const StylingOptions: Story = {
       size="lg"
       separator=" "
       placeholder="Enter new tags separated by space"
-    ></b-form-tags>
+     />
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 `,
@@ -179,10 +178,20 @@ export const TagValidation: Story = {
         :tag-validator="tagValidator"
         :state="state"
         separator=" "
-      ></b-form-tags>
+       />
 
       <template #invalid-feedback>
         You must provide at least 3 tags and no more than 8
+        </template>
+
+      <template #description>
+        <div id="tags-validation-help">
+         Tags must be 3 to 5 characters in length and all lower
+         case. Enter tags separated by spaces or press enter.
+        </div>
+      </template>
+    </b-form-group>
+  </div>
       `,
 
     data() {
@@ -198,13 +207,13 @@ export const TagValidation: Story = {
       },
     },
     watch: {
-      tags(newValue, oldValue) {
+      tags() {
         // Set the dirty flag on first change to the tags array
         this.dirty = true
       },
     },
     methods: {
-      tagValidator(tag) {
+      tagValidator(tag: string) {
         // Individual tag validator function
         return tag === tag.toLowerCase() && tag.length > 2 && tag.length < 6
       },
@@ -232,7 +241,7 @@ export const DetectingNewInvalidAndDuplicateTags: Story = {
       placeholder="Enter tags (3-5 characters) separated by space"
       separator=" "
       @tag-state="onTagState"
-    ></b-form-tags>
+     />
     <p class="mt-2">Tags: {{ tags }}</p>
     <p>Event values:</p>
     <ul>
@@ -252,12 +261,12 @@ export const DetectingNewInvalidAndDuplicateTags: Story = {
       }
     },
     methods: {
-      onTagState(valid, invalid, duplicate) {
+      onTagState(valid: string[], invalid: string[], duplicate: string[]) {
         this.validTags = valid
         this.invalidTags = invalid
         this.duplicateTags = duplicate
       },
-      validator(tag) {
+      validator(tag: string) {
         return tag.length > 2 && tag.length < 6
       },
     },
@@ -277,7 +286,7 @@ export const LimitingTags: Story = {
     template: `
   <div>
     <label for="tags-limit">Enter tags</label>
-    <b-form-tags input-id="tags-limit" v-model="value" :limit="limit" remove-on-delete></b-form-tags>
+    <b-form-tags input-id="tags-limit" v-model="value" :limit="limit" remove-on-delete />
     <p class="mt-2">Value: {{ value }}</p>
   </div>
 `,
@@ -328,7 +337,7 @@ export const UsingNativeBrowserInputs: Story = {
           <b-card
             v-for="tag in tags"
             :key="tag"
-            :id="\`my-custom-tags-tag_${tag.replace(/\s/g, '_')}_\`"
+            :id="\`my-custom-tags-tag_\${tag.replace(/\s/g, '_')}_\`"
             tag="li"
             class="mt-1 mr-1"
             body-class="py-1 pr-2 text-nowrap"
@@ -338,10 +347,13 @@ export const UsingNativeBrowserInputs: Story = {
               @click="removeTag(tag)"
               variant="link"
               size="sm"
-              :aria-controls="\`my-custom-tags-tag_${tag.replace(/\s/g, '_')}_\`"
+              :aria-controls="\`my-custom-tags-tag_\${tag.replace(/\s/g, '_')}_\`"
             >remove</b-button>
           </b-card>
         </ul>
+        </template>
+    </b-form-tags>
+  </div>
       `,
 
     data() {
@@ -437,8 +449,14 @@ export const UsingCustomFormComponents1: Story = {
             :options="availableOptions"
           >
             <template #first>
-              <!-- This is required to prevent bugs with Safari -->
+              
               <option disabled value="">Choose a tag...</option>
+              </template>
+          </b-form-select>
+        </template>
+      </b-form-tags>
+    </b-form-group>
+  </div>
             `,
 
     data() {
@@ -449,7 +467,7 @@ export const UsingCustomFormComponents1: Story = {
     },
     computed: {
       availableOptions() {
-        return this.options.filter(opt => !this.value.includes(opt))
+        return this.options.filter((opt: string) => !this.value.includes(opt))
       },
     },
     setup() {
@@ -475,7 +493,7 @@ export const UsingCustomFormComponents2: Story = {
     @keydown.native="inputHandlers.keydown($event)"
   ></custom-input>
   <template v-for="tag in tags">
-    <!-- Your custom tag list here -->
+    
   </template>
 </template>
 `,
@@ -508,7 +526,7 @@ export const AdvancedCustomRenderingUsage: Story = {
     >
       <template v-slot="{tags, inputId, placeholder, disabled, addTag, removeTag }">
         <b-input-group>
-          <!-- Always bind the id to the input so that it can be focused when needed -->
+          
           <b-form-input
             v-model="newTag"
             :id="inputId"
@@ -541,6 +559,8 @@ export const AdvancedCustomRenderingUsage: Story = {
         <b-form-text v-else>
           There are no tags specified. Add a new tag above.
         </b-form-text>
+        </template>
+        </b-form-tags>
       `,
 
     data() {
@@ -560,7 +580,7 @@ export const AdvancedCustomRenderingUsage: Story = {
       resetInputValue() {
         this.newTag = ''
       },
-      formatter(value) {
+      formatter(value: string) {
         return value.toUpperCase()
       },
     },
@@ -575,7 +595,7 @@ export const AdvancedCustomRenderingUsage: Story = {
 
 export const AdvancedCustomRenderingUsage1: Story = {
   render: (args, { argTypes }) => ({
-    components: { BFormGroup, BFormTags, BFormTag, BDropdown, BIcon, BDropdownForm, BFormInput, BDropdownDivider, BDropdownItemButton, BDropdownText },
+    components: { BFormGroup, BFormTags, BFormTag, BDropdown, BDropdownForm, BFormInput, BDropdownDivider, BDropdownItemButton, BDropdownText },
     props: Object.keys(argTypes),
     template: `
   <div>
@@ -595,7 +615,43 @@ export const AdvancedCustomRenderingUsage1: Story = {
 
           <b-dropdown size="sm" variant="outline-secondary" block menu-class="w-100">
             <template #button-content>
-              <b-icon icon="tag-fill"></b-icon> Choose tags
+              <i class="w-6 w-6 i-carbon-tag tag-fill" /> Choose tags
+              </template>
+            <b-dropdown-form @submit.stop.prevent="() => {}">
+              <b-form-group
+                label="Search tags"
+                label-for="tag-search-input"
+                label-cols-md="auto"
+                class="mb-0"
+                label-size="sm"
+                :description="searchDesc"
+                :disabled="disabled"
+              >
+                <b-form-input
+                  v-model="search"
+                  id="tag-search-input"
+                  type="search"
+                  size="sm"
+                  autocomplete="off"
+                 ></b-form-input>
+              </b-form-group>
+            </b-dropdown-form>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-dropdown-item-button
+              v-for="option in availableOptions"
+              :key="option"
+              @click="onOptionClick({ option, addTag })"
+            >
+              {{ option }}
+            </b-dropdown-item-button>
+            <b-dropdown-text v-if="availableOptions.length === 0">
+              There are no tags available to select
+            </b-dropdown-text>
+          </b-dropdown>
+        </template>
+      </b-form-tags>
+    </b-form-group>
+  </div>
             `,
 
     data() {
@@ -613,10 +669,10 @@ export const AdvancedCustomRenderingUsage1: Story = {
       availableOptions() {
         const criteria = this.criteria
         // Filter out already selected options
-        const options = this.options.filter(opt => !this.value.includes(opt))
+        const options = this.options.filter((opt: string) => !this.value.includes(opt))
         if (criteria) {
           // Show only options that match criteria
-          return options.filter(opt => opt.toLowerCase().includes(criteria))
+          return options.filter((opt: string) => opt.toLowerCase().includes(criteria))
         }
         // Show all options available
         return options
@@ -646,15 +702,15 @@ export const AdvancedCustomRenderingUsage1: Story = {
 export const CreatingWrapperComponents: Story = {
   render: (args, { argTypes }) => ({
     components: { BFormTags },
-    props: Object.keys(argTypes),
     template: `
   <b-form-tags :value="value" @input="$emit('input', $event)">
     <template v-slot="{ tags, addTag, removeTag, inputAttrs, inputHandlers }">
-     <!-- Place your custom rendering here -->
+    <!-- Place your custom rendering here -->
+    </template>
+  </b-form-tags>
     `,
 
     name: 'MyCustomTags',
-    components: { BFormTags },
     model: {
       prop: 'value',
       event: 'input',

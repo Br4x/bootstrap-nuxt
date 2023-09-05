@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BProgress from '@/components/B/Progress.vue'
-import BProgressBar from '@/components/B/ProgressBar.vue'
-import BButton from '@/components/B/Button.vue'
+import BProgress from '@/components/BProgress.vue'
+import BProgressBar from '@/components/BProgressBar.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/Progress',
   component: BProgress,
   parameters: {
     vitest: {
-      testFile: 'progress.test.tsx',
+      testFile: 'progress.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -111,12 +111,12 @@ export const CustomProgressLabel: Story = {
 
     <h5 class="mt-3">Custom label via property</h5>
     <b-progress :max="max">
-      <b-progress-bar :value="value" :label="\`${((value / max) * 100).toFixed(2)}%\`"></b-progress-bar>
+      <b-progress-bar :value="value" :label="\`\${((value / max) * 100).toFixed(2)}%\`"></b-progress-bar>
     </b-progress>
 
     <h5 class="mt-3">Custom label via property (HTML support)</h5>
     <b-progress :max="max">
-      <b-progress-bar :value="value" :label-html="\`<del>${value}</del>\`"></b-progress-bar>
+      <b-progress-bar :value="value" :label-html="\`<del>\${value}</del>\`"></b-progress-bar>
     </b-progress>
   </div>
 `,

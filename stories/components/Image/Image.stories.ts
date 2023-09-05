@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BImg from '@/components/B/Img.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BImgLazy from '@/components/B/ImgLazy.vue'
+import BImg from '@/components/BImg.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BImgLazy from '@/components/BImgLazy.vue'
 
 const meta = {
   title: 'Components/Image',
   component: BImg,
   parameters: {
     vitest: {
-      testFile: 'image.test.tsx',
+      testFile: 'image.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -32,7 +32,7 @@ export const ResponsiveImages: Story = {
   <b-img src="https://picsum.photos/1024/400/?image=41" fluid alt="Responsive image"></b-img>
 </div>
 
-<!-- b-img-fluid.vue -->
+
 `,
 
     setup() {
@@ -57,7 +57,7 @@ export const ResponsiveImages1: Story = {
   <b-img src="https://picsum.photos/300/150/?image=41" fluid-grow alt="Fluid-grow image"></b-img>
 </div>
 
-<!-- b-img-fluid-grow.vue -->
+
 `,
 
     setup() {
@@ -88,7 +88,7 @@ export const ImageThumbnails: Story = {
   </b-row>
 </b-container>
 
-<!-- b-img-thumbnail.vue -->
+
 `,
 
     setup() {
@@ -140,7 +140,7 @@ export const AligningImages: Story = {
   <b-img right src="https://picsum.photos/125/125/?image=58" alt="Right image"></b-img>
 </div>
 
-<!-- b-img-left-right.vue -->
+
 `,
 
     setup() {
@@ -161,7 +161,7 @@ export const AligningImages1: Story = {
   <b-img center src="https://picsum.photos/125/125/?image=58" alt="Center image"></b-img>
 </div>
 
-<!-- b-img-center.vue -->
+
 `,
 
     setup() {

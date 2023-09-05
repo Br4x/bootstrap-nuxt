@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BCardBody from '@/components/B/CardBody.vue'
-import BBadge from '@/components/B/Badge.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BBadge from '@/components/BBadge.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BListGroup from '@/components/B/ListGroup.vue'
-import BListGroupItem from '@/components/B/ListGroupItem.vue'
-import BCard from '@/components/B/Card.vue'
-import BCardGroup from '@/components/B/CardGroup.vue'
+import BListGroup from '@/components/BListGroup.vue'
+import BListGroupItem from '@/components/BListGroupItem.vue'
+import BCard from '@/components/BCard.vue'
+import BCardGroup from '@/components/BCardGroup.vue'
 
 const meta = {
   title: 'Components/ListGroup',
   component: BListGroup,
   parameters: {
     vitest: {
-      testFile: 'list-group.test.tsx',
+      testFile: 'list-group.spec.ts',
       testResults: vitestResults,
     },
   },

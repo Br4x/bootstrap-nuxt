@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BEmbed from '@/components/B/Embed.vue'
+import BEmbed from '@/components/BEmbed.vue'
 
 const meta = {
   title: 'Components/Embed',
   component: BEmbed,
   parameters: {
     vitest: {
-      testFile: 'embed.test.tsx',
+      testFile: 'embed.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -30,10 +30,10 @@ export const Embed: Story = {
     aspect="16by9"
     src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
     allowfullscreen
-  ></b-embed>
+  />
 </div>
 
-<!-- b-embed.vue -->
+
 `,
 
     setup() {
@@ -52,8 +52,8 @@ export const AttributesAndChildElements: Story = {
     template: `
 <div>
   <b-embed type="video" aspect="4by3" controls poster="poster.png">
-    <source src="dev-stories.webm" type="video/webm">
-    <source src="dev-stories.mp4" type="video/mp4">
+    <source src="dev-stories.webm" type="video/webm" />
+    <source src="dev-stories.mp4" type="video/mp4" />
   </b-embed>
 </div>
 `,

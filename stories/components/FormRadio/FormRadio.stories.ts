@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormRadio from '@/components/B/FormRadio.vue'
-import BFormRadioGroup from '@/components/B/FormRadioGroup.vue'
-import BFormInvalidFeedback from '@/components/B/FormInvalidFeedback.vue'
-import BFormValidFeedback from '@/components/B/FormValidFeedback.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormRadio from '@/components/BFormRadio.vue'
+import BFormRadioGroup from '@/components/BFormRadioGroup.vue'
+import BFormInvalidFeedback from '@/components/BFormInvalidFeedback.vue'
+import BFormValidFeedback from '@/components/BFormValidFeedback.vue'
 
 const meta = {
   title: 'Components/FormRadio',
   component: BFormRadio,
   parameters: {
     vitest: {
-      testFile: 'form-radio.test.tsx',
+      testFile: 'form-radio.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -120,9 +120,19 @@ export const GroupedRadios1: Story = {
         :aria-describedby="ariaDescribedby"
         name="radio-options-slots"
       >
-        <!-- Radios in this slot will appear first -->
+        
         <template #first>
           <b-form-radio value="first">Toggle this custom radio from slot first</b-form-radio>
+          </template>
+
+          <!-- Radios in the default slot will appear after any option generated radios -->
+          <b-form-radio :value="{ fourth: 4 }">This is the 4th radio</b-form-radio>
+          <b-form-radio value="fifth">This is the 5th radio</b-form-radio>
+        </b-form-radio-group>
+      </b-form-group>
+  
+      <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+    </div>
         `,
 
     data() {
@@ -240,7 +250,7 @@ export const ControlSizing: Story = {
   <b-form-radio name="radio-size" size="lg">Large</b-form-radio>
 </div>
 
-<!-- form-radio-sizes.vue -->
+
 `,
 
     setup() {

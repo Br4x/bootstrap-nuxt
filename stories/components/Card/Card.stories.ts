@@ -1,28 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BListGroupItem from '@/components/B/ListGroupItem.vue'
-import BListGroup from '@/components/B/ListGroup.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BCardSubTitle from '@/components/B/CardSubTitle.vue'
-import BCardTitle from '@/components/B/CardTitle.vue'
-import BButton from '@/components/B/Button.vue'
-import BCardFooter from '@/components/B/CardFooter.vue'
-import BCardImg from '@/components/B/CardImg.vue'
-import BCardGroup from '@/components/B/CardGroup.vue'
-import BLink from '@/components/B/Link.vue'
-import BCardText from '@/components/B/CardText.vue'
+import BListGroupItem from '@/components/BListGroupItem.vue'
+import BListGroup from '@/components/BListGroup.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BCardSubTitle from '@/components/BCardSubtitle.vue'
+import BCardTitle from '@/components/BCardTitle.vue'
+import BButton from '@/components/BButton.vue'
+import BCardFooter from '@/components/BCardFooter.vue'
+import BCardImg from '@/components/BCardImg.vue'
+import BCardGroup from '@/components/BCardGroup.vue'
+import BLink from '@/components/BLink.vue'
+import BCardText from '@/components/BCardText.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BCard from '@/components/B/Card.vue'
-import BCardBody from '@/components/B/CardBody.vue'
-import BNav from '@/components/B/Nav.vue'
-import BNavItem from '@/components/B/NavItem.vue'
+import BCard from '@/components/BCard.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BNav from '@/components/BNav.vue'
+import BNavItem from '@/components/BNavItem.vue'
 
 const meta = {
   title: 'Components/Card',
   component: BCard,
   parameters: {
     vitest: {
-      testFile: 'card.test.tsx',
+      testFile: 'card.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -456,7 +456,7 @@ export const HeaderAndFooterVariants: Story = {
 
 export const NavIntegration: Story = {
   render: (args, { argTypes }) => ({
-    components: { BCard, BCardText, BCardGroup, BNav, BNavItem },
+    components: { BCard, BCardText, BCardGroup, BNav, BNavItem, BButton },
     props: Object.keys(argTypes),
     template: `
     <div>

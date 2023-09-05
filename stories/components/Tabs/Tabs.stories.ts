@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BTabs from '@/components/B/Tabs.vue'
-import BTab from '@/components/B/Tab.vue'
-import BCard from '@/components/B/Card.vue'
-import BCardText from '@/components/B/CardText.vue'
-import BCardImg from '@/components/B/CardImg.vue'
-import BCardFooter from '@/components/B/CardFooter.vue'
-import BCardTitle from '@/components/B/CardTitle.vue'
-import BNavItem from '@/components/B/NavItem.vue'
-import BSpinner from '@/components/B/Spinner.vue'
-import BAlert from '@/components/B/Alert.vue'
-import BButtonGroup from '@/components/B/ButtonGroup.vue'
-import BButton from '@/components/B/Button.vue'
+import BTabs from '@/components/BTabs.vue'
+import BTab from '@/components/BTab.vue'
+import BCard from '@/components/BCard.vue'
+import BCardText from '@/components/BCardText.vue'
+import BCardImg from '@/components/BCardImg.vue'
+import BCardFooter from '@/components/BCardFooter.vue'
+import BCardTitle from '@/components/BCardTitle.vue'
+import BNavItem from '@/components/BNavItem.vue'
+import BSpinner from '@/components/BSpinner.vue'
+import BAlert from '@/components/BAlert.vue'
+import BButtonGroup from '@/components/BButtonGroup.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/Tabs',
   component: BTabs,
   parameters: {
     vitest: {
-      testFile: 'tabs.test.tsx',
+      testFile: 'tabs.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -43,7 +43,7 @@ export const BasicUsage: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs.vue -->
+
 `,
 
     setup() {
@@ -73,7 +73,7 @@ export const CardsIntegration: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-card.vue -->
+
 `,
 
     setup() {
@@ -122,7 +122,7 @@ export const CardsIntegration1: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-card-no-body.vue -->
+
 `,
 
     setup() {
@@ -148,7 +148,7 @@ export const PillsVariant: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-pills.vue -->
+
 `,
 
     setup() {
@@ -174,7 +174,7 @@ export const Fill: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-fill.vue -->
+
 `,
 
     setup() {
@@ -200,7 +200,7 @@ export const Justified: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-justified.vue -->
+
 `,
 
     setup() {
@@ -225,7 +225,7 @@ export const Alignment: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-alignment.vue -->
+
 `,
 
     setup() {
@@ -251,7 +251,7 @@ export const BottomPlacementOfTabControls: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-bottom.vue -->
+
 `,
 
     setup() {
@@ -278,7 +278,7 @@ export const VerticalTabs: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-vertical.vue -->
+
 `,
 
     setup() {
@@ -305,7 +305,7 @@ export const VerticalTabs1: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-vertical-end.vue -->
+
 `,
 
     setup() {
@@ -332,7 +332,7 @@ export const VerticalTabs2: Story = {
   </b-card>
 </div>
 
-<!-- b-tabs-vertical-width.vue -->
+
 `,
 
     setup() {
@@ -361,7 +361,7 @@ export const ActiveClasses: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-classes.vue -->
+
 `,
 
     setup() {
@@ -380,7 +380,7 @@ export const AddTabsWithoutContent: Story = {
     template: `
 <div>
   <b-tabs>
-    <!-- Add your b-tab components here -->
+    
     <template #tabs-end>
       <b-nav-item href="#" role="presentation" @click="() => {}">Another tab</b-nav-item>
       <li role="presentation" class="nav-item align-self-center">Plain text</li>
@@ -388,7 +388,7 @@ export const AddTabsWithoutContent: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-item-slot.vue -->
+
 `,
 
     setup() {
@@ -423,7 +423,7 @@ export const AddCustomContentToTabTitle: Story = {
   </b-tabs>
 </div>
 
-<!-- b-tabs-title-slot.vue -->
+
 `,
 
     setup() {
@@ -480,15 +480,15 @@ export const LazyLoadingTabContent: Story = {
     props: Object.keys(argTypes),
     template: `
 <b-tabs content-class="mt-3">
-  <!-- This tabs content will always be mounted -->
+  
   <b-tab title="Regular tab"><b-alert show>I'm always mounted</b-alert></b-tab>
 
-  <!-- This tabs content will not be mounted until the tab is shown -->
-  <!-- and will be un-mounted when hidden -->
+  
+  
   <b-tab title="Lazy tab" lazy><b-alert show>I'm lazy mounted!</b-alert></b-tab>
 </b-tabs>
 
-<!-- b-tabs-lazy-tab.vue -->
+
 `,
 
     setup() {
@@ -510,7 +510,7 @@ export const LazyLoadingTabContent1: Story = {
   <b-tab title="Tab 2"><b-alert show>I'm lazy mounted too!</b-alert></b-tab>
 </b-tabs>
 
-<!-- b-tabs-lazy.vue -->
+
 `,
 
     setup() {
@@ -528,7 +528,7 @@ export const ExternalControlsUsingVModel: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <!-- Tabs with card integration -->
+    
     <b-card no-body>
       <b-tabs v-model="tabIndex" small card>
         <b-tab title="General">I'm the first fading tab</b-tab>

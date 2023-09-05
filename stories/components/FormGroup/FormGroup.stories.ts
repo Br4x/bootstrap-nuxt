@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BCard from '@/components/B/Card.vue'
-import BFormRadioGroup from '@/components/B/FormRadioGroup.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BCard from '@/components/BCard.vue'
+import BFormRadioGroup from '@/components/BFormRadioGroup.vue'
 
 const meta = {
   title: 'Components/FormGroup',
   component: BFormGroup,
   parameters: {
     vitest: {
-      testFile: 'form-group.test.tsx',
+      testFile: 'form-group.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -89,7 +89,7 @@ export const HorizontalLayout: Story = {
   </div>
 </div>
 
-<!-- b-form-group-horizontal.vue -->
+
 `,
 
     setup() {
@@ -120,7 +120,7 @@ export const LabelSize: Story = {
   </b-form-group>
 </div>
 
-<!-- b-form-group-label-size.vue -->
+
 `,
 
     setup() {
@@ -199,7 +199,7 @@ export const NestedFormGroups: Story = {
   </b-card>
 </div>
 
-<!-- b-form-group-nested.vue -->
+
 `,
 
     setup() {

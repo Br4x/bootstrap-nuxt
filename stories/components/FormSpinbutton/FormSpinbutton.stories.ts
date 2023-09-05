@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormSpinbutton from '@/components/B/FormSpinbutton.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
+import BFormSpinbutton from '@/components/BFormSpinbutton.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
 
 const meta = {
   title: 'Components/FormSpinbutton',
   component: BFormSpinbutton,
   parameters: {
     vitest: {
-      testFile: 'form-spinbutton.test.tsx',
+      testFile: 'form-spinbutton.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -29,7 +29,7 @@ export const Overview: Story = {
     template: `
   <div>
     <label for="demo-sb">Spin Button</label>
-    <b-form-spinbutton id="demo-sb" v-model="value" min="1" max="100"></b-form-spinbutton>
+    <b-form-spinbutton id="demo-sb" v-model="value" min="1" max="100" />
     <p>Value: {{ value }}</p>
   </div>
 `,
@@ -61,7 +61,7 @@ export const MinMaxAndStep: Story = {
       min="0"
       max="10"
       step="0.25"
-    ></b-form-spinbutton>
+     />
   </div>
 `,
 
@@ -86,7 +86,7 @@ export const NumberWrapping: Story = {
     template: `
   <div>
     <label for="sb-wrap">Wrapping value spin button</label>
-    <b-form-spinbutton id="sb-wrap" wrap min="1" max="25" placeholder="--"></b-form-spinbutton>
+    <b-form-spinbutton id="sb-wrap" wrap min="1" max="25" placeholder="--" />
   </div>
 `,
 
@@ -106,13 +106,13 @@ export const Size: Story = {
     template: `
   <div>
     <label for="sb-small">Spin button - Small size</label>
-    <b-form-spinbutton id="sb-small" size="sm" placeholder="--" class="mb-2"></b-form-spinbutton>
+    <b-form-spinbutton id="sb-small" size="sm" placeholder="--" class="mb-2" />
 
     <label for="sb-default">Spin button - Default size</label>
-    <b-form-spinbutton id="sb-default" placeholder="--" class="mb-2"></b-form-spinbutton>
+    <b-form-spinbutton id="sb-default" placeholder="--" class="mb-2" />
 
     <label for="sb-large">Spin button - Large size</label>
-    <b-form-spinbutton id="sb-large" size="lg" placeholder="--" class="mb-2"></b-form-spinbutton>
+    <b-form-spinbutton id="sb-large" size="lg" placeholder="--" class="mb-2" />
   </div>
 `,
 
@@ -132,7 +132,7 @@ export const Inline: Story = {
     template: `
   <div>
     <label for="sb-inline">Inline spin button</label>
-    <b-form-spinbutton id="sb-inline" v-model="value" inline></b-form-spinbutton>
+    <b-form-spinbutton id="sb-inline" v-model="value" inline />
   </div>
 `,
 
@@ -156,8 +156,8 @@ export const Vertical: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <label for="sb-vertical">Vertical spin button</label><br>
-    <b-form-spinbutton id="sb-vertical" v-model="value" vertical></b-form-spinbutton>
+    <label for="sb-vertical">Vertical spin button</label><br />
+    <b-form-spinbutton id="sb-vertical" v-model="value" vertical />
   </div>
 `,
 
@@ -191,7 +191,7 @@ export const NumberFormattingAndLocale: Story = {
       min="0"
       max="10"
       step="0.125"
-    ></b-form-spinbutton>
+     />
     <p>Value: {{ value }}</p>
   </div>
 `,
@@ -232,7 +232,7 @@ export const NumberFormattingAndLocale1: Story = {
       min="0"
       max="6"
       wrap
-    ></b-form-spinbutton>
+     />
     <p>Value: {{ value }}</p>
   </div>
 `,
@@ -244,7 +244,7 @@ export const NumberFormattingAndLocale1: Story = {
       }
     },
     methods: {
-      dayFormatter(value) {
+      dayFormatter(value: string) {
         return this.days[value]
       },
     },
@@ -265,11 +265,11 @@ export const DisabledAndReadonlyStates: Story = {
   <b-row>
     <b-col md="6" class="mb-2">
       <label for="sb-disabled">Disabled spin button</label>
-      <b-form-spinbutton id="sb-disabled" v-model="value" disabled></b-form-spinbutton>
+      <b-form-spinbutton id="sb-disabled" v-model="value" disabled />
     </b-col>
     <b-col md="6" class="mb-2">
       <label for="sb-readonly" class="">Readonly spin button</label>
-      <b-form-spinbutton id="sb-readonly" v-model="value" readonly></b-form-spinbutton>
+      <b-form-spinbutton id="sb-readonly" v-model="value" readonly />
     </b-col>
   </b-row>
 `,
@@ -300,7 +300,7 @@ export const Events: Story = {
       v-model="value1"
       @change="value2 = $event"
       wrap
-    ></b-form-spinbutton>
+     />
     <p>Input event: {{ value1 }}</p>
     <p>Change event: {{ value2 }}</p>
   </div>

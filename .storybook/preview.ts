@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/vue3";
 import '@unocss/reset/tailwind.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'uno.css'
 
 const preview: Preview = {

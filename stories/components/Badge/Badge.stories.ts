@@ -1,41 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import BButton from '@/components/BButton.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BBadge from '@/components/B/Badge.vue'
+import BBadge from '@/components/BBadge.vue'
 
 const meta = {
   title: 'Components/Badge',
   component: BBadge,
   parameters: {
     vitest: {
-      testFile: 'badge.test.tsx',
+      testFile: 'badge.spec.ts',
       testResults: vitestResults,
-    },
-  },
-  argTypes: {
-    active: { action: { type: 'boolean' } },
-    disabled: { action: { type: 'boolean' } },
-    target: {
-      control: {
-        type: 'text',
-      },
-    },
-    rel: {
-      control: {
-        type: 'text',
-      },
-    },
-    href: {
-      control: {
-        type: 'text',
-      },
-    },
-    show: { control: { type: 'boolean' } },
-    variant: { control: 'select', options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'], defaultValue: 'primary' },
-    pill: { action: { type: 'boolean' } },
-    tag: {
-      control: {
-        type: 'text',
-      },
     },
   },
 } satisfies Meta<typeof BBadge>
@@ -60,7 +34,7 @@ export const Overview: Story = {
 
 export const LinkOrButton: Story = {
   render: (args, { argTypes }) => ({
-    components: { BBadge },
+    components: { BBadge, BButton },
     props: Object.keys(argTypes),
     template: `
     <div class="text-center flex gap-4">
@@ -74,7 +48,7 @@ export const LinkOrButton: Story = {
 
 export const InsideButton: Story = {
   render: (args, { argTypes }) => ({
-    components: { BBadge },
+    components: { BBadge, BButton },
     props: Object.keys(argTypes),
     template: `
     <div class="text-center">

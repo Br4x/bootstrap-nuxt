@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormTextarea from '@/components/B/FormTextarea.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
+import BFormTextarea from '@/components/BFormTextarea.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
 
 const meta = {
   title: 'Components/FormTextarea',
   component: BFormTextarea,
   parameters: {
     vitest: {
-      testFile: 'form-textarea.test.tsx',
+      testFile: 'form-textarea.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -35,7 +35,7 @@ export const FormTextarea: Story = {
       placeholder="Enter something..."
       rows="3"
       max-rows="6"
-    ></b-form-textarea>
+     />
 
     <pre class="mt-3 mb-0">{{ text }}</pre>
   </div>
@@ -70,7 +70,7 @@ export const ControlSizing: Story = {
         id="textarea-small"
         size="sm"
         placeholder="Small textarea"
-      ></b-form-textarea>
+       />
     </b-col>
   </b-row>
 
@@ -82,7 +82,7 @@ export const ControlSizing: Story = {
       <b-form-textarea
         id="textarea-default"
         placeholder="Default textarea"
-      ></b-form-textarea>
+       />
     </b-col>
   </b-row>
 
@@ -95,12 +95,12 @@ export const ControlSizing: Story = {
         id="textarea-large"
         size="lg"
         placeholder="Large textarea"
-      ></b-form-textarea>
+       />
     </b-col>
   </b-row>
 </b-container>
 
-<!-- b-form-textarea-sizes.vue -->
+
 `,
 
     setup() {
@@ -122,10 +122,10 @@ export const DisplayedRows: Story = {
     id="textarea-rows"
     placeholder="Tall textarea"
     rows="8"
-  ></b-form-textarea>
+   />
 </div>
 
-<!-- b-form-textarea-rows.vue -->
+
 `,
 
     setup() {
@@ -148,10 +148,10 @@ export const DisableResizeHandle: Story = {
     placeholder="Fixed height textarea"
     rows="3"
     no-resize
-  ></b-form-textarea>
+   />
 </div>
 
-<!-- b-form-textarea-no-resize.vue -->
+
 `,
 
     setup() {
@@ -179,7 +179,7 @@ export const AutoHeight: Story = {
         placeholder="Auto height textarea"
         rows="3"
         max-rows="8"
-      ></b-form-textarea>
+       />
     </b-col>
   </b-row>
 
@@ -194,12 +194,12 @@ export const AutoHeight: Story = {
         rows="3"
         max-rows="8"
         no-auto-shrink
-      ></b-form-textarea>
+       />
     </b-col>
   </b-row>
 </b-container>
 
-<!-- b-form-textarea-auto-height.vue -->
+
 `,
 
     setup() {
@@ -223,7 +223,7 @@ export const ContextualStates: Story = {
       :state="text.length >= 10"
       placeholder="Enter at least 10 characters"
       rows="3"
-    ></b-form-textarea>
+     />
   </div>
 `,
 
@@ -258,7 +258,7 @@ export const FormatterSupport: Story = {
         v-model="text1"
         placeholder="Enter your text"
         :formatter="formatter"
-      ></b-form-textarea>
+       />
     </b-form-group>
     <p style="white-space: pre-line"><b>Value:</b> {{ text1 }}</p>
 
@@ -274,7 +274,7 @@ export const FormatterSupport: Story = {
         placeholder="Enter your text"
         lazy-formatter
         :formatter="formatter"
-      ></b-form-textarea>
+       />
     </b-form-group>
     <p class="mb-0" style="white-space: pre-line"><b>Value:</b> {{ text2 }}</p>
   </div>
@@ -287,7 +287,7 @@ export const FormatterSupport: Story = {
       }
     },
     methods: {
-      formatter(value) {
+      formatter(value: string) {
         return value.toLowerCase()
       },
     },
@@ -306,7 +306,7 @@ export const ReadonlyPlainText: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-textarea id="textarea-plaintext" plaintext :value="text"></b-form-textarea>
+    <b-form-textarea id="textarea-plaintext" plaintext :value="text" />
   </div>
 `,
 
@@ -330,7 +330,7 @@ export const DebounceSupport: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-textarea v-model="value" debounce="500" rows="3" max-rows="5"></b-form-textarea>
+    <b-form-textarea v-model="value" debounce="500" rows="3" max-rows="5" />
     <pre class="mt-2 mb-0">{{ value }}</pre>
   </div>
 `,

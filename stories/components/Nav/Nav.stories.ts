@@ -1,25 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import BCardHeader from '@/components/B/CardHeader.vue'
-import BCardText from '@/components/B/CardText.vue'
-import BCard from '@/components/B/Card.vue'
-import BButton from '@/components/B/Button.vue'
-import BNavText from '@/components/B/NavText.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BNavForm from '@/components/BNavForm.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
+import BDropdownDivider from '@/components/BDropdownDivider.vue'
+import BNavItemDropdown from '@/components/BNavItemDropdown.vue'
+import BCardHeader from '@/components/BCardHeader.vue'
+import BCardText from '@/components/BCardText.vue'
+import BCard from '@/components/BCard.vue'
+import BButton from '@/components/BButton.vue'
+import BNavText from '@/components/BNavText.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BNav from '@/components/B/Nav.vue'
-import BNavItem from '@/components/B/NavItem.vue'
+import BNav from '@/components/BNav.vue'
+import BNavItem from '@/components/BNavItem.vue'
 
 const meta = {
   title: 'Components/Nav',
   component: BNav,
   parameters: {
     vitest: {
-      testFile: 'Nav.test.tsx',
+      testFile: 'Nav.spec.ts',
       testResults: vitestResults,
     },
-  },
-  argTypes: {
-    justify: { action: { type: 'boolean' } },
-    keyNav: { action: { type: 'boolean' } },
   },
 } satisfies Meta<typeof BNav>
 
@@ -164,7 +166,7 @@ export const VerticalVariation: Story = {
 
 export const DropdownSupport: Story = {
   render: (args: any, { argTypes }: any) => ({
-    components: { BNavItem, BNav },
+    components: { BNavItem, BNav, BNavItemDropdown, BDropdownDivider, BDropdownItem },
     props: Object.keys(argTypes),
     template: `
     <div>
@@ -226,7 +228,7 @@ export const NavTextContent: Story = {
 
 export const NavInlineForms: Story = {
   render: (args: any, { argTypes }: any) => ({
-    components: { BNavItem, BNav, BButton },
+    components: { BNavItem, BNav, BButton, BFormInput, BNavForm },
     props: Object.keys(argTypes),
     template: `
     <div>
@@ -245,7 +247,7 @@ export const NavInlineForms: Story = {
 
 export const CardIntegration: Story = {
   render: (args: any, { argTypes }: any) => ({
-    components: { BNavItem, BNav, BCard, BCardHeader, BCardText, BButton },
+    components: { BNavItem, BNav, BCard, BCardHeader, BCardText, BButton, BCardBody },
     props: Object.keys(argTypes),
     template: `
     <div>

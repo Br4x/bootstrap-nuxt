@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BFormSelectOption from '@/components/B/FormSelectOption.vue'
-import BFormSelectOptionGroup from '@/components/B/FormSelectOptionGroup.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BFormSelectOption from '@/components/BFormSelectOption.vue'
+import BFormSelectOptionGroup from '@/components/BFormSelectOptionGroup.vue'
 
 const meta = {
   title: 'Components/FormSelect',
   component: BFormSelect,
   parameters: {
     vitest: {
-      testFile: 'form-select.test.tsx',
+      testFile: 'form-select.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -27,8 +27,8 @@ export const FormSelect: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-select v-model="selected" :options="options"></b-form-select>
-    <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
+    <b-form-select v-model="selected" :options="options" />
+    <b-form-select v-model="selected" :options="options" size="sm" class="mt-3" />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,
@@ -60,7 +60,7 @@ export const FormSelect1: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-select v-model="selected" :options="options"></b-form-select>
+    <b-form-select v-model="selected" :options="options" />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,
@@ -135,6 +135,15 @@ export const FormSelect3: Story = {
       <!-- This slot appears above the options from 'options' prop -->
       <template #first>
         <b-form-select-option :value="null" disabled>-- Please select an option --</b-form-select-option>
+        </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="C">Option C</b-form-select-option>
+      <b-form-select-option value="D">Option D</b-form-select-option>
+    </b-form-select>
+
+    <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+  </div>
       `,
 
     data() {
@@ -168,7 +177,7 @@ export const ChangingTheOptionFieldNames: Story = {
       value-field="item"
       text-field="name"
       disabled-field="notEnabled"
-    ></b-form-select>
+     />
 
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
@@ -221,7 +230,7 @@ export const ValueInSingleMode: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-select v-model="selected" :options="options"></b-form-select>
+    <b-form-select v-model="selected" :options="options" />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,
@@ -253,7 +262,7 @@ export const SelectSizingDisplayedRows: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-select v-model="selected" :options="options" :select-size="4"></b-form-select>
+    <b-form-select v-model="selected" :options="options" :select-size="4" />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,
@@ -287,7 +296,7 @@ export const ValueInMultipleMode: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-select v-model="selected" :options="options" multiple :select-size="4"></b-form-select>
+    <b-form-select v-model="selected" :options="options" multiple :select-size="4" />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BLink from '@/components/B/Link.vue'
+import BLink from '@/components/BLink.vue'
 
 const meta = {
   title: 'Components/Link',
   component: BLink,
   parameters: {
     vitest: {
-      testFile: 'link.test.tsx',
+      testFile: 'link.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -28,7 +28,7 @@ export const Link: Story = {
   <b-link href="#foo">Link</b-link>
 </div>
 
-<!-- b-link.vue -->
+
 `,
 
     setup() {
@@ -49,7 +49,7 @@ export const LinkDisabledState: Story = {
   <b-link href="#foo" disabled>Disabled Link</b-link>
 </div>
 
-<!-- b-link-disabled.vue -->
+
 `,
 
     setup() {

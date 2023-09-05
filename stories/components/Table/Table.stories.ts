@@ -1,37 +1,37 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BTable from '@/components/B/Table.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BFormRadioGroup from '@/components/B/FormRadioGroup.vue'
-import BFormRadio from '@/components/B/FormRadio.vue'
-import BFormSelect from '@/components/B/FormSelect.vue'
-import BButton from '@/components/B/Button.vue'
-import BSpinner from '@/components/B/Spinner.vue'
-import BTr from '@/components/B/Tr.vue'
-import BTh from '@/components/B/Th.vue'
-import BCard from '@/components/B/Card.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BTableSimple from '@/components/B/TableSimple.vue'
-import BThead from '@/components/B/Thead.vue'
-import BTbody from '@/components/B/Tbody.vue'
-import BTd from '@/components/B/Td.vue'
-import BTfoot from '@/components/B/Tfoot.vue'
-import BContainer from '@/components/B/Container.vue'
-import BInputGroup from '@/components/B/InputGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BInputGroupAppend from '@/components/B/InputGroupAppend.vue'
-import BFormCheckboxGroup from '@/components/B/FormCheckboxGroup.vue'
-import BPagination from '@/components/B/Pagination.vue'
-import BModal from '@/components/B/Modal.vue'
+import BTable from '@/components/BTable.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BFormRadioGroup from '@/components/BFormRadioGroup.vue'
+import BFormRadio from '@/components/BFormRadio.vue'
+import BFormSelect from '@/components/BFormSelect.vue'
+import BButton from '@/components/BButton.vue'
+import BSpinner from '@/components/BSpinner.vue'
+import BTr from '@/components/BTr.vue'
+import BTh from '@/components/BTh.vue'
+import BCard from '@/components/BCard.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BTableSimple from '@/components/BTableSimple.vue'
+import BThead from '@/components/BThead.vue'
+import BTbody from '@/components/BTbody.vue'
+import BTd from '@/components/BTd.vue'
+import BTfoot from '@/components/BTfoot.vue'
+import BContainer from '@/components/BContainer.vue'
+import BInputGroup from '@/components/BInputGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BInputGroupAppend from '@/components/BInputGroupAppend.vue'
+import BFormCheckboxGroup from '@/components/BFormCheckboxGroup.vue'
+import BPagination from '@/components/BPagination.vue'
+import BModal from '@/components/BModal.vue'
 
 const meta = {
   title: 'Components/Table',
   component: BTable,
   parameters: {
     vitest: {
-      testFile: 'table.test.tsx',
+      testFile: 'table.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -49,7 +49,7 @@ export const Table: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table striped hover :items="items"></b-table>
+    <b-table striped hover :items="items" />
   </div>
 `,
 
@@ -78,7 +78,7 @@ export const ItemsRecordData: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table hover :items="items"></b-table>
+    <b-table hover :items="items" />
   </div>
 `,
 
@@ -118,7 +118,7 @@ export const FieldsAsASimpleArray: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table striped hover :items="items" :fields="fields"></b-table>
+    <b-table striped hover :items="items" :fields="fields" />
   </div>
 `,
 
@@ -149,7 +149,7 @@ export const FieldsAsAnArrayOfObjects: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table striped hover :items="items" :fields="fields"></b-table>
+    <b-table striped hover :items="items" :fields="fields" />
   </div>
 `,
 
@@ -229,6 +229,27 @@ export const TableStyling: Story = {
       >
         <template #first>
           <option value="">-- None --</option>
+          </template>
+      </b-form-select>
+    </b-form-group>
+
+    <b-table
+      :striped="striped"
+      :bordered="bordered"
+      :borderless="borderless"
+      :outlined="outlined"
+      :small="small"
+      :hover="hover"
+      :dark="dark"
+      :fixed="fixed"
+      :foot-clone="footClone"
+      :no-border-collapse="noCollapse"
+      :items="items"
+      :fields="fields"
+      :head-variant="headVariant"
+      :table-variant="tableVariant"
+     />
+  </div>
         `,
 
     data() {
@@ -278,7 +299,7 @@ export const RowStylingAndAttributes: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table :items="items" :fields="fields" :tbody-tr-class="rowClass"></b-table>
+    <b-table :items="items" :fields="fields" :tbody-tr-class="rowClass" />
   </div>
 `,
 
@@ -315,7 +336,7 @@ export const ResponsiveTables: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table responsive :items="items"></b-table>
+    <b-table responsive :items="items" />
   </div>
 `,
 
@@ -382,7 +403,7 @@ export const StackedTables: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table stacked :items="items"></b-table>
+    <b-table stacked :items="items" />
   </div>
 `,
 
@@ -411,7 +432,9 @@ export const TableCaption: Story = {
     template: `
   <div>
     <b-table :items="items" :fields="fields">
-      <template #table-caption>This is a table caption.`,
+      <template #table-caption>This is a table caption.</template>
+      </b-table>
+    </div>`,
 
     data() {
       return {
@@ -439,7 +462,9 @@ export const TableCaption1: Story = {
     template: `
   <div>
     <b-table :items="items" :fields="fields" caption-top>
-      <template #table-caption>This is a table caption at the top.`,
+      <template #table-caption>This is a table caption at the top.</template>
+      </b-table>
+    </div>`,
 
     data() {
       return {
@@ -465,18 +490,27 @@ export const TableColgroup: Story = {
     components: { BTable },
     props: Object.keys(argTypes),
     template: `
-<b-table fixed responsive :items="items" :fields="fields" ... >
-  <template #table-colgroup="scope">
-    <col
-      v-for="field in scope.fields"
-      :key="field.key"
-      :style="{ width: field.key === 'foo' ? '120px' : '180px' }"
-    >
-  </template>
-  <!-- additional table slots here if needed -->
-</b-table>
+    <b-table fixed responsive :items="items" :fields="fields">
+    <template #table-colgroup="scope">
+      <col
+        v-for="field in scope.fields"
+        :key="field.key"
+        :style="{ width: field.key === 'foo' ? '120px' : '180px' }"
+      />
+    </template>
+    <!-- additional table slots here if needed -->
+  </b-table>
 `,
-
+    data() {
+      return {
+        fields: ['first_name', 'last_name', 'foo'],
+        items: [
+          { foo: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
+          { foo: 21, first_name: 'Larsen', last_name: 'Shaw' },
+          { foo: 89, first_name: 'Geneva', last_name: 'Wilson' },
+        ],
+      }
+    },
     setup() {
       return { args }
     },
@@ -500,6 +534,9 @@ export const TableBusyState: Story = {
           <b-spinner class="align-middle"></b-spinner>
           <strong>Loading...</strong>
         </div>
+        </template>
+        </b-table>
+      </div>
       `,
 
     data() {
@@ -534,9 +571,27 @@ export const ScopedFieldSlots: Story = {
     template: `
   <div>
     <b-table small :fields="fields" :items="items" responsive="sm">
-      <!-- A virtual column -->
+      
       <template #cell(index)="data">
         {{ data.index + 1 }}
+        </template>
+
+      <!-- A custom formatted column -->
+      <template #cell(name)="data">
+        <b class="text-info">{{ data.value.last.toUpperCase() }}</b>, <b>{{ data.value.first }}</b>
+      </template>
+
+      <!-- A virtual composite column -->
+      <template #cell(nameage)="data">
+        {{ data.item.name.first }} is {{ data.item.age }} years old
+      </template>
+
+      <!-- Optional default data cell scoped slot -->
+      <template #cell()="data">
+        <i>{{ data.value }}</i>
+      </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -578,7 +633,10 @@ export const DisplayingRawHtml: Story = {
   <div>
     <b-table :items="items">
       <template #cell(html)="data">
-        <span v-html="data.value"></span>
+        <span v-html="data.value" />
+        </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -609,7 +667,11 @@ export const FormatterCallback: Story = {
     <b-table :fields="fields" :items="items">
       <template #cell(name)="data">
         <!-- \`data.value\` is the value after formatted by the Formatter -->
-        <a :href="\`#\${data.value.replace(/[^a-z]+/i, '-').toLowerCase()}\`">{{ data.value }}</a>
+        {{ data.value}}
+        <!--<a :href="\`#\${data.value.replace(/[^a-z]+/i, '-').toLowerCase()}\`">{{ data.value }}</a>-->
+        </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -669,9 +731,27 @@ export const HeaderAndFooterCustomRenderingViaScopedSlots: Story = {
     template: `
   <div>
     <b-table :fields="fields" :items="items" foot-clone>
-      <!-- A custom formatted data column cell -->
+      
       <template #cell(name)="data">
         {{ data.value.first }} {{ data.value.last }}
+        </template>
+
+      <!-- A custom formatted header cell for field 'name' -->
+      <template #head(name)="data">
+        <span class="text-info">{{ data.label.toUpperCase() }}</span>
+      </template>
+
+      <!-- A custom formatted footer cell for field 'name' -->
+      <template #foot(name)="data">
+        <span class="text-danger">{{ data.label }}</span>
+      </template>
+
+      <!-- Default fall-back custom formatted footer cell -->
+      <template #foot()="data">
+        <i>{{ data.label }}</i>
+      </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -719,6 +799,9 @@ export const AddingAdditionalRowsToTheHeader: Story = {
           <b-th variant="primary" colspan="3">Type 2</b-th>
           <b-th variant="danger">Type 3</b-th>
         </b-tr>
+        </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -782,7 +865,7 @@ export const StickyHeaders: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-table sticky-header :items="items" head-variant="light"></b-table>
+    <b-table sticky-header :items="items" head-variant="light" />
   </div>
 `,
 
@@ -833,6 +916,14 @@ export const StickyColumns: Story = {
       <!-- We are using utility class \`text-nowrap\` to help illustrate horizontal scrolling -->
       <template #head(id)="scope">
         <div class="text-nowrap">Row ID</div>
+        </template>
+        <template #head()="scope">
+          <div class="text-nowrap">
+            Heading {{ scope.label }}
+          </div>
+        </template>
+      </b-table>
+    </div>
       `,
 
     data() {
@@ -889,10 +980,28 @@ export const RowDetailsSupport: Story = {
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
         </b-button>
 
-        <!-- As \`row.showDetails\` is one-way, we call the toggleDetails function on @change -->
         <b-form-checkbox v-model="row.detailsShowing" @change="row.toggleDetails">
           Details via check
         </b-form-checkbox>
+        </template>
+
+      <template #row-details="row">
+        <b-card>
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right"><b>Age:</b></b-col>
+            <b-col>{{ row.item.age }}</b-col>
+          </b-row>
+
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right"><b>Is Active:</b></b-col>
+            <b-col>{{ row.item.isActive }}</b-col>
+          </b-row>
+
+          <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+        </b-card>
+      </template>
+    </b-table>
+  </div>
       `,
 
     data() {
@@ -937,7 +1046,7 @@ export const RowSelectSupport: Story = {
         v-model="selectMode"
         :options="modes"
         class="mb-3"
-      ></b-form-select>
+      />
     </b-form-group>
 
     <b-table
@@ -949,11 +1058,29 @@ export const RowSelectSupport: Story = {
       selectable
       @row-selected="onRowSelected"
     >
-      <!-- Example scoped slot for select state illustrative purposes -->
+      
       <template #cell(selected)="{ rowSelected }">
         <template v-if="rowSelected">
           <span aria-hidden="true">&check;</span>
           <span class="sr-only">Selected</span>
+        </template>
+        <template v-else>
+          <span aria-hidden="true">&nbsp;</span>
+          <span class="sr-only">Not selected</span>
+        </template>
+      </template>
+    </b-table>
+    <p>
+      <b-button size="sm" @click="selectAllRows">Select all</b-button>
+      <b-button size="sm" @click="clearSelected">Clear selected</b-button>
+      <b-button size="sm" @click="selectThirdRow">Select 3rd row</b-button>
+      <b-button size="sm" @click="unselectThirdRow">Unselect 3rd row</b-button>
+    </p>
+    <p>
+      Selected Rows:<br />
+      {{ selected }}
+    </p>
+  </div>
         `,
 
     data() {
@@ -1012,7 +1139,7 @@ export const TableBodyTransitionSupport: Story = {
       small
       primary-key="a"
       :tbody-transition-props="transProps"
-    ></b-table>
+     />
   </div>
 `,
 
@@ -1056,7 +1183,7 @@ export const Sorting: Story = {
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       responsive="sm"
-    ></b-table>
+     />
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
@@ -1105,7 +1232,7 @@ export const SortIconAlignment: Story = {
       :sort-desc.sync="sortDesc"
       sort-icon-left
       responsive="sm"
-    ></b-table>
+     />
 
     <div>
       Sorting By: <b>{{ sortBy }}</b>, Sort Direction:
@@ -1146,7 +1273,7 @@ export const InternalSortingAndLocaleHandling: Story = {
     components: { BTable },
     props: Object.keys(argTypes),
     template: `
-<b-table :sort-compare-options="{ numeric: true, sensitivity: 'base' }" ...>
+<b-table :sort-compare-options="{ numeric: true, sensitivity: 'base' }" />
 `,
 
     setup() {
@@ -1169,8 +1296,7 @@ export const AutomatedTableBusyState: Story = {
       :busy.sync="isBusy"
       :items="myProvider"
       :fields="fields"
-      ...
-    ></b-table>
+     />
   </div>
 `,
 
@@ -1204,7 +1330,7 @@ export const ForceRefreshingOfTableData: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-table ref="table" ... ></b-table>
+  <b-table ref="table" />
 </div>
 `,
 
@@ -1223,7 +1349,7 @@ export const DetectionOfSortingChange: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-table @sort-changed="sortingChanged" ... ></b-table>
+  <b-table @sort-changed="sortingChanged" />
 </div>
 `,
 
@@ -1242,7 +1368,7 @@ export const DetectionOfSortingChange1: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-table :sort-by.sync="mySortBy" :sort-desc.sync="mySortDesc" ... ></b-table>
+  <b-table :sort-by.sync="mySortBy" :sort-desc.sync="mySortDesc" />
 </div>
 `,
 
@@ -1263,9 +1389,9 @@ export const SimpleTables: Story = {
 <div>
   <b-table-simple hover small caption-top responsive>
     <caption>Items sold in August, grouped by Country and City:</caption>
-    <colgroup><col><col></colgroup>
-    <colgroup><col><col><col></colgroup>
-    <colgroup><col><col></colgroup>
+    <colgroup><col /><col /></colgroup>
+    <colgroup><col /><col /><col/></colgroup>
+    <colgroup><col /><col /></colgroup>
     <b-thead head-variant="dark">
       <b-tr>
         <b-th colspan="2">Region</b-th>
@@ -1336,7 +1462,7 @@ export const SimpleTables: Story = {
   </b-table-simple>
 </div>
 
-<!-- b-table-simple.vue -->
+
 `,
 
     setup() {
@@ -1356,9 +1482,9 @@ export const SimpleTablesAndStackedMode: Story = {
 <div>
   <b-table-simple hover small caption-top stacked>
     <caption>Items sold in August, grouped by Country and City:</caption>
-    <colgroup><col><col></colgroup>
-    <colgroup><col><col><col></colgroup>
-    <colgroup><col><col></colgroup>
+    <colgroup><col /><col /></colgroup>
+    <colgroup><col /><col /><col /></colgroup>
+    <colgroup><col /><col /></colgroup>
     <b-thead head-variant="dark">
       <b-tr>
         <b-th colspan="2">Region</b-th>
@@ -1429,7 +1555,7 @@ export const SimpleTablesAndStackedMode: Story = {
   </b-table-simple>
 </div>
 
-<!-- b-table-simple-stacked.vue -->
+
 `,
 
     setup() {
@@ -1498,29 +1624,188 @@ export const CompleteExample: Story = {
     components: { BContainer, BRow, BCol, BFormGroup, BInputGroup, BFormSelect, BFormInput, BInputGroupAppend, BButton, BFormCheckboxGroup, BFormCheckbox, BPagination, BTable, BCard, BModal },
     props: Object.keys(argTypes),
     template: `
-  <b-container fluid>
-    <!-- User Interface controls -->
-    <b-row>
-      <b-col lg="6" class="my-1">
-        <b-form-group
-          label="Sort"
-          label-for="sort-by-select"
-          label-cols-sm="3"
-          label-align-sm="right"
-          label-size="sm"
-          class="mb-0"
-          v-slot="{ ariaDescribedby }"
-        >
-          <b-input-group size="sm">
+    <template>
+    <b-container fluid>
+      <!-- User Interface controls -->
+      <b-row>
+        <b-col lg="6" class="my-1">
+          <b-form-group
+            label="Sort"
+            label-for="sort-by-select"
+            label-cols-sm="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+            v-slot="{ ariaDescribedby }"
+          >
+            <b-input-group size="sm">
+              <b-form-select
+                id="sort-by-select"
+                v-model="sortBy"
+                :options="sortOptions"
+                :aria-describedby="ariaDescribedby"
+                class="w-75"
+              >
+                <template #first>
+                  <option value="">-- none --</option>
+                </template>
+              </b-form-select>
+  
+              <b-form-select
+                v-model="sortDesc"
+                :disabled="!sortBy"
+                :aria-describedby="ariaDescribedby"
+                size="sm"
+                class="w-25"
+              >
+                <option :value="false">Asc</option>
+                <option :value="true">Desc</option>
+              </b-form-select>
+            </b-input-group>
+          </b-form-group>
+        </b-col>
+  
+        <b-col lg="6" class="my-1">
+          <b-form-group
+            label="Initial sort"
+            label-for="initial-sort-select"
+            label-cols-sm="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+          >
             <b-form-select
-              id="sort-by-select"
-              v-model="sortBy"
-              :options="sortOptions"
+              id="initial-sort-select"
+              v-model="sortDirection"
+              :options="['asc', 'desc', 'last']"
+              size="sm"
+            ></b-form-select>
+          </b-form-group>
+        </b-col>
+  
+        <b-col lg="6" class="my-1">
+          <b-form-group
+            label="Filter"
+            label-for="filter-input"
+            label-cols-sm="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+          >
+            <b-input-group size="sm">
+              <b-form-input
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Type to Search"
+              ></b-form-input>
+  
+              <b-input-group-append>
+                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+              </b-input-group-append>
+            </b-input-group>
+          </b-form-group>
+        </b-col>
+  
+        <b-col lg="6" class="my-1">
+          <b-form-group
+            v-model="sortDirection"
+            label="Filter On"
+            description="Leave all unchecked to filter on all data"
+            label-cols-sm="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+            v-slot="{ ariaDescribedby }"
+          >
+            <b-form-checkbox-group
+              v-model="filterOn"
               :aria-describedby="ariaDescribedby"
-              class="w-75"
+              class="mt-1"
             >
-              <template #first>
-                <option value="">-- none --</option>
+              <b-form-checkbox value="name">Name</b-form-checkbox>
+              <b-form-checkbox value="age">Age</b-form-checkbox>
+              <b-form-checkbox value="isActive">Active</b-form-checkbox>
+            </b-form-checkbox-group>
+          </b-form-group>
+        </b-col>
+  
+        <b-col sm="5" md="6" class="my-1">
+          <b-form-group
+            label="Per page"
+            label-for="per-page-select"
+            label-cols-sm="6"
+            label-cols-md="4"
+            label-cols-lg="3"
+            label-align-sm="right"
+            label-size="sm"
+            class="mb-0"
+          >
+            <b-form-select
+              id="per-page-select"
+              v-model="perPage"
+              :options="pageOptions"
+              size="sm"
+            ></b-form-select>
+          </b-form-group>
+        </b-col>
+  
+        <b-col sm="7" md="6" class="my-1">
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="totalRows"
+            :per-page="perPage"
+            align="fill"
+            size="sm"
+            class="my-0"
+          ></b-pagination>
+        </b-col>
+      </b-row>
+  
+      <!-- Main table element -->
+      <b-table
+        :items="items"
+        :fields="fields"
+        :current-page="currentPage"
+        :per-page="perPage"
+        :filter="filter"
+        :filter-included-fields="filterOn"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="sortDesc"
+        :sort-direction="sortDirection"
+        stacked="md"
+        show-empty
+        small
+        @filtered="onFiltered"
+      >
+        <template #cell(name)="row">
+          {{ row.value.first }} {{ row.value.last }}
+        </template>
+  
+        <template #cell(actions)="row">
+          <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
+            Info modal
+          </b-button>
+          <b-button size="sm" @click="row.toggleDetails">
+            {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+          </b-button>
+        </template>
+  
+        <template #row-details="row">
+          <b-card>
+            <ul>
+              <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+            </ul>
+          </b-card>
+        </template>
+      </b-table>
+  
+      <!-- Info modal -->
+      <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
+        <pre>{{ infoModal.content }}</pre>
+      </b-modal>
+    </b-container>
+  </template>
               `,
 
     data() {
@@ -1555,7 +1840,7 @@ export const CompleteExample: Story = {
           {
             key: 'isActive',
             label: 'Is Active',
-            formatter: (value: any, key: any, item: any) => {
+            formatter: (value: any) => {
               return value ? 'Yes' : 'No'
             },
             sortable: true,
@@ -1569,7 +1854,7 @@ export const CompleteExample: Story = {
         perPage: 5,
         pageOptions: [5, 10, 15, { value: 100, text: 'Show a lot' }],
         sortBy: '',
-        sortDesc: false,
+        sortDesc: '',
         sortDirection: 'asc',
         filter: null,
         filterOn: [],

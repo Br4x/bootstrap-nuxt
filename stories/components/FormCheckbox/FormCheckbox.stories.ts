@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormCheckboxGroup from '@/components/B/FormCheckboxGroup.vue'
-import BFormInvalidFeedback from '@/components/B/FormInvalidFeedback.vue'
-import BFormValidFeedback from '@/components/B/FormValidFeedback.vue'
-import BButton from '@/components/B/Button.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormCheckboxGroup from '@/components/BFormCheckboxGroup.vue'
+import BFormInvalidFeedback from '@/components/BFormInvalidFeedback.vue'
+import BFormValidFeedback from '@/components/BFormValidFeedback.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/FormCheckbox',
   component: BFormCheckbox,
   parameters: {
     vitest: {
-      testFile: 'form-checkbox.test.tsx',
+      testFile: 'form-checkbox.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -71,7 +71,7 @@ export const FormCheckbox1: Story = {
         :options="options"
         :aria-describedby="ariaDescribedby"
         name="flavour-1"
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group label="Using sub-components:" v-slot="{ ariaDescribedby }">
@@ -125,7 +125,7 @@ export const ChangingTheOptionFieldNames: Story = {
       value-field="item"
       text-field="name"
       disabled-field="notEnabled"
-    ></b-form-checkbox-group>
+    />
     <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
   </div>
 `,
@@ -165,7 +165,7 @@ export const InlineAndStackedCheckboxes: Story = {
         :options="options"
         :aria-describedby="ariaDescribedby"
         name="flavour-1a"
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group
@@ -178,7 +178,7 @@ export const InlineAndStackedCheckboxes: Story = {
         :aria-describedby="ariaDescribedby"
         name="flavour-2a"
         stacked
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group
@@ -247,7 +247,7 @@ export const ControlSizing: Story = {
   <b-form-checkbox size="lg">Large</b-form-checkbox>
 </div>
 
-<!-- form-checkbox-sizes.vue -->
+
 `,
 
     setup() {
@@ -305,7 +305,7 @@ export const GroupedButtonStyleCheckboxes: Story = {
         :aria-describedby="ariaDescribedby"
         name="buttons-1"
         buttons
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group
@@ -320,7 +320,7 @@ export const GroupedButtonStyleCheckboxes: Story = {
         button-variant="primary"
         size="lg"
         name="buttons-2"
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group
@@ -333,7 +333,7 @@ export const GroupedButtonStyleCheckboxes: Story = {
         :aria-describedby="ariaDescribedby"
         stacked
         buttons
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
   </div>
 `,
@@ -399,7 +399,7 @@ export const GroupedSwitchStyleCheckboxes: Story = {
         :options="options"
         :aria-describedby="ariaDescribedby"
         switches
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group
@@ -412,7 +412,7 @@ export const GroupedSwitchStyleCheckboxes: Story = {
         :aria-describedby="ariaDescribedby"
         switches
         stacked
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
   </div>
 `,
@@ -448,7 +448,7 @@ export const SwitchSizing: Story = {
   <b-form-checkbox switch size="lg">Large</b-form-checkbox>
 </div>
 
-<!-- form-checkbox-switch-sizes.vue -->
+
 `,
 
     setup() {
@@ -472,7 +472,7 @@ export const NonCustomCheckInputsPlain: Story = {
         :options="options"
         :aria-describedby="ariaDescribedby"
         plain
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
 
     <b-form-group label="Plain stacked checkboxes" v-slot="{ ariaDescribedby }">
@@ -482,7 +482,7 @@ export const NonCustomCheckInputsPlain: Story = {
         :aria-describedby="ariaDescribedby"
         plain
         stacked
-      ></b-form-checkbox-group>
+      />
     </b-form-group>
   </div>
 `,
@@ -560,7 +560,7 @@ export const IndeterminateTriStateSupport: Story = {
     </b-form-checkbox>
 
     <div class="mt-3">
-      Checked: <strong>{{ checked }}</strong><br>
+      Checked: <strong>{{ checked }}</strong><br />
       Indeterminate: <strong>{{ indeterminate }}</strong>
     </div>
 
@@ -596,7 +596,7 @@ export const IndeterminateTriStateSupport1: Story = {
   <div>
     <b-form-group>
       <template #label>
-        <b>Choose your flavours:</b><br>
+        <b>Choose your flavours:</b><br />
         <b-form-checkbox
           v-model="allSelected"
           :indeterminate="indeterminate"
@@ -606,6 +606,9 @@ export const IndeterminateTriStateSupport1: Story = {
         >
           {{ allSelected ? 'Un-select All' : 'Select All' }}
         </b-form-checkbox>
+        </template>
+        </b-form-group>
+        </div>
       `,
 
     data() {
@@ -617,12 +620,12 @@ export const IndeterminateTriStateSupport1: Story = {
       }
     },
     methods: {
-      toggleAll(checked) {
+      toggleAll(checked: any) {
         this.selected = checked ? this.flavours.slice() : []
       },
     },
     watch: {
-      selected(newValue, oldValue) {
+      selected(newValue) {
         // Handle changes in individual flavour checkboxes
         if (newValue.length === 0) {
           this.indeterminate = false

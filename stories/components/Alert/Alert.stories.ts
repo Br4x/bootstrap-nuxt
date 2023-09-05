@@ -1,26 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import BProgress from '@/components/BProgress.vue'
 import vitestResults from '@/tests/unit/results.json'
-import BAlert from '@/components/B/Alert.vue'
-import BButton from '@/components/B/Button.vue'
+import BAlert from '@/components/BAlert.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/Alert',
   component: BAlert,
   parameters: {
     vitest: {
-      testFile: 'alert.test.tsx',
+      testFile: 'alert.spec.ts',
       testResults: vitestResults,
-    },
-  },
-  argTypes: {
-    show: { control: { type: 'boolean' } },
-    variant: { control: 'select', options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark', 'light'], defaultValue: 'primary' },
-    fade: { action: { type: 'boolean' } },
-    dismissible: { action: { type: 'boolean' } },
-    dismissLabel: {
-      control: {
-        type: 'text',
-      },
     },
   },
 } satisfies Meta<typeof BAlert>
@@ -30,13 +20,10 @@ type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
   render: (args, { argTypes }) => ({
-    components: { BAlert, BButton },
+    components: { BAlert, BButton, BProgress },
     props: Object.keys(argTypes),
     template: `
     <div>
-    <b-alert v-bind="args">
-      You can test props with the controls on this one
-    </b-alert>
 
     <b-alert show>
       Default Alert
@@ -51,22 +38,21 @@ export const Overview: Story = {
     </b-alert>
 
     <b-alert
-      :show="dismissCountDown"
+      v-model="dismissCountDown"
       dismissible
       variant="warning"
-      @dismissed="dismissCountDown = 0"
-      @dismiss-count-down="countDownChanged"
+      @close-countdown="countdown = $event"
     >
-      <p>This alert will dismiss after {{ dismissCountDown }} seconds...</p>
+      <p>This alert will dismiss after {{ countdown / 1000 }} seconds...</p>
       <b-progress
         variant="warning"
-        :max="dismissSecs"
-        :value="dismissCountDown"
+        :max="dismissCountDown"
+        :value="countdown"
         height="4px"
       />
     </b-alert>
 
-    <b-button variant="info" class="m-1" @click="showAlert">
+    <b-button variant="info" class="m-1" @click="dismissCountDown = dismissCountDown + 1000">
       Show alert with count-down timer
     </b-button>
     <b-button variant="info" class="m-1" @click="showDismissibleAlert = true">
@@ -76,24 +62,20 @@ export const Overview: Story = {
     `,
     data() {
       return {
-        dismissSecs: 10,
-        dismissCountDown: 0,
+        dismissCountDown: 10000,
+        countdown: 0,
         showDismissibleAlert: false,
       }
     },
     methods: {
-      countDownChanged(dismissCountDown: number) {
-        this.dismissCountDown = dismissCountDown
-      },
       showAlert() {
-        this.dismissCountDown = this.dismissSecs
+        this.countdown = this.dismissSecs
       },
     },
     setup() {
       return { args }
     },
     args: {
-      show: true,
     },
   }),
 }
@@ -130,7 +112,7 @@ export const AdditionalContent: Story = {
           run a bit longer so that you can see how spacing within an alert works with this kind of
           content.
         </p>
-        <hr>
+        <hr />
         <p class="mb-0">
           Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
         </p>
@@ -180,7 +162,7 @@ export const AutoDismissible: Story = {
     template: `
     <div>
       <b-alert
-        :show="dismissCountDown"
+        :show="!!dismissCountDown"
         dismissible
         variant="warning"
         @dismissed="dismissCountDown=0"
@@ -232,7 +214,7 @@ export const FadingAlerts: Story = {
       </b-alert>
 
       <b-alert
-        :show="dismissCountDown"
+        :show="!!dismissCountDown"
         dismissible
         fade
         variant="warning"
@@ -244,7 +226,7 @@ export const FadingAlerts: Story = {
       <b-button @click="showAlert" variant="info" class="m-1">
         Show alert with count-down timer
       </b-button>
-      <b-button @click="showDismissibleAlert=true" variant="info" class="m-1">
+      <b-button @click="showDismissibleAlert = true" variant="info" class="m-1">
         Show dismissible alert ({{ showDismissibleAlert ? 'visible' : 'hidden' }})
       </b-button>
     </div>

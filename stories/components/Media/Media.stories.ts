@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BCard from '@/components/B/Card.vue'
-import BMedia from '@/components/B/Media.vue'
-import BImg from '@/components/B/Img.vue'
-import BMediaAside from '@/components/B/MediaAside.vue'
-import BMediaBody from '@/components/B/MediaBody.vue'
+import BCard from '@/components/BCard.vue'
+import BMedia from '@/components/BMedia.vue'
+import BImg from '@/components/BImg.vue'
+import BMediaAside from '@/components/BMediaAside.vue'
+import BMediaBody from '@/components/BMediaBody.vue'
 
 const meta = {
   title: 'Components/Media',
   component: BMedia,
   parameters: {
     vitest: {
-      testFile: 'media.test.tsx',
+      testFile: 'media.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -61,7 +61,7 @@ export const Media: Story = {
   </b-card>
 </div>
 
-<!-- b-media.vue -->
+
 `,
 
     setup() {
@@ -81,7 +81,7 @@ export const Usage: Story = {
 <div>
   <b-media>
     <template #aside>
-      <img src="..." alt="Media Aside">
+      <img src="..." alt="Media Aside" />
     </template>
 
     <h2>Media Body</h2>
@@ -138,7 +138,7 @@ export const NoBodyWithSubComponents: Story = {
   </b-card>
 </div>
 
-<!-- b-media-no-body.vue -->
+
 `,
 
     setup() {
@@ -169,7 +169,7 @@ export const Order: Story = {
   </b-media>
 </div>
 
-<!-- b-media-order.vue -->
+
 `,
 
     setup() {
@@ -228,7 +228,7 @@ export const MediaList: Story = {
   </ul>
 </div>
 
-<!-- b-media-list.vue -->
+
 `,
 
     setup() {

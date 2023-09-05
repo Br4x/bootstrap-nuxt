@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BCollapse from '@/components/B/Collapse.vue'
-import BCard from '@/components/B/Card.vue'
-import BCardHeader from '@/components/B/CardHeader.vue'
-import BCardBody from '@/components/B/CardBody.vue'
-import BCardText from '@/components/B/CardText.vue'
+import BButton from '@/components/BButton.vue'
+import BCollapse from '@/components/BCollapse.vue'
+import BCard from '@/components/BCard.vue'
+import BCardHeader from '@/components/BCardHeader.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BCardText from '@/components/BCardText.vue'
 
 const meta = {
   title: 'Components/Collapse',
   component: BCollapse,
   parameters: {
     vitest: {
-      testFile: 'collapse.test.tsx',
+      testFile: 'collapse.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -42,7 +42,7 @@ export const Collapse: Story = {
   </b-collapse>
 </div>
 
-<!-- b-collapse.vue -->
+
 `,
 
     setup() {
@@ -60,19 +60,19 @@ export const Usage: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Using modifiers -->
+  
   <b-button v-b-toggle.collapse-2 class="m-1">Toggle Collapse</b-button>
 
-  <!-- Using value -->
+  
   <b-button v-b-toggle="'collapse-2'" class="m-1">Toggle Collapse</b-button>
 
-  <!-- Element to collapse -->
+  
   <b-collapse id="collapse-2">
     <b-card>I am collapsible content!</b-card>
   </b-collapse>
 </div>
 
-<!-- b-collapse-usage.vue -->
+
 `,
 
     setup() {
@@ -96,7 +96,7 @@ export const InitialVisibilityStartExpanded: Story = {
   </b-collapse>
 </div>
 
-<!-- b-collapse-visible.vue -->
+
 `,
 
     setup() {
@@ -148,16 +148,16 @@ export const TriggerMultipleCollapseElements: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <!-- Via multiple directive modifiers -->
+  
   <b-button v-b-toggle.collapse-a.collapse-b>Toggle Collapse A and B</b-button>
 
-  <!-- Via space separated string of IDs passed to directive value -->
+  
   <b-button v-b-toggle="'collapse-a collapse-b'">Toggle Collapse A and B</b-button>
 
-  <!-- Via array of string IDs passed to directive value -->
+  
   <b-button v-b-toggle="['collapse-a', 'collapse-b']">Toggle Collapse A and B</b-button>
 
-  <!-- Elements to collapse -->
+  
   <b-collapse id="collapse-a" class="mt-2">
     <b-card>I am collapsible content A!</b-card>
   </b-collapse>
@@ -166,7 +166,7 @@ export const TriggerMultipleCollapseElements: Story = {
   </b-collapse>
 </div>
 
-<!-- b-collapse-trigger-multiple.vue -->
+
 `,
 
     setup() {
@@ -253,7 +253,7 @@ export const HidingAndShowingContentInTheToggleButtonBasedOnCollapseState: Story
     <span class="when-open">Close</span><span class="when-closed">Open</span> My Collapse
   </b-button>
   <b-collapse id="my-collapse">
-    <!-- Content here -->
+    
   </b-collapse>
 </div>
 `,

@@ -1,0 +1,1 @@
+export type EmbedType = 'iframe'| 'embed'| 'video'| 'object'| 'img'| 'b-img'| 'b-img-lazy'

@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BTooltip from '@/components/B/Tooltip.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
+import BButton from '@/components/BButton.vue'
+import BTooltip from '@/components/BTooltip.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
 
 const meta = {
   title: 'Components/Tooltip',
   component: BTooltip,
   parameters: {
     vitest: {
-      testFile: 'tooltip.test.tsx',
+      testFile: 'tooltip.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -41,7 +41,7 @@ export const Tooltip: Story = {
   </b-tooltip>
 </div>
 
-<!-- b-tooltip.vue -->
+
 `,
 
     setup() {
@@ -96,7 +96,7 @@ export const DisabledElements: Story = {
   <b-tooltip target="disabled-wrapper">Disabled tooltip</b-tooltip>
 </div>
 
-<!-- disabled-trigger-element.vue -->
+
 `,
 
     setup() {
@@ -126,19 +126,19 @@ export const BTooltipComponentUsage: Story = {
     </b-col>
   </b-row>
 
-  <!-- Tooltip title specified via prop title -->
+  
   <b-tooltip target="button-1" title="Online!"></b-tooltip>
 
-  <!-- HTML title specified via default slot -->
+  
   <b-tooltip target="button-2" placement="bottom">
     Hello <strong>World!</strong>
   </b-tooltip>
 
-  <!-- Tooltip for an element identified by ref -->
+  
   <b-tooltip :target="() => $refs['button-3']" title="Alternative!"></b-tooltip>
 </b-container>
 
-<!-- b-tooltip-component.vue -->
+
 `,
 
     setup() {
@@ -167,7 +167,7 @@ export const NoninteractiveTooltips: Story = {
   </div>
 </div>
 
-<!-- b-tooltip-interactive.vue -->
+
 `,
 
     setup() {
@@ -189,7 +189,7 @@ export const VariantsAndCustomClass: Story = {
   <b-tooltip target="tooltip-button-variant" variant="danger">Danger variant tooltip</b-tooltip>
 </div>
 
-<!-- b-tooltip-variant.vue -->
+
 `,
 
     setup() {
@@ -263,7 +263,7 @@ export const ProgrammaticallyShowAndHideTooltip1: Story = {
   <b-tooltip show target="tooltip-button-2">I start open</b-tooltip>
 </div>
 
-<!-- b-tooltip-show-open.vue -->
+
 `,
 
     setup() {
@@ -384,7 +384,7 @@ export const VBTooltipDirectiveUsage: Story = {
   </b-row>
 </b-container>
 
-<!-- b-tooltip-directive.vue -->
+
 `,
 
     setup() {

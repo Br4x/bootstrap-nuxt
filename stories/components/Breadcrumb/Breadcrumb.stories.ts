@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BBreadcrumb from '@/components/B/Breadcrumb.vue'
-import BBreadcrumbItem from '@/components/B/BreadcrumbItem.vue'
+import BBreadcrumb from '@/components/BBreadcrumb.vue'
+import BBreadcrumbItem from '@/components/BBreadcrumbItem.vue'
 
 const meta = {
   title: 'Components/Breadcrumb',
   component: BBreadcrumb,
   parameters: {
     vitest: {
-      testFile: 'breadcrumb.test.tsx',
+      testFile: 'breadcrumb.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -50,7 +50,7 @@ export const ManuallyPlaced: Story = {
     template: `
     <b-breadcrumb>
         <b-breadcrumb-item href="#home">
-        <i class="i-ph-house-fill inline-block w-6 h-6" aria-hidden="true" />
+        <i class="i-ph-house-fill block float-left mr-2 w-6 h-6" aria-hidden="true" />
         Home
         </b-breadcrumb-item>
         <b-breadcrumb-item href="#foo">Foo</b-breadcrumb-item>

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BFormInput from '@/components/B/FormInput.vue'
-import BContainer from '@/components/B/Container.vue'
-import BRow from '@/components/B/Row.vue'
-import BCol from '@/components/B/Col.vue'
-import BFormInvalidFeedback from '@/components/B/FormInvalidFeedback.vue'
-import BFormText from '@/components/B/FormText.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BContainer from '@/components/BContainer.vue'
+import BRow from '@/components/BRow.vue'
+import BCol from '@/components/BCol.vue'
+import BFormInvalidFeedback from '@/components/BFormInvalidFeedback.vue'
+import BFormText from '@/components/BFormText.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
 
 const meta = {
   title: 'Components/FormInput',
   component: BFormInput,
   parameters: {
     vitest: {
-      testFile: 'form-input.test.tsx',
+      testFile: 'form-input.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -31,7 +31,7 @@ export const FormInput: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-input v-model="text" placeholder="Enter your name"></b-form-input>
+    <b-form-input v-model="text" placeholder="Enter your name" />
     <div class="mt-2">Value: {{ text }}</div>
   </div>
 `,
@@ -58,10 +58,10 @@ export const InputType: Story = {
   <b-container fluid>
     <b-row class="my-1" v-for="type in types" :key="type">
       <b-col sm="3">
-        <label :for="\`type-${type}\`">Type <code>{{ type }}</code>:</label>
+        <label :for="\`type-\${type}\`">Type <code>{{ type }}</code>:</label>
       </b-col>
       <b-col sm="9">
-        <b-form-input :id="\`type-${type}\`" :type="type"></b-form-input>
+        <b-form-input :id="\`type-\${type}\`" :type="type" />
       </b-col>
     </b-row>
   </b-container>
@@ -100,7 +100,7 @@ export const RangeTypeInput: Story = {
     template: `
   <div>
     <label for="range-1">Example range with min and max</label>
-    <b-form-input id="range-1" v-model="value" type="range" min="0" max="5"></b-form-input>
+    <b-form-input id="range-1" v-model="value" type="range" min="0" max="5" />
     <div class="mt-2">Value: {{ value }}</div>
   </div>
 `,
@@ -126,7 +126,7 @@ export const RangeTypeInput1: Story = {
     template: `
   <div>
     <label for="range-2">Example range with step value</label>
-    <b-form-input id="range-2" v-model="value" type="range" min="0" max="5" step="0.5"></b-form-input>
+    <b-form-input id="range-2" v-model="value" type="range" min="0" max="5" step="0.5" />
     <div class="mt-2">Value: {{ value }}</div>
   </div>
 `,
@@ -156,7 +156,7 @@ export const ControlSizing: Story = {
       <label for="input-small">Small:</label>
     </b-col>
     <b-col sm="10">
-      <b-form-input id="input-small" size="sm" placeholder="Enter your name"></b-form-input>
+      <b-form-input id="input-small" size="sm" placeholder="Enter your name" />
     </b-col>
   </b-row>
 
@@ -165,7 +165,7 @@ export const ControlSizing: Story = {
       <label for="input-default">Default:</label>
     </b-col>
     <b-col sm="10">
-      <b-form-input id="input-default" placeholder="Enter your name"></b-form-input>
+      <b-form-input id="input-default" placeholder="Enter your name" />
     </b-col>
   </b-row>
 
@@ -174,12 +174,12 @@ export const ControlSizing: Story = {
       <label for="input-large">Large:</label>
     </b-col>
     <b-col sm="10">
-      <b-form-input id="input-large" size="lg" placeholder="Enter your name"></b-form-input>
+      <b-form-input id="input-large" size="lg" placeholder="Enter your name" />
     </b-col>
   </b-row>
 </b-container>
 
-<!-- b-form-input-size.vue -->
+
 `,
 
     setup() {
@@ -202,7 +202,7 @@ export const ContextualStates: Story = {
       <label for="input-none">No State:</label>
     </b-col>
     <b-col sm="9">
-      <b-form-input id="input-none" :state="null" placeholder="No validation"></b-form-input>
+      <b-form-input id="input-none" :state="null" placeholder="No validation" />
     </b-col>
   </b-row>
 
@@ -211,7 +211,7 @@ export const ContextualStates: Story = {
       <label for="input-valid">Valid State:</label>
     </b-col>
     <b-col sm="9">
-      <b-form-input id="input-valid" :state="true" placeholder="Valid input"></b-form-input>
+      <b-form-input id="input-valid" :state="true" placeholder="Valid input" />
     </b-col>
   </b-row>
 
@@ -220,12 +220,12 @@ export const ContextualStates: Story = {
       <label for="input-invalid">Invalid State:</label>
     </b-col>
     <b-col sm="9">
-      <b-form-input id="input-invalid" :state="false" placeholder="Invalid input"></b-form-input>
+      <b-form-input id="input-invalid" :state="false" placeholder="Invalid input" />
     </b-col>
   </b-row>
 </b-container>
 
-<!-- b-form-input-states.vue -->
+
 `,
 
     setup() {
@@ -251,9 +251,9 @@ export const ContextualStates1: Story = {
       aria-describedby="input-live-help input-live-feedback"
       placeholder="Enter your name"
       trim
-    ></b-form-input>
+     />
 
-    <!-- This will only be shown if the preceding input has an invalid state -->
+    
     <b-form-invalid-feedback id="input-live-feedback">
       Enter at least 3 letters
     </b-form-invalid-feedback>
@@ -299,7 +299,7 @@ export const FormatterSupport: Story = {
         v-model="text1"
         placeholder="Enter your name"
         :formatter="formatter"
-      ></b-form-input>
+       />
     </b-form-group>
     <p><b>Value:</b> {{ text1 }}</p>
 
@@ -315,7 +315,7 @@ export const FormatterSupport: Story = {
         placeholder="Enter your name"
         lazy-formatter
         :formatter="formatter"
-      ></b-form-input>
+       />
     </b-form-group>
     <p class="mb-0"><b>Value:</b> {{ text2 }}</p>
   </div>
@@ -328,7 +328,7 @@ export const FormatterSupport: Story = {
       }
     },
     methods: {
-      formatter(value) {
+      formatter(value: string) {
         return value.toLowerCase()
       },
     },
@@ -347,7 +347,7 @@ export const DatalistSupport: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-input list="my-list-id"></b-form-input>
+    <b-form-input list="my-list-id" />
 
     <datalist id="my-list-id">
       <option>Manual Option</option>
@@ -376,7 +376,7 @@ export const DebounceSupport: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-form-input v-model="value" type="text" debounce="500"></b-form-input>
+    <b-form-input v-model="value" type="text" debounce="500" />
     <div class="mt-2">Value: "{{ value }}"</div>
   </div>
 `,
@@ -401,8 +401,8 @@ export const UsingHtml5InputAsAnAlternative: Story = {
     props: Object.keys(argTypes),
     template: `
   <div>
-    <input v-model="value" type="text" class="form-control">
-    <br>
+    <input v-model="value" type="text" class="form-control" />
+    <br />
     <p>Value: "{{ value }}"</p>
   </div>
 `,

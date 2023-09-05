@@ -20,7 +20,7 @@ import * as TableStory from './Table.stories';
 `items` is the table data in array format, where each record (row) data are keyed objects. Example
 format:
 
-<!-- eslint-disable no-unused-vars -->
+
 
 ```js
 const items = [
@@ -155,7 +155,7 @@ For information and usage about scoped slots and formatters, refer to the
 
 Feel free to mix and match simple array and object array together:
 
-<!-- eslint-disable no-unused-vars -->
+
 
 ```js
 const fields = [
@@ -464,8 +464,7 @@ scoped field slot.
 <p class="alert alert-danger">
   <strong>Warning:</strong> Be cautious of using the <code>v-html</code> method to display user
   supplied content,  as it may make your application vulnerable to
-  <a class="alert-link" href="https://en.wikipedia.org/wiki/Cross-site_scripting">
-  <abbr title="Cross Site Scripting Attacks">XSS attacks</abbr></a>, if you do not first
+  <a class="alert-link" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS attacks</a>, if you do not first
   <a class="alert-link" href="https://en.wikipedia.org/wiki/HTML_sanitization">sanitize</a> the
   user supplied string.
 </p>
@@ -984,7 +983,6 @@ _other_ fields.
 The default sort-compare routine works similar to the following. Note the fourth argument (sorting
 direction) is **not** used in the sort comparison:
 
-<!-- eslint-disable no-unused-vars, no-undef -->
 
 ```js
 function sortCompare(aRow, bRow, key, sortDesc, formatter, compareOptions, compareLocale) {
@@ -1167,7 +1165,7 @@ provide the row data (items), by specifying a function reference via the `items`
 
 The provider function is called with the following signature:
 
-<!-- eslint-disable no-undef -->
+
 
 ```js
 provider(ctx, [callback])
@@ -1190,7 +1188,6 @@ method.
 
 **Example: returning an array of data (synchronous):**
 
-<!-- eslint-disable no-unused-vars, prefer-const -->
 
 ```js
 function myProvider() {
@@ -1205,7 +1202,6 @@ function myProvider() {
 
 **Example: Using callback to return data (asynchronous):**
 
-<!-- eslint-disable no-unused-vars, node/no-callback-literal -->
 
 ```js
 function myProvider(ctx, callback) {
@@ -1229,7 +1225,6 @@ function myProvider(ctx, callback) {
 
 **Example: Using a Promise to return data (asynchronous):**
 
-<!-- eslint-disable no-unused-vars, no-undef -->
 
 ```js
 function myProvider(ctx) {
@@ -1249,7 +1244,6 @@ function myProvider(ctx) {
 
 Using an async method to return an items array is possible:
 
-<!-- eslint-disable no-unused-vars, no-undef -->
 
 ```js
 async function myProvider(ctx) {
@@ -1281,7 +1275,6 @@ function should handle errors from data sources and return an empty array to `<b
 
 If using an `async/await` provider:
 
-<!-- eslint-disable no-unused-vars, no-undef -->
 
 ```js
 async function myProvider(ctx) {
@@ -1365,7 +1358,7 @@ have changed.
 The `sort-changed` event provides a single argument of the table's current state context object.
 This context object has the same format as used by items provider functions.
 
-<!-- eslint-disable no-unused-vars -->
+
 
 ```js
 export default {

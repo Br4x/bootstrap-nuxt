@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BButton from '@/components/B/Button.vue'
-import BToast from '@/components/B/Toast.vue'
-import BImg from '@/components/B/Img.vue'
-import BAlert from '@/components/B/Alert.vue'
+import BButton from '@/components/BButton.vue'
+import BToast from '@/components/BToast.vue'
+import BImg from '@/components/BImg.vue'
+import BAlert from '@/components/BAlert.vue'
 
 const meta = {
   title: 'Components/Toast',
   component: BToast,
   parameters: {
     vitest: {
-      testFile: 'toast.test.tsx',
+      testFile: 'toast.spec.ts',
       testResults: vitestResults,
     },
   },

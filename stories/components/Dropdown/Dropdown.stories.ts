@@ -1,24 +1,24 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BDropdown from '@/components/B/Dropdown.vue'
-import BDropdownItem from '@/components/B/DropdownItem.vue'
-import BDropdownDivider from '@/components/B/DropdownDivider.vue'
-import BDropdownItemButton from '@/components/B/DropdownItemButton.vue'
-import BDropdownText from '@/components/B/DropdownText.vue'
-import BDropdownForm from '@/components/B/DropdownForm.vue'
-import BFormGroup from '@/components/B/FormGroup.vue'
-import BFormInput from '@/components/B/FormInput.vue'
-import BFormCheckbox from '@/components/B/FormCheckbox.vue'
-import BButton from '@/components/B/Button.vue'
-import BDropdownGroup from '@/components/B/DropdownGroup.vue'
-import BDropdownHeader from '@/components/B/DropdownHeader.vue'
+import BDropdown from '@/components/BDropdown.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
+import BDropdownDivider from '@/components/BDropdownDivider.vue'
+import BDropdownItemButton from '@/components/BDropdownItemButton.vue'
+import BDropdownText from '@/components/BDropdownText.vue'
+import BDropdownForm from '@/components/BDropdownForm.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BFormCheckbox from '@/components/BFormCheckbox.vue'
+import BButton from '@/components/BButton.vue'
+import BDropdownGroup from '@/components/BDropdownGroup.vue'
+import BDropdownHeader from '@/components/BDropdownHeader.vue'
 
 const meta = {
   title: 'Components/Dropdown',
   component: BDropdown,
   parameters: {
     vitest: {
-      testFile: 'dropdown.test.tsx',
+      testFile: 'dropdown.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -36,7 +36,7 @@ export const Dropdown: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-1" text="Dropdown Button" class="m-md-2">
+  <b-dropdown id="dropdown-1" text="Dropdown Button" >
     <b-dropdown-item>First Action</b-dropdown-item>
     <b-dropdown-item>Second Action</b-dropdown-item>
     <b-dropdown-item>Third Action</b-dropdown-item>
@@ -46,7 +46,7 @@ export const Dropdown: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown.vue -->
+
 `,
 
     setup() {
@@ -78,7 +78,7 @@ export const ButtonContent: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-button-content.vue -->
+
 `,
 
     setup() {
@@ -96,20 +96,20 @@ export const MenuAlignment: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-left" text="Left align" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-left" dropstart text="Left align" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 
-  <b-dropdown id="dropdown-right" right text="Right align" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-right" dropend text="Right align" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-right.vue -->
+
 `,
 
     setup() {
@@ -127,14 +127,14 @@ export const Dropup: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-dropup" dropup text="Drop-Up" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-dropup" dropup text="Drop-Up" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-dropup.vue -->
+
 `,
 
     setup() {
@@ -152,20 +152,20 @@ export const DropRightOrLeft: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-dropright" dropright text="Drop-Right" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-dropright" dropend text="Drop-Right" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 
-  <b-dropdown id="dropdown-dropleft" dropleft text="Drop-Left" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-dropleft" dropstart text="Drop-Left" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-dropright-dropleft.vue -->
+
 `,
 
     setup() {
@@ -183,14 +183,14 @@ export const MenuOffset: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-offset" offset="25" text="Offset Dropdown" class="m-2">
+  <b-dropdown id="dropdown-offset" offset="25" text="Offset Dropdown" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-offset.vue -->
+
 `,
 
     setup() {
@@ -208,14 +208,14 @@ export const SplitButtonSupport: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown split text="Split Dropdown" class="m-2">
+  <b-dropdown split text="Split Dropdown" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here...</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-split.vue -->
+
 `,
 
     setup() {
@@ -233,14 +233,14 @@ export const SplitButtonLinkSupport: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown split split-href="#foo/bar" text="Split Link" class="m-2">
+  <b-dropdown split split-href="#foo/bar" text="Split Link" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here...</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-split-link.vue -->
+
 `,
 
     setup() {
@@ -259,26 +259,26 @@ export const Sizing: Story = {
     template: `
 <div>
   <div>
-    <b-dropdown size="lg" text="Large" class="m-2">
+    <b-dropdown size="lg" text="Large" >
       <b-dropdown-item-button>Action</b-dropdown-item-button>
       <b-dropdown-item-button>Another action</b-dropdown-item-button>
       <b-dropdown-item-button>Something else here</b-dropdown-item-button>
     </b-dropdown>
 
-    <b-dropdown size="lg" split text="Large Split" class="m-2">
+    <b-dropdown size="lg" split text="Large Split" >
       <b-dropdown-item-button>Action</b-dropdown-item-button>
       <b-dropdown-item-button>Another action</b-dropdown-item-button>
       <b-dropdown-item-button>Something else here...</b-dropdown-item-button>
     </b-dropdown>
   </div>
   <div>
-    <b-dropdown size="sm" text="Small" class="m-2">
+    <b-dropdown size="sm" text="Small" >
       <b-dropdown-item-button>Action</b-dropdown-item-button>
       <b-dropdown-item-button>Another action</b-dropdown-item-button>
       <b-dropdown-item-button>Something else here...</b-dropdown-item-button>
     </b-dropdown>
 
-    <b-dropdown size="sm" split text="Small Split" class="m-2">
+    <b-dropdown size="sm" split text="Small Split" >
       <b-dropdown-item-button>Action</b-dropdown-item-button>
       <b-dropdown-item-button>Another action</b-dropdown-item-button>
       <b-dropdown-item-button>Something else here...</b-dropdown-item-button>
@@ -286,7 +286,7 @@ export const Sizing: Story = {
   </div>
 </div>
 
-<!-- b-dropdown-sizes.vue -->
+
 `,
 
     setup() {
@@ -304,26 +304,26 @@ export const DropdownColorVariants: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown text="Primary" variant="primary" class="m-2">
+  <b-dropdown text="Primary" variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 
-  <b-dropdown text="Success" variant="success" class="m-2">
+  <b-dropdown text="Success" variant="success" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 
-  <b-dropdown text="Outline Danger" variant="outline-danger" class="m-2">
+  <b-dropdown text="Outline Danger" variant="outline-danger" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-variants.vue -->
+
 `,
 
     setup() {
@@ -346,7 +346,7 @@ export const SplitButtonColorVariant: Story = {
     split-variant="outline-primary"
     variant="primary"
     text="Split Variant Dropdown"
-    class="m-2"
+    
   >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
@@ -354,7 +354,7 @@ export const SplitButtonColorVariant: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-split-variant.vue -->
+
 `,
 
     setup() {
@@ -372,7 +372,7 @@ export const BlockLevelDropdowns: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown text="Block Level Dropdown" block variant="primary" class="m-2">
+  <b-dropdown text="Block Level Dropdown" block variant="primary" >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
     <b-dropdown-item href="#">Something else here</b-dropdown-item>
@@ -384,7 +384,7 @@ export const BlockLevelDropdowns: Story = {
     split
     split-variant="outline-primary"
     variant="primary"
-    class="m-2"
+    
   >
     <b-dropdown-item href="#">Action</b-dropdown-item>
     <b-dropdown-item href="#">Another action</b-dropdown-item>
@@ -392,7 +392,7 @@ export const BlockLevelDropdowns: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-block.vue -->
+
 `,
 
     setup() {
@@ -414,7 +414,7 @@ export const BlockLevelDropdowns1: Story = {
     text="Block Level Dropdown Menu"
     block
     variant="primary"
-    class="m-2"
+    
     menu-class="w-100"
   >
     <b-dropdown-item href="#">Action</b-dropdown-item>
@@ -423,7 +423,7 @@ export const BlockLevelDropdowns1: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-block-menu.vue -->
+
 `,
 
     setup() {
@@ -451,7 +451,7 @@ export const HiddenCaret: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-hidden-caret.vue -->
+
 `,
 
     setup() {
@@ -463,13 +463,13 @@ export const HiddenCaret: Story = {
   }),
 }
 
-export const BDropdownItemButton: Story = {
+export const DropdownItemButton: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownItemButton },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-buttons" text="Dropdown using buttons as menu items" class="m-2">
+  <b-dropdown id="dropdown-buttons" text="Dropdown using buttons as menu items" >
     <b-dropdown-item-button>I'm a button</b-dropdown-item-button>
     <b-dropdown-item-button active>I'm a active button</b-dropdown-item-button>
     <b-dropdown-item-button disabled>I'm a button, but disabled!</b-dropdown-item-button>
@@ -477,7 +477,7 @@ export const BDropdownItemButton: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-item-button.vue -->
+
 `,
 
     setup() {
@@ -489,13 +489,13 @@ export const BDropdownItemButton: Story = {
   }),
 }
 
-export const BDropdownDivider: Story = {
+export const DropdownDivider: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownItemButton, BDropdownDivider },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-divider" text="Dropdown with divider" class="m-2">
+  <b-dropdown id="dropdown-divider" text="Dropdown with divider" >
     <b-dropdown-item-button>First item</b-dropdown-item-button>
     <b-dropdown-item-button>Second item</b-dropdown-item-button>
     <b-dropdown-divider></b-dropdown-divider>
@@ -503,7 +503,7 @@ export const BDropdownDivider: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-divider.vue -->
+
 `,
 
     setup() {
@@ -515,13 +515,13 @@ export const BDropdownDivider: Story = {
   }),
 }
 
-export const BDropdownText: Story = {
+export const DropdownText: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownText, BDropdownDivider, BDropdownItemButton },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-text" text="Dropdown with text" class="m-2">
+  <b-dropdown id="dropdown-text" text="Dropdown with text" >
     <b-dropdown-text style="width: 240px;">
       Some example text that's free-flowing within the dropdown menu.
     </b-dropdown-text>
@@ -532,7 +532,7 @@ export const BDropdownText: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-text.vue -->
+
 `,
 
     setup() {
@@ -544,13 +544,13 @@ export const BDropdownText: Story = {
   }),
 }
 
-export const BDropdownForm: Story = {
+export const DropdownForm: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownForm, BFormGroup, BFormInput, BFormCheckbox, BButton, BDropdownDivider, BDropdownItemButton },
     props: Object.keys(argTypes),
     template: `
   <div>
-    <b-dropdown id="dropdown-form" text="Dropdown with form" ref="dropdown" class="m-2">
+    <b-dropdown id="dropdown-form" text="Dropdown with form" ref="dropdown" >
       <b-dropdown-form>
         <b-form-group label="Email" label-for="dropdown-form-email" @submit.stop.prevent>
           <b-form-input
@@ -594,13 +594,13 @@ export const BDropdownForm: Story = {
   }),
 }
 
-export const BDropdownGroup: Story = {
+export const DropdownGroup: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownItemButton, BDropdownDivider, BDropdownGroup },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-grouped" text="Dropdown with group" class="m-2">
+  <b-dropdown id="dropdown-grouped" text="Dropdown with group" >
     <b-dropdown-item-button>
       Non-grouped Item
     </b-dropdown-item-button>
@@ -620,7 +620,7 @@ export const BDropdownGroup: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-group.vue -->
+
 `,
 
     setup() {
@@ -632,13 +632,13 @@ export const BDropdownGroup: Story = {
   }),
 }
 
-export const BDropdownHeader: Story = {
+export const DropdownHeader: Story = {
   render: (args, { argTypes }) => ({
     components: { BDropdown, BDropdownHeader, BDropdownItemButton },
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-header" text="Dropdown with header" class="m-2">
+  <b-dropdown id="dropdown-header" text="Dropdown with header" >
     <b-dropdown-header id="dropdown-header-label">
       Dropdown header
     </b-dropdown-header>
@@ -651,7 +651,7 @@ export const BDropdownHeader: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-header.vue -->
+
 `,
 
     setup() {
@@ -669,7 +669,7 @@ export const HeadersAndAccessibility: Story = {
     props: Object.keys(argTypes),
     template: `
 <div>
-  <b-dropdown id="dropdown-aria" text="Dropdown ARIA" variant="primary" class="m-2">
+  <b-dropdown id="dropdown-aria" text="Dropdown ARIA" variant="primary" >
     <b-dropdown-header id="dropdown-header-1">Groups</b-dropdown-header>
     <b-dropdown-item-button aria-describedby="dropdown-header-1">Add</b-dropdown-item-button>
     <b-dropdown-item-button aria-describedby="dropdown-header-1">Delete</b-dropdown-item-button>
@@ -687,7 +687,7 @@ export const HeadersAndAccessibility: Story = {
   </b-dropdown>
 </div>
 
-<!-- b-dropdown-aria.vue -->
+
 `,
 
     setup() {

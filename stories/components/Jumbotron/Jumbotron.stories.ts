@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import vitestResults from '@/tests/unit/results.json'
-import BJumbotron from '@/components/B/Jumbotron.vue'
-import BButton from '@/components/B/Button.vue'
+import BJumbotron from '@/components/BJumbotron.vue'
+import BButton from '@/components/BButton.vue'
 
 const meta = {
   title: 'Components/Jumbotron',
   component: BJumbotron,
   parameters: {
     vitest: {
-      testFile: 'jumbotron.test.tsx',
+      testFile: 'jumbotron.spec.ts',
       testResults: vitestResults,
     },
   },
@@ -32,7 +32,7 @@ export const Jumbotron: Story = {
   </b-jumbotron>
 </div>
 
-<!-- b-jumbotron.vue -->
+
 `,
 
     setup() {
@@ -58,7 +58,7 @@ export const Jumbotron1: Story = {
       featured content or information.
     </template>
 
-    <hr class="my-4">
+    <hr class="my-4" />
 
     <p>
       It uses utility classes for typography and spacing to space content out within the larger
@@ -70,7 +70,7 @@ export const Jumbotron1: Story = {
   </b-jumbotron>
 </div>
 
-<!-- b-jumbotron-using-slots.vue -->
+
 `,
 
     setup() {
@@ -96,7 +96,7 @@ export const Variants: Story = {
       featured content or information.
     </template>
 
-    <hr class="my-4">
+    <hr class="my-4" />
 
     <p>
       It uses utility classes for typography and spacing to space content out within the larger
@@ -105,7 +105,7 @@ export const Variants: Story = {
   </b-jumbotron>
 </div>
 
-<!-- b-jumbotron-variants.vue -->
+
 `,
 
     setup() {
