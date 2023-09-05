@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTableSimple from './BTableSimple.vue'
+import BTableSimple from '@/components/BTableSimple.vue'
 
 describe('table-simple', () => {
   enableAutoUnmount(afterEach)

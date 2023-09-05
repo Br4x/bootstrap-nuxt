@@ -1,9 +1,9 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BLink from './BLink.vue'
-import {afterEach, describe, expect, it, vitest} from 'vitest'
-import {defineComponent} from 'vue'
-import {createRouter, createWebHistory, RouterLink} from 'vue-router'
-import {createContainer} from 'tests/utils'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it, vitest } from 'vitest'
+import { defineComponent } from 'vue'
+import { RouterLink, createRouter, createWebHistory } from 'vue-router'
+import { createContainer } from 'tests/utils'
+import BLink from '@/components/BLink.vue'
 
 describe('link', () => {
   enableAutoUnmount(afterEach)
@@ -87,7 +87,7 @@ describe('link', () => {
   it('should set href to path from `to` prop', () => {
     const wrapper = mount(BLink, {
       props: {
-        to: {path: '/foobar'},
+        to: { path: '/foobar' },
       },
     })
 
@@ -182,7 +182,7 @@ describe('link', () => {
       })
 
     it('should add active class when vue router is used, prop active on BLink is not set and isActive slot prop is true', async () => {
-      router.push({name: 'Subview'})
+      router.push({ name: 'Subview' })
       await router.isReady()
 
       const wrapper = mount(
@@ -196,10 +196,10 @@ describe('link', () => {
         {
           attachTo: createContainer(),
           global: {
-            components: {BLink},
+            components: { BLink },
             plugins: [router],
           },
-        }
+        },
       )
 
       expect(wrapper.vm).toBeDefined()
@@ -218,7 +218,7 @@ describe('link', () => {
     })
 
     it('should not add active class when vue router is used, prop active on BLink is set to false and isActive slot prop is true', async () => {
-      router.push({name: 'Subview'})
+      router.push({ name: 'Subview' })
       await router.isReady()
 
       const wrapper = mount(
@@ -232,10 +232,10 @@ describe('link', () => {
         {
           attachTo: createContainer(),
           global: {
-            components: {BLink},
+            components: { BLink },
             plugins: [router],
           },
-        }
+        },
       )
 
       expect(wrapper.vm).toBeDefined()
@@ -254,7 +254,7 @@ describe('link', () => {
     })
 
     it('nested views should have both active class when rendering another subview and no active props is set on BLinks', async () => {
-      router.push({name: 'AnotherSubview'})
+      router.push({ name: 'AnotherSubview' })
       await router.isReady()
 
       const wrapper = mount(
@@ -268,10 +268,10 @@ describe('link', () => {
         {
           attachTo: createContainer(),
           global: {
-            components: {BLink},
+            components: { BLink },
             plugins: [router],
           },
-        }
+        },
       )
 
       expect(wrapper.vm).toBeDefined()
@@ -290,7 +290,7 @@ describe('link', () => {
     })
 
     it('BLink should prefer passed active prop over isActive slot prop from RouterLink', async () => {
-      router.push({name: 'AnotherSubview'})
+      router.push({ name: 'AnotherSubview' })
       await router.isReady()
 
       const wrapper = mount(
@@ -304,10 +304,10 @@ describe('link', () => {
         {
           attachTo: createContainer(),
           global: {
-            components: {BLink},
+            components: { BLink },
             plugins: [router],
           },
-        }
+        },
       )
 
       expect(wrapper.vm).toBeDefined()
@@ -337,7 +337,7 @@ describe('link', () => {
     expect(wrapper.attributes('aria-disabled')).toEqual('true')
   })
 
-  it("should add '.disabled' class when prop disabled=true", () => {
+  it('should add \'.disabled\' class when prop disabled=true', () => {
     const wrapper = mount(BLink, {
       props: {
         disabled: true,
@@ -505,7 +505,6 @@ describe('link', () => {
       expect($links[4].exists()).toBe(true)
       expect($links[4].findComponent(GLink).exists()).toBe(true)
 
-      
     })
   })
   */

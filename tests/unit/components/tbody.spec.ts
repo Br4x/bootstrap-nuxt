@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTbody from './BTbody.vue'
+import BTbody from '@/components/BTbody.vue'
 
 describe('tbody', () => {
   enableAutoUnmount(afterEach)

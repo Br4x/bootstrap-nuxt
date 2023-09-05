@@ -1,7 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BNavForm from './BNavForm.vue'
-import BForm from '../BForm/BForm.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BForm from '@/components/BForm/BForm.vue'
+import BNavForm from '@/components/BNavForm.vue'
 
 describe('nav-form', () => {
   enableAutoUnmount(afterEach)
@@ -13,7 +13,7 @@ describe('nav-form', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BNavForm, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
@@ -26,7 +26,7 @@ describe('nav-form', () => {
 
   it('bform to have prop floating when prop floating', () => {
     const wrapper = mount(BNavForm, {
-      props: {floating: true},
+      props: { floating: true },
     })
     const $bform = wrapper.findComponent(BForm)
     expect($bform.props('floating')).toBe(true)
@@ -34,7 +34,7 @@ describe('nav-form', () => {
 
   it('bform to have attribute role when prop role', () => {
     const wrapper = mount(BNavForm, {
-      props: {role: 'abc'},
+      props: { role: 'abc' },
     })
     const $bform = wrapper.findComponent(BForm)
     expect($bform.attributes('role')).toBe('abc')
@@ -42,7 +42,7 @@ describe('nav-form', () => {
 
   it('bform to have prop id when prop id', () => {
     const wrapper = mount(BNavForm, {
-      props: {id: 'abc'},
+      props: { id: 'abc' },
     })
     const $bform = wrapper.findComponent(BForm)
     expect($bform.props('id')).toBe('abc')
@@ -50,7 +50,7 @@ describe('nav-form', () => {
 
   it('bform to have prop novalidate when prop novalidate', () => {
     const wrapper = mount(BNavForm, {
-      props: {novalidate: true},
+      props: { novalidate: true },
     })
     const $bform = wrapper.findComponent(BForm)
     expect($bform.props('novalidate')).toBe(true)
@@ -58,7 +58,7 @@ describe('nav-form', () => {
 
   it('bform to have prop validated when prop validated', () => {
     const wrapper = mount(BNavForm, {
-      props: {validated: true},
+      props: { validated: true },
     })
     const $bform = wrapper.findComponent(BForm)
     expect($bform.props('validated')).toBe(true)

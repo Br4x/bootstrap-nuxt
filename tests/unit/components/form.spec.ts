@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BForm from './BForm.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BForm from '@/components/BForm.vue'
 
 describe('form', () => {
   enableAutoUnmount(afterEach)
@@ -12,37 +12,37 @@ describe('form', () => {
 
   it('has attr id to be prop id', async () => {
     const wrapper = mount(BForm, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     expect(wrapper.attributes('id')).toBe('foobar')
-    await wrapper.setProps({id: undefined})
+    await wrapper.setProps({ id: undefined })
     expect(wrapper.attributes('id')).toBeUndefined()
   })
 
   it('has attr id to be prop novalidate', async () => {
     const wrapper = mount(BForm, {
-      props: {novalidate: true},
+      props: { novalidate: true },
     })
     expect(wrapper.attributes('novalidate')).toBe('')
-    await wrapper.setProps({novalidate: false})
+    await wrapper.setProps({ novalidate: false })
     expect(wrapper.attributes('novalidate')).toBeUndefined()
   })
 
   it('has class form-floating when prop floating', async () => {
     const wrapper = mount(BForm, {
-      props: {floating: true},
+      props: { floating: true },
     })
     expect(wrapper.classes()).toContain('form-floating')
-    await wrapper.setProps({floating: false})
+    await wrapper.setProps({ floating: false })
     expect(wrapper.classes()).not.toContain('form-floating')
   })
 
   it('has class was-validated when prop validated', async () => {
     const wrapper = mount(BForm, {
-      props: {validated: true},
+      props: { validated: true },
     })
     expect(wrapper.classes()).toContain('was-validated')
-    await wrapper.setProps({validated: false})
+    await wrapper.setProps({ validated: false })
     expect(wrapper.classes()).not.toContain('was-validated')
   })
 

@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BThead from './BThead.vue'
+import BThead from '@/components/BThead.vue'
 
 describe('thead', () => {
   enableAutoUnmount(afterEach)

@@ -1,6 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCarousel from './BCarousel.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCarousel from '@/components/BCarousel.vue'
+
 // TODO test for newest changes
 describe('carousel', () => {
   enableAutoUnmount(afterEach)
@@ -51,7 +52,7 @@ describe('carousel', () => {
 
   it('has element with class carousel-indicators if prop indicator', () => {
     const wrapper = mount(BCarousel, {
-      props: {indicators: true},
+      props: { indicators: true },
     })
     const $div = wrapper.find('.carousel-indicators')
     expect($div.exists()).toBe(true)
@@ -59,7 +60,7 @@ describe('carousel', () => {
 
   it('element with class carousel-indicators tag is div', () => {
     const wrapper = mount(BCarousel, {
-      props: {indicators: true},
+      props: { indicators: true },
     })
     const $div = wrapper.get('.carousel-indicators')
     expect($div.element.tagName).toBe('DIV')
@@ -67,17 +68,17 @@ describe('carousel', () => {
 
   it('div with carousel-indicators class has no button child by default', () => {
     const wrapper = mount(BCarousel, {
-      props: {indicators: true},
+      props: { indicators: true },
     })
     const $div = wrapper.get('.carousel-indicators')
     const $button = $div.find('button')
     expect($button.exists()).toBe(false)
   })
 
-  it.skip('div with carousel-indicators class has no button child by default', () => {
+  it('div with carousel-indicators class has no button child by default', () => {
     const wrapper = mount(BCarousel, {
-      props: {indicators: true},
-      slots: {default: 'foobar'},
+      props: { indicators: true },
+      slots: { default: 'foobar' },
     })
     const $div = wrapper.get('.carousel-indicators')
     const $button = $div.find('button')
@@ -92,7 +93,7 @@ describe('carousel', () => {
 
   it('has element with class carousel-control-prev when prop controls', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.find('.carousel-control-prev')
     expect($button.exists()).toBe(true)
@@ -100,7 +101,7 @@ describe('carousel', () => {
 
   it('element with class carousel-control-prev is tag button', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     expect($button.element.tagName).toBe('BUTTON')
@@ -108,7 +109,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-prev has static attr as button', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     expect($button.attributes('type')).toBe('button')
@@ -116,7 +117,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-prev has child element with class carousel-control-prev-icon', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.find('.carousel-control-prev-icon')
@@ -125,7 +126,7 @@ describe('carousel', () => {
 
   it('element with class carousel-control-prev-icon is tag span', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.get('.carousel-control-prev-icon')
@@ -134,7 +135,7 @@ describe('carousel', () => {
 
   it('element with class carousel-control-prev-icon has static attr aria-hidden to be true', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.get('.carousel-control-prev-icon')
@@ -143,7 +144,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-prev has child element with class visually-hidden', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.find('.visually-hidden')
@@ -152,7 +153,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-prev child element with class visually-hidden has is tag span', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.get('.visually-hidden')
@@ -161,7 +162,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-prev child element with class visually-hidden has text is prop controlsPrevText', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true, controlsPrevText: 'foobar'},
+      props: { controls: true, controlsPrevText: 'foobar' },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.get('.visually-hidden')
@@ -170,7 +171,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-prev child element with class visually-hidden has text previous by default', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-prev')
     const $span = $button.get('.visually-hidden')
@@ -185,7 +186,7 @@ describe('carousel', () => {
 
   it('has element with class carousel-control-next when prop controls', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.find('.carousel-control-next')
     expect($button.exists()).toBe(true)
@@ -193,7 +194,7 @@ describe('carousel', () => {
 
   it('element with class carousel-control-next is tag button', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     expect($button.element.tagName).toBe('BUTTON')
@@ -201,7 +202,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-next has static attr as button', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     expect($button.attributes('type')).toBe('button')
@@ -209,7 +210,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-next has child element with class carousel-control-next-icon', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.find('.carousel-control-next-icon')
@@ -218,7 +219,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-next child element with class carousel-control-next-icon is tag span', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.get('.carousel-control-next-icon')
@@ -227,7 +228,7 @@ describe('carousel', () => {
 
   it('element with class carousel-control-next-icon has static attr aria-hidden to be true', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.get('.carousel-control-next-icon')
@@ -236,7 +237,7 @@ describe('carousel', () => {
 
   it('button with class carousel-control-next has child element with class visually-hidden', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.find('.visually-hidden')
@@ -245,7 +246,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-next has child element with class visually-hidden is tag span', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.get('.visually-hidden')
@@ -254,7 +255,7 @@ describe('carousel', () => {
 
   it('button whos class is carousel-control-next child element with class visually-hidden has text is prop controlsNextText', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true, controlsNextText: 'foobar'},
+      props: { controls: true, controlsNextText: 'foobar' },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.get('.visually-hidden')
@@ -263,7 +264,7 @@ describe('carousel', () => {
 
   it('buttons whos class is carousel-control-next child element with class visually-hidden has text previous by default', () => {
     const wrapper = mount(BCarousel, {
-      props: {controls: true},
+      props: { controls: true },
     })
     const $button = wrapper.get('.carousel-control-next')
     const $span = $button.get('.visually-hidden')

@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownHeader from './BDropdownHeader.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownHeader from '@/components/BDropdownHeader.vue'
 
 describe('dropdown-header', () => {
   enableAutoUnmount(afterEach)
@@ -24,7 +24,7 @@ describe('dropdown-header', () => {
 
   it('child h6 renders default slot', () => {
     const wrapper = mount(BDropdownHeader, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $h6 = wrapper.get('h6')
     expect($h6.text()).toBe('foobar')

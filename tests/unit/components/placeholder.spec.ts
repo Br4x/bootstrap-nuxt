@@ -1,8 +1,8 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BPlaceholder from './BPlaceholder.vue'
+import BPlaceholder from '@/components/BPlaceholder.vue'
 
-describe.skip('placeholder', () => {
+describe('placeholder', () => {
   enableAutoUnmount(afterEach)
 
   it('tag is span by default', () => {

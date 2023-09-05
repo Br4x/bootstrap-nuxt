@@ -1,10 +1,10 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BSpinner from '../BSpinner.vue'
-import BButton from './BButton.vue'
-import BLink from './BLink.vue'
+import BSpinner from '@/components/BSpinner.vue'
+import BButton from '@/components/BButton.vue'
+import BLink from '@/components/BLink.vue'
 
-describe.skip('button', () => {
+describe('button', () => {
   enableAutoUnmount(afterEach)
 
   it('has static class btn', () => {

@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownGroup from './BDropdownGroup.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownGroup from '@/components/BDropdownGroup.vue'
 
 describe('dropdown-group', () => {
   enableAutoUnmount(afterEach)
@@ -35,37 +35,37 @@ describe('dropdown-group', () => {
 
   it('ul child has id when prop id', async () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const $ul = wrapper.get('ul')
     expect($ul.attributes('id')).toBe('foobar')
-    await wrapper.setProps({id: undefined})
+    await wrapper.setProps({ id: undefined })
     expect($ul.attributes('id')).toBeUndefined()
   })
 
   it('ul child has attr aria-describedby to be prop ariaDescribedby', async () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {ariaDescribedby: 'foobar'},
+      props: { ariaDescribedby: 'foobar' },
     })
     const $ul = wrapper.get('ul')
     expect($ul.attributes('aria-describedby')).toBe('foobar')
-    await wrapper.setProps({ariaDescribedby: undefined})
+    await wrapper.setProps({ ariaDescribedby: undefined })
     expect($ul.attributes('aria-describedby')).toBeUndefined()
   })
 
   it('ul child has attr aria-describedby to be prop id when not ariaDescribedby', async () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const $ul = wrapper.get('ul')
     expect($ul.attributes('aria-describedby')).toBe('foobar_group_dd_header')
-    await wrapper.setProps({id: undefined})
+    await wrapper.setProps({ id: undefined })
     expect($ul.attributes('aria-describedby')).toBeUndefined()
   })
 
   it('ul child has attr aria-describedby to prefer ariaDescribedby instead of id', () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {id: 'id', ariaDescribedby: 'aria'},
+      props: { id: 'id', ariaDescribedby: 'aria' },
     })
     const $ul = wrapper.get('ul')
     expect($ul.attributes('aria-describedby')).toBe('aria')
@@ -73,7 +73,7 @@ describe('dropdown-group', () => {
 
   it('ul child renders default slot', () => {
     const wrapper = mount(BDropdownGroup, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $ul = wrapper.get('ul')
     expect($ul.text()).toBe('foobar')
@@ -87,7 +87,7 @@ describe('dropdown-group', () => {
 
   it('has dynamic component is prop headerTag', () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {headerTag: 'h1'},
+      props: { headerTag: 'h1' },
     })
     const $header = wrapper.find('header')
     const $h1 = wrapper.find('h1')
@@ -97,11 +97,11 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag has attr id to be prop id', async () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const $header = wrapper.get('header')
     expect($header.attributes('id')).toBe('foobar_group_dd_header')
-    await wrapper.setProps({id: undefined})
+    await wrapper.setProps({ id: undefined })
     expect($header.attributes('id')).toBeUndefined()
   })
 
@@ -113,7 +113,7 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag has class to include prop headerClass', () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {headerClass: ['foo']},
+      props: { headerClass: ['foo'] },
     })
     const $header = wrapper.get('header')
     expect($header.classes()).toContain('foo')
@@ -121,11 +121,11 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag has class text-{type} when prop headerVariant', async () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {headerVariant: 'danger'},
+      props: { headerVariant: 'danger' },
     })
     const $header = wrapper.get('header')
     expect($header.classes()).toContain('text-danger')
-    await wrapper.setProps({headerVariant: undefined})
+    await wrapper.setProps({ headerVariant: undefined })
     expect($header.classes()).not.toContain('text-danger')
   })
 
@@ -137,7 +137,7 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag has role to be heading when tag is not header', () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {headerTag: 'h1'},
+      props: { headerTag: 'h1' },
     })
     const $h1 = wrapper.get('h1')
     expect($h1.attributes('role')).toBe('heading')
@@ -145,7 +145,7 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag renders slot header', () => {
     const wrapper = mount(BDropdownGroup, {
-      slots: {header: 'foobar'},
+      slots: { header: 'foobar' },
     })
     const $header = wrapper.get('header')
     expect($header.text()).toBe('foobar')
@@ -153,7 +153,7 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag renders prop header', () => {
     const wrapper = mount(BDropdownGroup, {
-      props: {header: 'foobar'},
+      props: { header: 'foobar' },
     })
     const $header = wrapper.get('header')
     expect($header.text()).toBe('foobar')
@@ -161,8 +161,8 @@ describe('dropdown-group', () => {
 
   it('dynamic header tag renders slot header over prop header', () => {
     const wrapper = mount(BDropdownGroup, {
-      slots: {header: 'slots'},
-      props: {header: 'props'},
+      slots: { header: 'slots' },
+      props: { header: 'props' },
     })
     const $header = wrapper.get('header')
     expect($header.text()).toBe('slots')

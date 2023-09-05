@@ -1,10 +1,10 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCard from './BCard.vue'
-import BCardImg from './BCardImg.vue'
-import BCardHeader from './BCardHeader.vue'
-import BCardBody from './BCardBody.vue'
-import BCardFooter from './BCardFooter.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCard from '@/components/BCard.vue'
+import BCardImg from '@/components/BCardImg.vue'
+import BCardHeader from '@/components/BCardHeader.vue'
+import BCardBody from '@/components/BCardBody.vue'
+import BCardFooter from '@/components/BCardFooter.vue'
 
 describe('card', () => {
   enableAutoUnmount(afterEach)
@@ -16,7 +16,7 @@ describe('card', () => {
 
   it('tag is prop tag', () => {
     const wrapper = mount(BCard, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -28,76 +28,76 @@ describe('card', () => {
 
   it('has class text-{type} when prop align', async () => {
     const wrapper = mount(BCard, {
-      props: {align: 'start'},
+      props: { align: 'start' },
     })
     expect(wrapper.classes()).toContain('text-start')
-    await wrapper.setProps({align: undefined})
+    await wrapper.setProps({ align: undefined })
     expect(wrapper.classes()).not.toContain('text-start')
   })
 
   it('has class text-{type} when prop textVariant', async () => {
     const wrapper = mount(BCard, {
-      props: {textVariant: 'primary'},
+      props: { textVariant: 'primary' },
     })
     expect(wrapper.classes()).toContain('text-primary')
-    await wrapper.setProps({textVariant: undefined})
+    await wrapper.setProps({ textVariant: undefined })
     expect(wrapper.classes()).not.toContain('text-primary')
   })
 
   it('has class bg-{type} when prop bgVariant', async () => {
     const wrapper = mount(BCard, {
-      props: {bgVariant: 'primary'},
+      props: { bgVariant: 'primary' },
     })
     expect(wrapper.classes()).toContain('bg-primary')
-    await wrapper.setProps({bgVariant: undefined})
+    await wrapper.setProps({ bgVariant: undefined })
     expect(wrapper.classes()).not.toContain('bg-primary')
   })
 
   it('has class border-{type} when prop textVariant', async () => {
     const wrapper = mount(BCard, {
-      props: {borderVariant: 'primary'},
+      props: { borderVariant: 'primary' },
     })
     expect(wrapper.classes()).toContain('border-primary')
-    await wrapper.setProps({borderVariant: undefined})
+    await wrapper.setProps({ borderVariant: undefined })
     expect(wrapper.classes()).not.toContain('border-primary')
   })
 
   it('has class flex-row when prop imgStart', async () => {
     const wrapper = mount(BCard, {
-      props: {imgStart: true},
+      props: { imgStart: true },
     })
     expect(wrapper.classes()).toContain('flex-row')
-    await wrapper.setProps({imgStart: undefined})
+    await wrapper.setProps({ imgStart: undefined })
     expect(wrapper.classes()).not.toContain('flex-row')
   })
 
   it('has class flex-row-reverse when prop imgEnd', async () => {
     const wrapper = mount(BCard, {
-      props: {imgEnd: true},
+      props: { imgEnd: true },
     })
     expect(wrapper.classes()).toContain('flex-row-reverse')
-    await wrapper.setProps({imgEnd: undefined})
+    await wrapper.setProps({ imgEnd: undefined })
     expect(wrapper.classes()).not.toContain('flex-row-reverse')
   })
 
   it('renders img slot', () => {
     const wrapper = mount(BCard, {
-      slots: {img: 'foobar'},
+      slots: { img: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders img in correct order when not prop imgBottom', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'header', bodyText: 'bodyText', footer: 'footer', imgBottom: false},
-      slots: {img: 'img'},
+      props: { header: 'header', bodyText: 'bodyText', footer: 'footer', imgBottom: false },
+      slots: { img: 'img' },
     })
     expect(wrapper.text()).toBe('imgheaderbodyTextfooter')
   })
 
   it('does not render b-card-img when slot img', () => {
     const wrapper = mount(BCard, {
-      slots: {img: 'img'},
+      slots: { img: 'img' },
     })
     const $cardimg = wrapper.findComponent(BCardImg)
     expect($cardimg.exists()).toBe(false)
@@ -105,8 +105,8 @@ describe('card', () => {
 
   it('renders img in correct order when prop imgBottom', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'header', bodyText: 'bodyText', footer: 'footer', imgBottom: true},
-      slots: {img: 'img'},
+      props: { header: 'header', bodyText: 'bodyText', footer: 'footer', imgBottom: true },
+      slots: { img: 'img' },
     })
     expect(wrapper.text()).toBe('headerbodyTextfooterimg')
   })
@@ -119,7 +119,7 @@ describe('card', () => {
 
   it('has child BCardImg when prop imgSrc', () => {
     const wrapper = mount(BCard, {
-      props: {imgSrc: '/abc'},
+      props: { imgSrc: '/abc' },
     })
     const $img = wrapper.findComponent(BCardImg)
     expect($img.exists()).toBe(true)
@@ -127,7 +127,7 @@ describe('card', () => {
 
   it('child BCardImg has its prop src as imgSrc', () => {
     const wrapper = mount(BCard, {
-      props: {imgSrc: '/abc'},
+      props: { imgSrc: '/abc' },
     })
     const $img = wrapper.getComponent(BCardImg)
     expect($img.props('src')).toBe('/abc')
@@ -135,7 +135,7 @@ describe('card', () => {
 
   it('child BCardImg has its prop width as imgWidth string', () => {
     const wrapper = mount(BCard, {
-      props: {imgSrc: '/abc', imgWidth: '100'},
+      props: { imgSrc: '/abc', imgWidth: '100' },
     })
     const $img = wrapper.getComponent(BCardImg)
     expect($img.props('width')).toBe('100')
@@ -143,7 +143,7 @@ describe('card', () => {
 
   it('child BCardImg has its prop height as imgHeight', () => {
     const wrapper = mount(BCard, {
-      props: {imgSrc: '/abc', imgHeight: 100},
+      props: { imgSrc: '/abc', imgHeight: 100 },
     })
     const $img = wrapper.getComponent(BCardImg)
     expect($img.props('height')).toBe(100)
@@ -151,7 +151,7 @@ describe('card', () => {
 
   it('child BCardImg has its prop height as imgHeight string', () => {
     const wrapper = mount(BCard, {
-      props: {imgSrc: '/abc', imgHeight: '100'},
+      props: { imgSrc: '/abc', imgHeight: '100' },
     })
     const $img = wrapper.getComponent(BCardImg)
     expect($img.props('height')).toBe('100')
@@ -165,7 +165,7 @@ describe('card', () => {
 
   it('has child BCardHeader when prop header', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar'},
+      props: { header: 'foobar' },
     })
     const $header = wrapper.findComponent(BCardHeader)
     expect($header.exists()).toBe(true)
@@ -173,7 +173,7 @@ describe('card', () => {
 
   it('has child BCardHeader when slot header', () => {
     const wrapper = mount(BCard, {
-      slots: {header: 'foobar'},
+      slots: { header: 'foobar' },
     })
     const $header = wrapper.findComponent(BCardHeader)
     expect($header.exists()).toBe(true)
@@ -181,7 +181,7 @@ describe('card', () => {
 
   it('has child BCardHeader when prop headerHtml', () => {
     const wrapper = mount(BCard, {
-      props: {headerHtml: 'foobar'},
+      props: { headerHtml: 'foobar' },
     })
     const $header = wrapper.findComponent(BCardHeader)
     expect($header.exists()).toBe(true)
@@ -189,7 +189,7 @@ describe('card', () => {
 
   it('child BCardHeader is given class of headerClass', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerClass: ['foobar']},
+      props: { header: 'foobar', headerClass: ['foobar'] },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.classes()).toContain('foobar')
@@ -197,7 +197,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop bgVariant as prop headerBgVariant', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerBgVariant: 'danger'},
+      props: { header: 'foobar', headerBgVariant: 'danger' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.props('bgVariant')).toBe('danger')
@@ -205,7 +205,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop borderVariant as prop headerBorderVariant', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerBorderVariant: 'danger'},
+      props: { header: 'foobar', headerBorderVariant: 'danger' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.props('borderVariant')).toBe('danger')
@@ -213,7 +213,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop html as prop headerHtml', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerHtml: '<h1>foobar</h1>'},
+      props: { header: 'foobar', headerHtml: '<h1>foobar</h1>' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.props('html')).toBe('<h1>foobar</h1>')
@@ -221,7 +221,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop tag as prop headerTag', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerTag: 'span'},
+      props: { header: 'foobar', headerTag: 'span' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.props('tag')).toBe('span')
@@ -229,7 +229,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop textVariant as prop headerTextVariant', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar', headerTextVariant: 'danger'},
+      props: { header: 'foobar', headerTextVariant: 'danger' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.props('textVariant')).toBe('danger')
@@ -237,7 +237,7 @@ describe('card', () => {
 
   it('child BCardHeader text is prop header', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'foobar'},
+      props: { header: 'foobar' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.text()).toBe('foobar')
@@ -245,7 +245,7 @@ describe('card', () => {
 
   it('child BCardHeader text is slot header', () => {
     const wrapper = mount(BCard, {
-      slots: {header: 'foobar'},
+      slots: { header: 'foobar' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.text()).toBe('foobar')
@@ -253,8 +253,8 @@ describe('card', () => {
 
   it('child BCardHeader text prefers slot header over prop header', () => {
     const wrapper = mount(BCard, {
-      slots: {header: 'slots'},
-      props: {header: 'props'},
+      slots: { header: 'slots' },
+      props: { header: 'props' },
     })
     const $header = wrapper.getComponent(BCardHeader)
     expect($header.text()).toBe('slots')
@@ -268,7 +268,7 @@ describe('card', () => {
 
   it('does not have child BCardBody when prop noBdoy', () => {
     const wrapper = mount(BCard, {
-      props: {noBody: true},
+      props: { noBody: true },
     })
     const $body = wrapper.findComponent(BCardBody)
     expect($body.exists()).toBe(false)
@@ -276,7 +276,7 @@ describe('card', () => {
 
   it('child BCardBody text is prop bodyText', () => {
     const wrapper = mount(BCard, {
-      props: {bodyText: 'foobar'},
+      props: { bodyText: 'foobar' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.text()).toBe('foobar')
@@ -284,7 +284,7 @@ describe('card', () => {
 
   it('child BCardBody text is slot default', () => {
     const wrapper = mount(BCard, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.text()).toBe('foobar')
@@ -292,8 +292,8 @@ describe('card', () => {
 
   it('child BCardBody text prefers slot default over prop bodyText', () => {
     const wrapper = mount(BCard, {
-      slots: {default: 'slots'},
-      props: {bodyText: 'props'},
+      slots: { default: 'slots' },
+      props: { bodyText: 'props' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.text()).toBe('slots')
@@ -301,30 +301,30 @@ describe('card', () => {
 
   it('renders default slot when prop noBody', () => {
     const wrapper = mount(BCard, {
-      props: {noBody: true},
-      slots: {default: 'foobar'},
+      props: { noBody: true },
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prop bodyText when prop noBody', () => {
     const wrapper = mount(BCard, {
-      props: {noBody: true, bodyText: 'foobar'},
+      props: { noBody: true, bodyText: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders default slot over prop bodyText when prop noBody', () => {
     const wrapper = mount(BCard, {
-      props: {noBody: true, bodyText: 'props'},
-      slots: {default: 'slots'},
+      props: { noBody: true, bodyText: 'props' },
+      slots: { default: 'slots' },
     })
     expect(wrapper.text()).toBe('slots')
   })
 
   it('child BCardBody is given prop bodyClass', () => {
     const wrapper = mount(BCard, {
-      props: {bodyClass: ['foobar']},
+      props: { bodyClass: ['foobar'] },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.classes()).toContain('foobar')
@@ -332,7 +332,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop overlay as prop overlay', () => {
     const wrapper = mount(BCard, {
-      props: {overlay: true},
+      props: { overlay: true },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('overlay')).toBe(true)
@@ -340,7 +340,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop bodyBgVariant as prop bodyBgVariant', () => {
     const wrapper = mount(BCard, {
-      props: {bodyBgVariant: 'danger'},
+      props: { bodyBgVariant: 'danger' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('bodyBgVariant')).toBe('danger')
@@ -348,7 +348,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop bodyTag as prop bodyTag', () => {
     const wrapper = mount(BCard, {
-      props: {bodyTag: 'span'},
+      props: { bodyTag: 'span' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('bodyTag')).toBe('span')
@@ -356,7 +356,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop bodyTextVariant as prop bodyTextVariant', () => {
     const wrapper = mount(BCard, {
-      props: {bodyTextVariant: 'danger'},
+      props: { bodyTextVariant: 'danger' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('bodyTextVariant')).toBe('danger')
@@ -364,7 +364,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop subtitle as prop subtitle', () => {
     const wrapper = mount(BCard, {
-      props: {subtitle: 'foobar'},
+      props: { subtitle: 'foobar' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('subtitle')).toBe('foobar')
@@ -372,7 +372,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop subtitleTag as prop subtitleTag', () => {
     const wrapper = mount(BCard, {
-      props: {subtitleTag: 'span'},
+      props: { subtitleTag: 'span' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('subtitleTag')).toBe('span')
@@ -380,7 +380,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop subtitleTextVariant as prop subtitleTextVariant', () => {
     const wrapper = mount(BCard, {
-      props: {subtitleTextVariant: 'danger'},
+      props: { subtitleTextVariant: 'danger' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('subtitleTextVariant')).toBe('danger')
@@ -388,7 +388,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop title as prop title', () => {
     const wrapper = mount(BCard, {
-      props: {title: 'foobar'},
+      props: { title: 'foobar' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('title')).toBe('foobar')
@@ -396,7 +396,7 @@ describe('card', () => {
 
   it('child BCardHeader has internal prop titleTag as prop titleTag', () => {
     const wrapper = mount(BCard, {
-      props: {titleTag: 'span'},
+      props: { titleTag: 'span' },
     })
     const $body = wrapper.getComponent(BCardBody)
     expect($body.props('titleTag')).toBe('span')
@@ -410,7 +410,7 @@ describe('card', () => {
 
   it('has child BCardFooter when prop footer', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar'},
+      props: { footer: 'foobar' },
     })
     const $footer = wrapper.findComponent(BCardFooter)
     expect($footer.exists()).toBe(true)
@@ -418,7 +418,7 @@ describe('card', () => {
 
   it('has child BCardFooter when slot footer', () => {
     const wrapper = mount(BCard, {
-      slots: {footer: 'foobar'},
+      slots: { footer: 'foobar' },
     })
     const $footer = wrapper.findComponent(BCardFooter)
     expect($footer.exists()).toBe(true)
@@ -426,7 +426,7 @@ describe('card', () => {
 
   it('has child BCardFooter when prop footerHtml', () => {
     const wrapper = mount(BCard, {
-      props: {footerHtml: '<h1>foobar</h1>'},
+      props: { footerHtml: '<h1>foobar</h1>' },
     })
     const $footer = wrapper.findComponent(BCardFooter)
     expect($footer.exists()).toBe(true)
@@ -434,7 +434,7 @@ describe('card', () => {
 
   it('child BCardFooter contains class prop footerClass', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar', footerClass: ['foobar']},
+      props: { footer: 'foobar', footerClass: ['foobar'] },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.classes()).toContain('foobar')
@@ -442,7 +442,7 @@ describe('card', () => {
 
   it('child BCardFooter has internal prop bgVariant as prop footerBgVariant', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar', footerBgVariant: 'danger'},
+      props: { footer: 'foobar', footerBgVariant: 'danger' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.props('bgVariant')).toBe('danger')
@@ -450,7 +450,7 @@ describe('card', () => {
 
   it('child BCardFooter has internal prop borderVariant as prop footerBorderVariant', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar', footerBorderVariant: 'danger'},
+      props: { footer: 'foobar', footerBorderVariant: 'danger' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.props('borderVariant')).toBe('danger')
@@ -458,7 +458,7 @@ describe('card', () => {
 
   it('child BCardFooter has internal prop html as prop footerHtml', () => {
     const wrapper = mount(BCard, {
-      props: {footerHtml: '<h1>foobarr</h1>'},
+      props: { footerHtml: '<h1>foobarr</h1>' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.props('html')).toBe('<h1>foobarr</h1>')
@@ -466,7 +466,7 @@ describe('card', () => {
 
   it('child BCardFooter has internal prop tag as prop footerTag', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar', footerTag: 'span'},
+      props: { footer: 'foobar', footerTag: 'span' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.props('tag')).toBe('span')
@@ -474,7 +474,7 @@ describe('card', () => {
 
   it('child BCardFooter has internal prop textVariant as prop footerTextVariant', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar', footerTextVariant: 'danger'},
+      props: { footer: 'foobar', footerTextVariant: 'danger' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.props('textVariant')).toBe('danger')
@@ -482,7 +482,7 @@ describe('card', () => {
 
   it('child BCardFooter has renders text as slot footer', () => {
     const wrapper = mount(BCard, {
-      slots: {footer: 'foobar'},
+      slots: { footer: 'foobar' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.text()).toBe('foobar')
@@ -490,7 +490,7 @@ describe('card', () => {
 
   it('child BCardFooter has renders text as prop footer', () => {
     const wrapper = mount(BCard, {
-      props: {footer: 'foobar'},
+      props: { footer: 'foobar' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.text()).toBe('foobar')
@@ -498,8 +498,8 @@ describe('card', () => {
 
   it('child BCardFooter prefers to render slot footer over prop footer', () => {
     const wrapper = mount(BCard, {
-      slots: {footer: 'slots'},
-      props: {footer: 'props'},
+      slots: { footer: 'slots' },
+      props: { footer: 'props' },
     })
     const $footer = wrapper.getComponent(BCardFooter)
     expect($footer.text()).toBe('slots')
@@ -507,7 +507,7 @@ describe('card', () => {
 
   it('renders in correct order', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'header', bodyText: 'bodyText', footer: 'footer'},
+      props: { header: 'header', bodyText: 'bodyText', footer: 'footer' },
     })
     expect(wrapper.text()).toBe('headerbodyTextfooter')
   })
@@ -516,7 +516,7 @@ describe('card', () => {
   // Workaround to just make both items imgs, then test the order by checking which img has src attr
   it('renders img in correct order', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'header', headerTag: 'img', imgSrc: '/abc'},
+      props: { header: 'header', headerTag: 'img', imgSrc: '/abc' },
     })
     const [$first, $second] = wrapper.findAll('img')
     expect($first.exists()).toBe(true)
@@ -526,7 +526,7 @@ describe('card', () => {
 
   it('renders img in correct order when imgBottom', () => {
     const wrapper = mount(BCard, {
-      props: {header: 'header', headerTag: 'img', imgSrc: '/abc', imgBottom: true},
+      props: { header: 'header', headerTag: 'img', imgSrc: '/abc', imgBottom: true },
     })
     const [$first, $second] = wrapper.findAll('img')
     expect($first.exists()).toBe(true)

@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTfoot from './BTfoot.vue'
+import BTfoot from '@/components/BTfoot.vue'
 
 describe('tfoot', () => {
   enableAutoUnmount(afterEach)

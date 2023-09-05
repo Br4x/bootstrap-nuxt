@@ -1,8 +1,8 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BOverlay from './BOverlay.vue'
-import BTransition from '../BTransition/BTransition.vue'
-import BSpinner from '../BSpinner.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BOverlay from '@/components/BOverlay.vue'
+import BTransition from '@/components/BTransition.vue'
+import BSpinner from '@/components/BSpinner.vue'
 
 describe('', () => {
   enableAutoUnmount(afterEach)
@@ -14,7 +14,7 @@ describe('', () => {
 
   it('tag is prop wrapTag', () => {
     const wrapper = mount(BOverlay, {
-      props: {wrapTag: 'span'},
+      props: { wrapTag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -31,16 +31,16 @@ describe('', () => {
 
   it('has attr aria-busy when prop show', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     expect(wrapper.attributes('aria-busy')).toBe('true')
-    await wrapper.setProps({show: false})
+    await wrapper.setProps({ show: false })
     expect(wrapper.attributes('aria-busy')).toBeUndefined()
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BOverlay, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
@@ -53,23 +53,23 @@ describe('', () => {
 
   it('child BTransition is given prop noFade to be noFade', async () => {
     const wrapper = mount(BOverlay, {
-      props: {noFade: true},
+      props: { noFade: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     expect($transition.props('noFade')).toBe(true)
-    await wrapper.setProps({noFade: false})
+    await wrapper.setProps({ noFade: false })
     expect($transition.props('noFade')).toBe(false)
   })
 
-  it("child BTransition is given prop transProps to be static {enterToClass: 'show'}", () => {
+  it('child BTransition is given prop transProps to be static {enterToClass: \'show\'}', () => {
     const wrapper = mount(BOverlay)
     const $transition = wrapper.getComponent(BTransition)
-    expect($transition.props('transProps')).toEqual({enterToClass: 'show'})
+    expect($transition.props('transProps')).toEqual({ enterToClass: 'show' })
   })
 
   it('child BTransition has child div when prop show true', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.find('div')
@@ -78,7 +78,7 @@ describe('', () => {
 
   it('child BTransition does not have child div when prop show false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: false},
+      props: { show: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.find('div')
@@ -87,7 +87,7 @@ describe('', () => {
 
   it('child BTransition child is tag overlayTag', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, overlayTag: 'small'},
+      props: { show: true, overlayTag: 'small' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $small = $transition.find('small')
@@ -96,7 +96,7 @@ describe('', () => {
 
   it('child BTransition child is tag overlayTag has static class b-overlay', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, overlayTag: 'small'},
+      props: { show: true, overlayTag: 'small' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $small = $transition.get('small')
@@ -105,7 +105,7 @@ describe('', () => {
 
   it('child BTransition child div has static class b-overlay', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -114,7 +114,7 @@ describe('', () => {
 
   it('child BTransition child div has class position-fixed when prop noWrap true and prop fixed true', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: true, fixed: true},
+      props: { show: true, noWrap: true, fixed: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -123,7 +123,7 @@ describe('', () => {
 
   it('child BTransition child div does not have class position-fixed when prop noWrap false and prop fixed true', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: false, fixed: true},
+      props: { show: true, noWrap: false, fixed: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -132,7 +132,7 @@ describe('', () => {
 
   it('child BTransition child div does not have class position-fixed when prop noWrap true and prop fixed false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: true, fixed: false},
+      props: { show: true, noWrap: true, fixed: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -141,7 +141,7 @@ describe('', () => {
 
   it('child BTransition child div does not have class position-fixed when prop noWrap false and prop fixed false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: false, fixed: false},
+      props: { show: true, noWrap: false, fixed: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -150,7 +150,7 @@ describe('', () => {
 
   it('child BTransition child div has class position-absolute when prop noWrap false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: false},
+      props: { show: true, noWrap: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -159,7 +159,7 @@ describe('', () => {
 
   it('child BTransition child div has class position-absolute when prop fixed false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, fixed: false},
+      props: { show: true, fixed: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -168,7 +168,7 @@ describe('', () => {
 
   it('child BTransition child div has class position-absolute when prop fixed true and prop noWrap false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: false, fixed: true},
+      props: { show: true, noWrap: false, fixed: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -177,7 +177,7 @@ describe('', () => {
 
   it('child BTransition child div has class position-absolute when prop fixed false and prop noWrap true', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: true, fixed: false},
+      props: { show: true, noWrap: true, fixed: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -186,7 +186,7 @@ describe('', () => {
 
   it('child BTransition child div does not have class position-absolute when prop noWrap true and prop fixed true', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noWrap: true, fixed: true},
+      props: { show: true, noWrap: true, fixed: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -195,7 +195,7 @@ describe('', () => {
 
   it('child BTransition child div has style z-index: 10; by default', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -204,7 +204,7 @@ describe('', () => {
 
   it('child BTransition child div has style z-index: 5; when prop zIndex is 5', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, zIndex: 5},
+      props: { show: true, zIndex: 5 },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -213,7 +213,7 @@ describe('', () => {
 
   it('child BTransition child div has style z-index: 5; when prop zIndex is string 5', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, zIndex: '5'},
+      props: { show: true, zIndex: '5' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -222,7 +222,7 @@ describe('', () => {
 
   it('child BTransition child div has style z-index: 10; when prop zIndex is 0', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, zIndex: 0},
+      props: { show: true, zIndex: 0 },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -231,7 +231,7 @@ describe('', () => {
 
   it('child BTransition child div has static style top: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -240,7 +240,7 @@ describe('', () => {
 
   it('child BTransition child div has static style bottom: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -249,7 +249,7 @@ describe('', () => {
 
   it('child BTransition child div has static style left: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -258,7 +258,7 @@ describe('', () => {
 
   it('child BTransition child div has static style right: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -267,7 +267,7 @@ describe('', () => {
 
   it('emits click when BTransition child div is clicked', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -277,7 +277,7 @@ describe('', () => {
 
   it('click event value is instanceof MouseEvent when BTransition child div', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -288,7 +288,7 @@ describe('', () => {
 
   it('child BTransition child div has further child div', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -298,7 +298,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class position-absolute', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -308,7 +308,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class rounded when prop rounded true', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, rounded: true},
+      props: { show: true, rounded: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -318,7 +318,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class rounded-3 when prop rounded is string 3', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, rounded: '3'},
+      props: { show: true, rounded: '3' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -328,7 +328,7 @@ describe('', () => {
 
   it('child BTransition child div first child div does not have class rounded when prop rounded false', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, rounded: false},
+      props: { show: true, rounded: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -338,7 +338,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class bg-{variant} when prop variant', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, variant: 'info'},
+      props: { show: true, variant: 'info' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -348,7 +348,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class bg-light by default', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -358,7 +358,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has class bg-light when bgColor empty string', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, bgColor: ''},
+      props: { show: true, bgColor: '' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -368,7 +368,7 @@ describe('', () => {
 
   it('child BTransition child div first child div does not have class bg-{variant} when prop variant but also prop bgColor', async () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, variant: 'info', bgColor: 'red'},
+      props: { show: true, variant: 'info', bgColor: 'red' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -379,7 +379,7 @@ describe('', () => {
   //
   it('child BTransition child div first child div has static style top: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -389,7 +389,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has static style bottom: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -399,7 +399,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has static style left: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -409,7 +409,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has static style right: 0px;', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -419,7 +419,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has style opacity: 0.85; by defaault', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -429,7 +429,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has style opacity: {num}; when prop opacity', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, opacity: 0.5},
+      props: { show: true, opacity: 0.5 },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -439,7 +439,7 @@ describe('', () => {
 
   it('child BTransition child div first child div has style background-color: {type}; prop bgColor', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, bgColor: 'red'},
+      props: { show: true, bgColor: 'red' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -449,7 +449,7 @@ describe('', () => {
 
   it('child BTransition child div first child div does not have style background-color when prop bgColor is empty string', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, bgColor: ''},
+      props: { show: true, bgColor: '' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -459,7 +459,7 @@ describe('', () => {
 
   it('child BTransition child div first child div does not have style background-color by default', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -468,9 +468,9 @@ describe('', () => {
   })
 
   // Does not work?
-  it.skip('child BTransition child div first child div has style backdrop-filter: blur(2px); by default', () => {
+  it('child BTransition child div first child div has style backdrop-filter: blur(2px); by default', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -480,7 +480,7 @@ describe('', () => {
 
   it('child BTransition child div first child div does not have style backdrop-filter when blur is empty string', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, blur: ''},
+      props: { show: true, blur: '' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -490,7 +490,7 @@ describe('', () => {
 
   it('child BTransition child div has second child div', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -500,7 +500,7 @@ describe('', () => {
 
   it('child BTransition child div second child div has static class position-absolute', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -510,7 +510,7 @@ describe('', () => {
 
   it('child BTransition child div second child div has position styles when prop noCenter', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noCenter: true},
+      props: { show: true, noCenter: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -523,7 +523,7 @@ describe('', () => {
 
   it('child BTransition child div second child div has custom position styles when prop noCenter false', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, noCenter: false},
+      props: { show: true, noCenter: false },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -535,8 +535,8 @@ describe('', () => {
 
   it('child BTransition child div second child div renders slot overlay', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
-      slots: {overlay: 'foobar'},
+      props: { show: true },
+      slots: { overlay: 'foobar' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -546,15 +546,15 @@ describe('', () => {
 
   it('renders both slot overlay and slot foobar correctly', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
-      slots: {overlay: 'overlay', default: 'default'},
+      props: { show: true },
+      slots: { overlay: 'overlay', default: 'default' },
     })
     expect(wrapper.text()).toBe('defaultoverlay')
   })
 
   it('child BTransition child div second child div renders a BSpinner by default', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true},
+      props: { show: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -565,7 +565,7 @@ describe('', () => {
 
   it('child BTransition child div second child div BSpinner is given prop type to be prop spinnerType', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, spinnerType: 'grow'},
+      props: { show: true, spinnerType: 'grow' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -576,7 +576,7 @@ describe('', () => {
 
   it('child BTransition child div second child div BSpinner is given prop type to be prop spinnerType', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, spinnerVariant: 'danger'},
+      props: { show: true, spinnerVariant: 'danger' },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')
@@ -587,7 +587,7 @@ describe('', () => {
 
   it('child BTransition child div second child div BSpinner is given prop type to be prop spinnerType', () => {
     const wrapper = mount(BOverlay, {
-      props: {show: true, spinnerSmall: true},
+      props: { show: true, spinnerSmall: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     const $div = $transition.get('div')

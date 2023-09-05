@@ -1,8 +1,8 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCardBody from './BCardBody.vue'
-import BCardTitle from './BCardTitle.vue'
-import BCardSubtitle from './BCardSubtitle.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCardBody from '@/components/BCardBody.vue'
+import BCardTitle from '@/components/BCardTitle.vue'
+import BCardSubtitle from '@/components/BCardSubtitle.vue'
 
 describe('card-body', () => {
   enableAutoUnmount(afterEach)
@@ -19,26 +19,26 @@ describe('card-body', () => {
 
   it('tag is prop bodyTag', () => {
     const wrapper = mount(BCardBody, {
-      props: {bodyTag: 'span'},
+      props: { bodyTag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
 
   it('has class text-{type} when prop bodyTextVariant', async () => {
     const wrapper = mount(BCardBody, {
-      props: {bodyTextVariant: 'primary'},
+      props: { bodyTextVariant: 'primary' },
     })
     expect(wrapper.classes()).toContain('text-primary')
-    await wrapper.setProps({bodyTextVariant: undefined})
+    await wrapper.setProps({ bodyTextVariant: undefined })
     expect(wrapper.classes()).not.toContain('text-primary')
   })
 
   it('has class bg-{type} when prop bodyBgVariant', async () => {
     const wrapper = mount(BCardBody, {
-      props: {bodyBgVariant: 'primary'},
+      props: { bodyBgVariant: 'primary' },
     })
     expect(wrapper.classes()).toContain('bg-primary')
-    await wrapper.setProps({bodyBgVariant: undefined})
+    await wrapper.setProps({ bodyBgVariant: undefined })
     expect(wrapper.classes()).not.toContain('bg-primary')
   })
 
@@ -56,7 +56,7 @@ describe('card-body', () => {
 
   it('has BCardTitle when prop title', () => {
     const wrapper = mount(BCardBody, {
-      props: {title: 'foobar'},
+      props: { title: 'foobar' },
     })
     const $bcardtitle = wrapper.findComponent(BCardTitle)
     expect($bcardtitle.exists()).toBe(true)
@@ -64,7 +64,7 @@ describe('card-body', () => {
 
   it('has BCardSubtitle when prop subtitle', () => {
     const wrapper = mount(BCardBody, {
-      props: {subtitle: 'foobar'},
+      props: { subtitle: 'foobar' },
     })
     const $cardsubtitle = wrapper.findComponent(BCardSubtitle)
     expect($cardsubtitle.exists()).toBe(true)
@@ -72,7 +72,7 @@ describe('card-body', () => {
 
   it('has BCardTitle when slot title', () => {
     const wrapper = mount(BCardBody, {
-      slots: {title: 'foobar'},
+      slots: { title: 'foobar' },
     })
     const $bcardtitle = wrapper.findComponent(BCardTitle)
     expect($bcardtitle.exists()).toBe(true)
@@ -80,7 +80,7 @@ describe('card-body', () => {
 
   it('has BCardSubtitle when slot subtitle', () => {
     const wrapper = mount(BCardBody, {
-      slots: {subtitle: 'foobar'},
+      slots: { subtitle: 'foobar' },
     })
     const $cardsubtitle = wrapper.findComponent(BCardSubtitle)
     expect($cardsubtitle.exists()).toBe(true)
@@ -88,7 +88,7 @@ describe('card-body', () => {
 
   it('BCardTitle child has text slot title', () => {
     const wrapper = mount(BCardBody, {
-      slots: {title: 'foobar'},
+      slots: { title: 'foobar' },
     })
     const $bcardtitle = wrapper.getComponent(BCardTitle)
     expect($bcardtitle.text()).toBe('foobar')
@@ -96,7 +96,7 @@ describe('card-body', () => {
 
   it('BCardSubtitle child has text slot subtitle', () => {
     const wrapper = mount(BCardBody, {
-      slots: {subtitle: 'foobar'},
+      slots: { subtitle: 'foobar' },
     })
     const $cardsubtitle = wrapper.getComponent(BCardSubtitle)
     expect($cardsubtitle.text()).toBe('foobar')
@@ -104,7 +104,7 @@ describe('card-body', () => {
 
   it('BCardTitle child has text prop title', () => {
     const wrapper = mount(BCardBody, {
-      props: {title: 'foobar'},
+      props: { title: 'foobar' },
     })
     const $bcardtitle = wrapper.getComponent(BCardTitle)
     expect($bcardtitle.text()).toBe('foobar')
@@ -112,7 +112,7 @@ describe('card-body', () => {
 
   it('BCardSubtitle child has text prop subtitle', () => {
     const wrapper = mount(BCardBody, {
-      props: {subtitle: 'foobar'},
+      props: { subtitle: 'foobar' },
     })
     const $cardsubtitle = wrapper.getComponent(BCardSubtitle)
     expect($cardsubtitle.text()).toBe('foobar')
@@ -120,7 +120,7 @@ describe('card-body', () => {
 
   it('BCardTitle has internal prop tag as prop titleTag', () => {
     const wrapper = mount(BCardBody, {
-      props: {title: 'foobar', titleTag: 'span'},
+      props: { title: 'foobar', titleTag: 'span' },
     })
     const $bcardtitle = wrapper.getComponent(BCardTitle)
     expect($bcardtitle.props('tag')).toBe('span')
@@ -128,7 +128,7 @@ describe('card-body', () => {
 
   it('BCardSubtitle child has internal prop tag as prop subtitle', () => {
     const wrapper = mount(BCardBody, {
-      props: {subtitle: 'foobar', subtitleTag: 'span'},
+      props: { subtitle: 'foobar', subtitleTag: 'span' },
     })
     const $cardsubtitle = wrapper.getComponent(BCardSubtitle)
     expect($cardsubtitle.props('tag')).toBe('span')
@@ -136,7 +136,7 @@ describe('card-body', () => {
 
   it('BCardSubtitle child has internal prop textVariant as prop subtitleTextVariant', () => {
     const wrapper = mount(BCardBody, {
-      props: {subtitle: 'foobar', subtitleTextVariant: 'primary'},
+      props: { subtitle: 'foobar', subtitleTextVariant: 'primary' },
     })
     const $cardsubtitle = wrapper.getComponent(BCardSubtitle)
     expect($cardsubtitle.props('textVariant')).toBe('primary')
@@ -144,39 +144,39 @@ describe('card-body', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BCardBody, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prop text', () => {
     const wrapper = mount(BCardBody, {
-      props: {text: 'foobar'},
+      props: { text: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders default slot over prop text', () => {
     const wrapper = mount(BCardBody, {
-      props: {text: 'props'},
-      slots: {default: 'slots'},
+      props: { text: 'props' },
+      slots: { default: 'slots' },
     })
     expect(wrapper.text()).toBe('slots')
   })
 
   it('has text in order', () => {
     const wrapper = mount(BCardBody, {
-      slots: {subtitle: 'subtitle', title: 'title', default: 'default'},
+      slots: { subtitle: 'subtitle', title: 'title', default: 'default' },
     })
     expect(wrapper.text()).toBe('titlesubtitledefault')
   })
 
   it('has class card-img-overlay when prop overlay', async () => {
     const wrapper = mount(BCardBody, {
-      props: {overlay: true},
+      props: { overlay: true },
     })
     expect(wrapper.classes()).toContain('card-img-overlay')
-    await wrapper.setProps({overlay: false})
+    await wrapper.setProps({ overlay: false })
     expect(wrapper.classes()).not.toContain('card-img-overlay')
   })
 })

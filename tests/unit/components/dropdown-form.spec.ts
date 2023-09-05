@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownForm from './BDropdownForm.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownForm from '@/components/BDropdownForm.vue'
 
 describe('dropdown-form', () => {
   enableAutoUnmount(afterEach)
@@ -35,7 +35,7 @@ describe('dropdown-form', () => {
 
   it('child form renders default slot', () => {
     const wrapper = mount(BDropdownForm, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $form = wrapper.get('form')
     expect($form.text()).toBe('foobar')

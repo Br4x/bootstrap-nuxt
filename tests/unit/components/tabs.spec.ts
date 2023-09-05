@@ -1,10 +1,10 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {h} from 'vue'
-import {afterEach, describe, expect, it} from 'vitest'
-import BTabs from './BTabs.vue'
-import BTab from './BTab.vue'
-import BFormInput from '../BFormInput/BFormInput.vue'
-import BFormGroup from '../BFormGroup/BFormGroup.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { h } from 'vue'
+import { afterEach, describe, expect, it } from 'vitest'
+import BTabs from '@/components/BTabs.vue'
+import BTab from '@/components/BTab.vue'
+import BFormInput from '@/components/BFormInput.vue'
+import BFormGroup from '@/components/BFormGroup.vue'
 
 describe('tabs', () => {
   enableAutoUnmount(afterEach)
@@ -16,7 +16,7 @@ describe('tabs', () => {
 
   it('tag is prop tag', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -28,7 +28,7 @@ describe('tabs', () => {
 
   it('attr id is prop id', () => {
     const wrapper = mount(BTabs, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     expect(wrapper.attributes('id')).toBe('foobar')
   })
@@ -40,19 +40,19 @@ describe('tabs', () => {
 
   it('has class d-flex if prop vertical', async () => {
     const wrapper = mount(BTabs, {
-      props: {vertical: true},
+      props: { vertical: true },
     })
     expect(wrapper.classes()).toContain('d-flex')
-    await wrapper.setProps({vertical: false})
+    await wrapper.setProps({ vertical: false })
     expect(wrapper.classes()).not.toContain('d-flex')
   })
 
   it('has class align-items-start if prop vertical', async () => {
     const wrapper = mount(BTabs, {
-      props: {vertical: true},
+      props: { vertical: true },
     })
     expect(wrapper.classes()).toContain('align-items-start')
-    await wrapper.setProps({vertical: false})
+    await wrapper.setProps({ vertical: false })
     expect(wrapper.classes()).not.toContain('align-items-start')
   })
 
@@ -60,7 +60,7 @@ describe('tabs', () => {
 
   it('has first child div when prop end', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
+      props: { tag: 'span', end: true },
     })
     const $div = wrapper.find('div')
     expect($div.exists()).toBe(true)
@@ -68,7 +68,7 @@ describe('tabs', () => {
 
   it('first child div has static class tab-content', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
+      props: { tag: 'span', end: true },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('tab-content')
@@ -76,7 +76,7 @@ describe('tabs', () => {
 
   it('first child div has classes from prop contentClass', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true, contentClass: ['foo']},
+      props: { tag: 'span', end: true, contentClass: ['foo'] },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('foo')
@@ -84,7 +84,7 @@ describe('tabs', () => {
 
   it('first child div has another div child when tabs empty', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
+      props: { tag: 'span', end: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.find('div')
@@ -93,7 +93,7 @@ describe('tabs', () => {
 
   it('first child div nested div child has static class tab-pane', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
+      props: { tag: 'span', end: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -102,7 +102,7 @@ describe('tabs', () => {
 
   it('first child div nested div child has static class active', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
+      props: { tag: 'span', end: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -111,39 +111,39 @@ describe('tabs', () => {
 
   it('first child div nested div child class card-body when prop card', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true, card: true},
+      props: { tag: 'span', end: true, card: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
     expect($div2.classes()).toContain('card-body')
-    await wrapper.setProps({card: false})
+    await wrapper.setProps({ card: false })
     expect($div2.classes()).not.toContain('card-body')
   })
 
   it('first child div nested div child renders slot empty', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
-      slots: {empty: 'foobar'},
+      props: { tag: 'span', end: true },
+      slots: { empty: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
     expect($div2.text()).toBe('foobar')
   })
 
-  it.skip('first child div has tab component when default slot', () => {
+  it('first child div has tab component when default slot', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
-      slots: {default: () => h(BTab, {tag: 'small'}, () => 'foobar')},
+      props: { tag: 'span', end: true },
+      slots: { default: () => h(BTab, { tag: 'small' }, () => 'foobar') },
     })
     const $div = wrapper.get('div')
     const $small = $div.find('small')
     expect($small.exists()).toBe(true)
   })
 
-  it.skip('first child div does not have child div when default slot has tab', () => {
+  it('first child div does not have child div when default slot has tab', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', end: true},
-      slots: {default: () => h(BTab, {tag: 'small'}, () => 'foobar')},
+      props: { tag: 'span', end: true },
+      slots: { default: () => h(BTab, { tag: 'small' }, () => 'foobar') },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.find('div')
@@ -155,7 +155,7 @@ describe('tabs', () => {
 
   it('first child div is next div if not prop end', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const $div = wrapper.find('div')
     expect($div.exists()).toBe(true)
@@ -163,30 +163,30 @@ describe('tabs', () => {
 
   it('next div has class card-header if prop card', async () => {
     const wrapper = mount(BTabs, {
-      props: {card: true, tag: 'span'},
+      props: { card: true, tag: 'span' },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('card-header')
-    await wrapper.setProps({card: false})
+    await wrapper.setProps({ card: false })
     expect($div.classes()).not.toContain('card-header')
   })
 
   it('next div has class ms-auto when prop vertical and prop end', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', vertical: true},
+      props: { tag: 'span', vertical: true },
     })
     const $div = wrapper.get('div')
-    await wrapper.setProps({end: true})
+    await wrapper.setProps({ end: true })
     expect($div.classes()).toContain('ms-auto')
-    await wrapper.setProps({end: false})
+    await wrapper.setProps({ end: false })
     expect($div.classes()).not.toContain('ms-auto')
-    await wrapper.setProps({end: true, vertical: false})
+    await wrapper.setProps({ end: true, vertical: false })
     expect($div.classes()).not.toContain('ms-auto')
   })
 
   it('next div has classes from prop navWrapperClass', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', navWrapperClass: ['foo']},
+      props: { tag: 'span', navWrapperClass: ['foo'] },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('foo')
@@ -194,7 +194,7 @@ describe('tabs', () => {
 
   it('next div has child ul', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const $div = wrapper.get('div')
     const $ul = $div.find('ul')
@@ -203,7 +203,7 @@ describe('tabs', () => {
 
   it('next div child ul has static class nav', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
@@ -212,7 +212,7 @@ describe('tabs', () => {
 
   it('next div child ul has class from prop navClass', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', navClass: ['foo']},
+      props: { tag: 'span', navClass: ['foo'] },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
@@ -221,7 +221,7 @@ describe('tabs', () => {
 
   it('next div child ul has static attr tablist', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
@@ -230,111 +230,111 @@ describe('tabs', () => {
 
   it('next div child ul has class nav-pills when prop pills', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', pills: true},
+      props: { tag: 'span', pills: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('nav-pills')
-    await wrapper.setProps({pills: false})
+    await wrapper.setProps({ pills: false })
     expect($ul.classes()).not.toContain('nav-pills')
   })
 
   it('next div child ul has class flex-column when prop vertical', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', vertical: true},
+      props: { tag: 'span', vertical: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('flex-column')
-    await wrapper.setProps({vertical: false})
+    await wrapper.setProps({ vertical: false })
     expect($ul.classes()).not.toContain('flex-column')
   })
 
   it('next div child ul has class me-3 when prop vertical', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', vertical: true},
+      props: { tag: 'span', vertical: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('me-3')
-    await wrapper.setProps({vertical: false})
+    await wrapper.setProps({ vertical: false })
     expect($ul.classes()).not.toContain('me-3')
   })
 
   it('next div child ul has class justify-content-{type} when prop align', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', align: 'end'},
+      props: { tag: 'span', align: 'end' },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('justify-content-end')
-    await wrapper.setProps({align: undefined})
+    await wrapper.setProps({ align: undefined })
     expect($ul.classes()).not.toContain('justify-content-end')
   })
 
   it('next div child ul has class nav-fill when prop fill', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', fill: true},
+      props: { tag: 'span', fill: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('nav-fill')
-    await wrapper.setProps({fill: false})
+    await wrapper.setProps({ fill: false })
     expect($ul.classes()).not.toContain('nav-fill')
   })
 
   it('next div child ul has class card-header-tabs when prop card', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', card: true},
+      props: { tag: 'span', card: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('card-header-tabs')
-    await wrapper.setProps({card: false})
+    await wrapper.setProps({ card: false })
     expect($ul.classes()).not.toContain('card-header-tabs')
   })
 
   it('next div child ul has class nav-justified when prop justified', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', justified: true},
+      props: { tag: 'span', justified: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('nav-justified')
-    await wrapper.setProps({justified: false})
+    await wrapper.setProps({ justified: false })
     expect($ul.classes()).not.toContain('nav-justified')
   })
 
   it('next div child ul has class small when prop small', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', small: true},
+      props: { tag: 'span', small: true },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('small')
-    await wrapper.setProps({small: false})
+    await wrapper.setProps({ small: false })
     expect($ul.classes()).not.toContain('small')
   })
 
   it('next div child ul has class nav-tabs when not prop noNavStyle and not prop pills', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', noNavStyle: false, pills: false},
+      props: { tag: 'span', noNavStyle: false, pills: false },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
     expect($ul.classes()).toContain('nav-tabs')
-    await wrapper.setProps({noNavStyle: true})
+    await wrapper.setProps({ noNavStyle: true })
     expect($ul.classes()).not.toContain('nav-tabs')
-    await wrapper.setProps({noNavStyle: false, pills: true})
+    await wrapper.setProps({ noNavStyle: false, pills: true })
     expect($ul.classes()).not.toContain('nav-tabs')
-    await wrapper.setProps({noNavStyle: true, pills: true})
+    await wrapper.setProps({ noNavStyle: true, pills: true })
     expect($ul.classes()).not.toContain('nav-tabs')
   })
 
   it('next div child ul renders slot tabs-start', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', noNavStyle: false, pills: false},
-      slots: {'tabs-start': 'foobar'},
+      props: { tag: 'span', noNavStyle: false, pills: false },
+      slots: { 'tabs-start': 'foobar' },
     })
     const $div = wrapper.get('div')
     const $ul = $div.get('ul')
@@ -346,7 +346,7 @@ describe('tabs', () => {
   // start beginning end div test duplication
   it('second child div is end div', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const [, $div] = wrapper.findAll('div')
     expect($div.exists()).toBe(true)
@@ -354,7 +354,7 @@ describe('tabs', () => {
 
   it('end div has static class tab-content', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const [, $div] = wrapper.findAll('div')
     expect($div.classes()).toContain('tab-content')
@@ -362,7 +362,7 @@ describe('tabs', () => {
 
   it('end div has classes from prop contentClass', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', contentClass: ['foo']},
+      props: { tag: 'span', contentClass: ['foo'] },
     })
     const [, $div] = wrapper.findAll('div')
     expect($div.classes()).toContain('foo')
@@ -370,7 +370,7 @@ describe('tabs', () => {
 
   it('end div has another div child when tabs empty', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.find('div')
@@ -379,7 +379,7 @@ describe('tabs', () => {
 
   it('end div nested div child has static class tab-pane', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.get('div')
@@ -388,7 +388,7 @@ describe('tabs', () => {
 
   it('end div nested div child has static class active', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.get('div')
@@ -397,39 +397,39 @@ describe('tabs', () => {
 
   it('end div nested div child class card-body when prop card', async () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span', card: true},
+      props: { tag: 'span', card: true },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.get('div')
     expect($div2.classes()).toContain('card-body')
-    await wrapper.setProps({card: false})
+    await wrapper.setProps({ card: false })
     expect($div2.classes()).not.toContain('card-body')
   })
 
   it('end div nested div child renders slot empty', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
-      slots: {empty: 'foobar'},
+      props: { tag: 'span' },
+      slots: { empty: 'foobar' },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.get('div')
     expect($div2.text()).toBe('foobar')
   })
 
-  it.skip('end div has tab component when default slot', () => {
+  it('end div has tab component when default slot', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
-      slots: {default: () => h(BTab, {tag: 'small'}, () => 'foobar')},
+      props: { tag: 'span' },
+      slots: { default: () => h(BTab, { tag: 'small' }, () => 'foobar') },
     })
     const [, $div] = wrapper.findAll('div')
     const $small = $div.find('small')
     expect($small.exists()).toBe(true)
   })
 
-  it.skip('end div does not have child div when default slot has tab', () => {
+  it('end div does not have child div when default slot has tab', () => {
     const wrapper = mount(BTabs, {
-      props: {tag: 'span'},
-      slots: {default: () => h(BTab, {tag: 'small'}, () => 'foobar')},
+      props: { tag: 'span' },
+      slots: { default: () => h(BTab, { tag: 'small' }, () => 'foobar') },
     })
     const [, $div] = wrapper.findAll('div')
     const $div2 = $div.find('div')
@@ -439,16 +439,16 @@ describe('tabs', () => {
 
   it('renders in correct order when prop end', () => {
     const wrapper = mount(BTabs, {
-      props: {end: true},
-      slots: {'empty': 'empty', 'tabs-start': 'start'},
+      props: { end: true },
+      slots: { 'empty': 'empty', 'tabs-start': 'start' },
     })
     expect(wrapper.text()).toBe('emptystart')
   })
 
   it('renders in correct order when not prop end', () => {
     const wrapper = mount(BTabs, {
-      props: {end: false},
-      slots: {'empty': 'empty', 'tabs-start': 'start'},
+      props: { end: false },
+      slots: { 'empty': 'empty', 'tabs-start': 'start' },
     })
     expect(wrapper.text()).toBe('startempty')
   })
@@ -493,10 +493,10 @@ describe('tabs', () => {
     }
 
     const wrapper = mount(ComplexComponent, {})
-    const HelloWorldComponent = wrapper.findComponent({name: 'HelloWorld'})
+    const HelloWorldComponent = wrapper.findComponent({ name: 'HelloWorld' })
 
-    await HelloWorldComponent.setData({msg: 'bar'})
+    await HelloWorldComponent.setData({ msg: 'bar' })
 
-    expect(wrapper.findComponent({name: 'b-tab'}).find('p').text()).toBe('bar')
+    expect(wrapper.findComponent({ name: 'b-tab' }).find('p').text()).toBe('bar')
   })
 })

@@ -1,9 +1,10 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, beforeEach, describe, expect, it} from 'vitest'
-import BOffcanvas from './BOffcanvas.vue'
-import BCloseButton from '../BButton/BCloseButton.vue'
-import BOverlay from '../BOverlay/BOverlay.vue'
-describe.skip('offcanvas', () => {
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import BCloseButton from '@/components/BCloseButton.vue'
+import BOverlay from '@/components/BOverlay.vue'
+import BOffcanvas from '@/components/BOffcanvas.vue'
+
+describe('offcanvas', () => {
   enableAutoUnmount(afterEach)
 
   // TODO afaik these tests are not finished
@@ -16,7 +17,8 @@ describe.skip('offcanvas', () => {
 
   afterEach(() => {
     const el = document.getElementById('body-teleports')
-    if (el) document.body.removeChild(el)
+    if (el)
+      document.body.removeChild(el)
   })
 
   it('has body teleports element set by teleportTo property', () => {
@@ -63,7 +65,7 @@ describe.skip('offcanvas', () => {
 
   it('has offcanvas-{type} when prop placement not default', () => {
     const wrapper = mount(BOffcanvas, {
-      props: {placement: 'top'},
+      props: { placement: 'top' },
     })
     const offcanvas = wrapper.get('.offcanvas')
     expect(offcanvas.classes()).toContain('offcanvas-top')
@@ -95,7 +97,7 @@ describe.skip('offcanvas', () => {
 
     expect($div.exists()).toBe(false)
 
-    await wrapper.setProps({backdrop: true})
+    await wrapper.setProps({ backdrop: true })
 
     $div = $overlay.find('div.b-overlay')
 
@@ -125,7 +127,7 @@ describe.skip('offcanvas', () => {
 
   it('first child div has child h5 that has slot title', () => {
     const wrapper = mount(BOffcanvas, {
-      slots: {title: 'foobar'},
+      slots: { title: 'foobar' },
     })
     const [, $div] = wrapper.findAll('div')
     const $h5 = $div.get('h5')
@@ -134,7 +136,7 @@ describe.skip('offcanvas', () => {
 
   it('first child div has child h5 that has prop title', () => {
     const wrapper = mount(BOffcanvas, {
-      props: {title: 'foobar'},
+      props: { title: 'foobar' },
     })
     const [, $div] = wrapper.findAll('div')
     const $h5 = $div.get('h5')
@@ -164,7 +166,7 @@ describe.skip('offcanvas', () => {
 
   it('first child div child BCloseButton has prop ariaLabel to be prop dismissLabel', () => {
     const wrapper = mount(BOffcanvas, {
-      props: {dismissLabel: 'foobar'},
+      props: { dismissLabel: 'foobar' },
     })
     const [, $div] = wrapper.findAll('div')
     const $closebutton = $div.getComponent(BCloseButton)
@@ -187,7 +189,7 @@ describe.skip('offcanvas', () => {
 
   it('second child div renders default slot', () => {
     const wrapper = mount(BOffcanvas, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const offcanvas = wrapper.find('.offcanvas')
     const [, $body] = offcanvas.findAll('div')

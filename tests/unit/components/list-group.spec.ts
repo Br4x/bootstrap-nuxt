@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BListGroup from './BListGroup.vue'
-import {afterEach, describe, expect, it} from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BListGroup from '@/components/BListGroup.vue'
 
 describe('list-group', () => {
   enableAutoUnmount(afterEach)
@@ -22,7 +22,7 @@ describe('list-group', () => {
 
   it('should have tag ul then prop tag=ul', () => {
     const wrapper = mount(BListGroup, {
-      props: {tag: 'ul'},
+      props: { tag: 'ul' },
     })
 
     expect(wrapper.element.tagName).toBe('UL')
@@ -30,7 +30,7 @@ describe('list-group', () => {
 
   it('should have tag ol then prop numbered=true', () => {
     const wrapper = mount(BListGroup, {
-      props: {tag: 'div', numbered: true},
+      props: { tag: 'div', numbered: true },
     })
 
     expect(wrapper.element.tagName).toBe('OL')
@@ -38,7 +38,7 @@ describe('list-group', () => {
 
   it('should have class list-group-flush when prop flush=true', () => {
     const wrapper = mount(BListGroup, {
-      props: {flush: true},
+      props: { flush: true },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -49,7 +49,7 @@ describe('list-group', () => {
 
   it('should have class list-group-horizontal when prop horizontal=true', () => {
     const wrapper = mount(BListGroup, {
-      props: {horizontal: true},
+      props: { horizontal: true },
     })
 
     expect(wrapper.classes().length).toBe(2)
@@ -60,7 +60,7 @@ describe('list-group', () => {
 
   it('should have class list-group-horizontal-md when prop horizontal=md', () => {
     const wrapper = mount(BListGroup, {
-      props: {horizontal: 'md'},
+      props: { horizontal: 'md' },
     })
 
     expect(wrapper.classes().length).toBe(2)

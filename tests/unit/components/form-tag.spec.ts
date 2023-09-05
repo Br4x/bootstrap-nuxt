@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BFormTag from './BFormTag.vue'
-import {afterEach, describe, expect, it} from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BFormTag from '@/components/BFormTag.vue'
 
 describe('form-tag', () => {
   enableAutoUnmount(afterEach)

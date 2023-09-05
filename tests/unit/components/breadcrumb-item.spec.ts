@@ -1,7 +1,7 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BBreadcrumbItem from './BBreadcrumbItem.vue'
-import BLink from './BLink.vue'
+import BBreadcrumbItem from '@/components/BBreadcrumbItem.vue'
+import BLink from '@/components/BLink.vue'
 
 describe('breadcrumb-item', () => {
   enableAutoUnmount(afterEach)

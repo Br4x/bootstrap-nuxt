@@ -1,8 +1,8 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BNavItemDropdown from './BNavItemDropdown.vue'
-import BButton from '../BButton/BButton.vue'
-import BDropdown from '../BDropdown/BDropdown.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BButton from '@/components/BButton.vue'
+import BDropdown from '@/components/BDropdown.vue'
+import BNavItemDropdown from '@/components/BNavItemDropdown.vue'
 
 describe('nav-item-dropdown', () => {
   enableAutoUnmount(afterEach)

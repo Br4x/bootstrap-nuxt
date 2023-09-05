@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BFormSelectOption from './BFormSelectOption.vue'
-import {afterEach, describe, expect, it} from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BFormSelectOption from '@/components/BFormSelectOption.vue'
 
 describe('form-select-option', () => {
   enableAutoUnmount(afterEach)

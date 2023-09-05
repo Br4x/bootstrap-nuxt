@@ -1,9 +1,9 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BPlaceholderButton from './BPlaceholderButton.vue'
-import BPlaceholder from './BPlaceholder.vue'
+import BPlaceholderButton from '@/components/BPlaceholderButton.vue'
+import BPlaceholder from '@/components/BPlaceholder.vue'
 
-describe.skip('placeholder-button', () => {
+describe('placeholder-button', () => {
   enableAutoUnmount(afterEach)
 
   it('is BPlaceholder', () => {

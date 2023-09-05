@@ -1,6 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, beforeEach, describe, expect, it} from 'vitest'
-import BModal from './BModal.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import BModal from '@/components/BModal.vue'
+
 // import BTransition from './BTransition/BTransition.vue'
 
 describe('modal', () => {
@@ -14,7 +15,8 @@ describe('modal', () => {
 
   afterEach(() => {
     const el = document.getElementById('body-teleports')
-    if (el) document.body.removeChild(el)
+    if (el)
+      document.body.removeChild(el)
   })
 
   it('has body teleports element set by to property', () => {
@@ -30,7 +32,7 @@ describe('modal', () => {
   // Having issues getting the 'body' from the VDOM
   it('has body element', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.find('div')
     expect($div.exists()).toBe(true)
@@ -38,7 +40,7 @@ describe('modal', () => {
 
   it('div has class modal', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('modal')
@@ -46,8 +48,8 @@ describe('modal', () => {
 
   it('div has attr id to be prop id', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {id: 'foo'},
+      global: { stubs: { teleport: true } },
+      props: { id: 'foo' },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('id')).toBe('foo')
@@ -55,7 +57,7 @@ describe('modal', () => {
 
   it('div has attr id is defined by default', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('id')).toBeDefined()
@@ -63,7 +65,7 @@ describe('modal', () => {
 
   it('div has attr tabindex to be -1', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('tabindex')).toBe('-1')
@@ -71,8 +73,8 @@ describe('modal', () => {
 
   it('div has class from prop modalClass', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {modalClass: ['foo']},
+      global: { stubs: { teleport: true } },
+      props: { modalClass: ['foo'] },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('foo')
@@ -80,8 +82,8 @@ describe('modal', () => {
 
   it('div has class fade when not prop noFade', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {noFade: false},
+      global: { stubs: { teleport: true } },
+      props: { noFade: false },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('fade')
@@ -89,8 +91,8 @@ describe('modal', () => {
 
   it('div has class fade when prop noFade', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {noFade: true},
+      global: { stubs: { teleport: true } },
+      props: { noFade: true },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).not.toContain('fade')
@@ -98,8 +100,8 @@ describe('modal', () => {
 
   it('div has class show when prop show', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {show: false},
+      global: { stubs: { teleport: true } },
+      props: { show: false },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).not.toContain('show')
@@ -107,8 +109,8 @@ describe('modal', () => {
 
   it('div has attrs from attrs', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      attrs: {role: 'foo'},
+      global: { stubs: { teleport: true } },
+      attrs: { role: 'foo' },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('role')).toBe('foo')
@@ -116,7 +118,7 @@ describe('modal', () => {
 
   it('div has child div', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.find('div')
@@ -125,7 +127,7 @@ describe('modal', () => {
 
   it('div child div has static class modal-dialog', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -134,8 +136,8 @@ describe('modal', () => {
 
   it('div child div has class modal-fullscreen when prop fullscreen', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {fullscreen: true},
+      global: { stubs: { teleport: true } },
+      props: { fullscreen: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -144,8 +146,8 @@ describe('modal', () => {
 
   it('div child div does not have class modal-fullscreen when not prop fullscreen', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {fullscreen: false},
+      global: { stubs: { teleport: true } },
+      props: { fullscreen: false },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -154,8 +156,8 @@ describe('modal', () => {
 
   it('div child div has class modal-fullscreen-{type}-down when prop fullscreen is string', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {fullscreen: 'string'},
+      global: { stubs: { teleport: true } },
+      props: { fullscreen: 'string' },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -164,8 +166,8 @@ describe('modal', () => {
 
   it('div child div has class modal-{type} when prop size', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {size: 'sm'},
+      global: { stubs: { teleport: true } },
+      props: { size: 'sm' },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -174,8 +176,8 @@ describe('modal', () => {
 
   it('div child div has class modal-dialog-centered when prop centered', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {centered: true},
+      global: { stubs: { teleport: true } },
+      props: { centered: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -184,8 +186,8 @@ describe('modal', () => {
 
   it('div child div does not have class modal-dialog-centered when not prop centered', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {centered: false},
+      global: { stubs: { teleport: true } },
+      props: { centered: false },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -194,8 +196,8 @@ describe('modal', () => {
 
   it('div child div has class modal-dialog-scrollable when prop scrollable', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {scrollable: true},
+      global: { stubs: { teleport: true } },
+      props: { scrollable: true },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -204,8 +206,8 @@ describe('modal', () => {
 
   it('div child div does not have class modal-dialog-scrollable when not prop scrollable', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {scrollable: false},
+      global: { stubs: { teleport: true } },
+      props: { scrollable: false },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -214,7 +216,7 @@ describe('modal', () => {
 
   it('second div has another div by default', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -224,7 +226,7 @@ describe('modal', () => {
 
   it('third nested div has static class modal-content', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -234,8 +236,8 @@ describe('modal', () => {
 
   it('third nested div has class from prop contentClass', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {contentClass: ['foo']},
+      global: { stubs: { teleport: true } },
+      props: { contentClass: ['foo'] },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -245,8 +247,8 @@ describe('modal', () => {
 
   it('second div has nested div when not prop lazy', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
-      props: {lazy: false},
+      global: { stubs: { teleport: true } },
+      props: { lazy: false },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')
@@ -256,7 +258,7 @@ describe('modal', () => {
 
   it('third nested div has another div', () => {
     const wrapper = mount(BModal, {
-      global: {stubs: {teleport: true}},
+      global: { stubs: { teleport: true } },
     })
     const $div = wrapper.get('div')
     const $div2 = $div.get('div')

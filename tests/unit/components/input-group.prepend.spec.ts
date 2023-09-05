@@ -1,7 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BInputGroupAddon from './BInputGroupAddon.vue'
-import BInputGroupPrepend from './BInputGroupPrepend.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BInputGroupAddon from '@/components/BInputGroupAddon.vue'
+import BInputGroupPrepend from '@/components/BInputGroupPrepend.vue'
 
 describe('input-group-prepend', () => {
   enableAutoUnmount(afterEach)
@@ -14,17 +14,17 @@ describe('input-group-prepend', () => {
 
   it('BInputGroupAddon is given prop isText', async () => {
     const wrapper = mount(BInputGroupPrepend, {
-      props: {isText: true},
+      props: { isText: true },
     })
     const $inputgroupaddon = wrapper.getComponent(BInputGroupAddon)
     expect($inputgroupaddon.props('isText')).toBe(true)
-    await wrapper.setProps({isText: false})
+    await wrapper.setProps({ isText: false })
     expect($inputgroupaddon.props('isText')).toBe(false)
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BInputGroupPrepend, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })

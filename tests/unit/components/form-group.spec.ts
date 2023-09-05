@@ -1,6 +1,6 @@
-import {afterEach, describe, expect, it} from 'vitest'
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BFormGroup from './BFormGroup.vue'
+import { afterEach, describe, expect, it } from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import BFormGroup from '@/components/BFormGroup.vue'
 
 describe('form-group', () => {
   enableAutoUnmount(afterEach)
@@ -12,28 +12,28 @@ describe('form-group', () => {
 
   it('tag is default div', () => {
     const wrapper = mount(BFormGroup, {
-      props: {labelFor: 'foobar'},
+      props: { labelFor: 'foobar' },
     })
     expect(wrapper.element.tagName).toBe('DIV')
   })
 
   it('has class is-valid when prop state is true', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: true},
+      props: { state: true },
     })
     expect(wrapper.classes()).toContain('is-valid')
   })
 
   it('has class is-invalid when prop state is false', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: false},
+      props: { state: false },
     })
     expect(wrapper.classes()).toContain('is-invalid')
   })
 
   it('does not contain a valid class when prop state is null', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: null},
+      props: { state: null },
     })
     expect(wrapper.classes()).not.toContain('is-valid')
     expect(wrapper.classes()).not.toContain('is-invalid')
@@ -41,7 +41,7 @@ describe('form-group', () => {
 
   it('does not contain a valid class when prop state is undefined', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: undefined},
+      props: { state: undefined },
     })
     expect(wrapper.classes()).not.toContain('is-valid')
     expect(wrapper.classes()).not.toContain('is-invalid')
@@ -49,14 +49,14 @@ describe('form-group', () => {
 
   it('has class was-validated when prop validated true', () => {
     const wrapper = mount(BFormGroup, {
-      props: {validated: true},
+      props: { validated: true },
     })
     expect(wrapper.classes()).toContain('was-validated')
   })
 
   it('does not have class was-validated when prop validated false', () => {
     const wrapper = mount(BFormGroup, {
-      props: {validated: false},
+      props: { validated: false },
     })
     expect(wrapper.classes()).not.toContain('was-validated')
   })
@@ -68,7 +68,7 @@ describe('form-group', () => {
 
   it('attr id is prop id', () => {
     const wrapper = mount(BFormGroup, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     expect(wrapper.attributes('id')).toBe('foobar')
   })
@@ -80,21 +80,21 @@ describe('form-group', () => {
 
   it('attr disabled is true when prop disabled', () => {
     const wrapper = mount(BFormGroup, {
-      props: {disabled: true},
+      props: { disabled: true },
     })
     expect(wrapper.attributes('disabled')).toBe('true')
   })
 
   it('attr disabled is undefined when disabled true but prop labelFor exists', () => {
     const wrapper = mount(BFormGroup, {
-      props: {disabled: true, labelFor: 'foo'},
+      props: { disabled: true, labelFor: 'foo' },
     })
     expect(wrapper.attributes('disabled')).toBeUndefined()
   })
 
   it('attr disabled is undefined when disabled false but prop labelFor exists', () => {
     const wrapper = mount(BFormGroup, {
-      props: {disabled: false, labelFor: 'foo'},
+      props: { disabled: false, labelFor: 'foo' },
     })
     expect(wrapper.attributes('disabled')).toBeUndefined()
   })
@@ -106,7 +106,7 @@ describe('form-group', () => {
 
   it('attr role is group when prop labelFor', () => {
     const wrapper = mount(BFormGroup, {
-      props: {labelFor: 'foo'},
+      props: { labelFor: 'foo' },
     })
     expect(wrapper.attributes('role')).toBe('group')
   })
@@ -118,42 +118,42 @@ describe('form-group', () => {
 
   it('attr aria-invalid is true when prop ariaInvalid is true', () => {
     const wrapper = mount(BFormGroup, {
-      props: {ariaInvalid: true},
+      props: { ariaInvalid: true },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('true')
   })
 
   it('attr aria-invalid is false when prop ariaInvalid is false', () => {
     const wrapper = mount(BFormGroup, {
-      props: {ariaInvalid: false},
+      props: { ariaInvalid: false },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('false')
   })
 
   it('attr aria-invalid is grammar when prop ariaInvalid is grammar', () => {
     const wrapper = mount(BFormGroup, {
-      props: {ariaInvalid: 'grammar'},
+      props: { ariaInvalid: 'grammar' },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('grammar')
   })
 
   it('attr aria-invalid is spelling when prop ariaInvalid is spelling', () => {
     const wrapper = mount(BFormGroup, {
-      props: {ariaInvalid: 'spelling'},
+      props: { ariaInvalid: 'spelling' },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('spelling')
   })
 
   it('attr aria-invalid is true when prop state is false', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: false},
+      props: { state: false },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('true')
   })
 
   it('attr aria-invalid is true when prop state is false and prop ariaInvalid is false', () => {
     const wrapper = mount(BFormGroup, {
-      props: {state: false, ariaInvalid: false},
+      props: { state: false, ariaInvalid: false },
     })
     expect(wrapper.attributes('aria-invalid')).toBe('true')
   })
@@ -165,7 +165,7 @@ describe('form-group', () => {
 
   it('attr aria-labelledby is undefined when prop labelFor', () => {
     const wrapper = mount(BFormGroup, {
-      props: {labelFor: 'foo'},
+      props: { labelFor: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeUndefined()
   })
@@ -224,7 +224,7 @@ describe('form-group', () => {
       props: {
         labelCols: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -234,7 +234,7 @@ describe('form-group', () => {
       props: {
         labelColsLg: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -244,7 +244,7 @@ describe('form-group', () => {
       props: {
         labelColsMd: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -254,7 +254,7 @@ describe('form-group', () => {
       props: {
         labelColsSm: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -264,7 +264,7 @@ describe('form-group', () => {
       props: {
         labelColsXl: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -326,7 +326,7 @@ describe('form-group', () => {
       props: {
         contentCols: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -336,7 +336,7 @@ describe('form-group', () => {
       props: {
         contentColsLg: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -346,7 +346,7 @@ describe('form-group', () => {
       props: {
         contentColsMd: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -356,7 +356,7 @@ describe('form-group', () => {
       props: {
         contentColsSm: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })
@@ -366,7 +366,7 @@ describe('form-group', () => {
       props: {
         contentColsXl: 3,
       },
-      slots: {label: 'foo'},
+      slots: { label: 'foo' },
     })
     expect(wrapper.attributes('aria-labelledby')).toBeDefined()
   })

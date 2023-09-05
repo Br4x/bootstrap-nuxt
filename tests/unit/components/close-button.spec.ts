@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCloseButton from './BCloseButton.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCloseButton from '@/components/BCloseButton.vue'
 
 describe('close-button', () => {
   enableAutoUnmount(afterEach)
@@ -17,26 +17,26 @@ describe('close-button', () => {
 
   it('has attr type to be prop type', () => {
     const wrapper = mount(BCloseButton, {
-      props: {type: 'submit'},
+      props: { type: 'submit' },
     })
     expect(wrapper.attributes('type')).toBe('submit')
   })
 
   it('has attr aria-label when prop ariaLabel', async () => {
     const wrapper = mount(BCloseButton, {
-      props: {ariaLabel: 'foobar'},
+      props: { ariaLabel: 'foobar' },
     })
     expect(wrapper.attributes('aria-label')).toBe('foobar')
-    await wrapper.setProps({ariaLabel: undefined})
+    await wrapper.setProps({ ariaLabel: undefined })
     expect(wrapper.attributes('aria-label')).toBe('Close')
   })
 
   it('has attr disabled when prop disabled', async () => {
     const wrapper = mount(BCloseButton, {
-      props: {disabled: true},
+      props: { disabled: true },
     })
     expect(wrapper.attributes('disabled')).toBe('')
-    await wrapper.setProps({disabled: false})
+    await wrapper.setProps({ disabled: false })
     expect(wrapper.attributes('disabled')).toBeUndefined()
   })
 

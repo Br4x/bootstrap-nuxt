@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownText from './BDropdownText.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownText from '@/components/BDropdownText.vue'
 
 describe('dropdown-text', () => {
   enableAutoUnmount(afterEach)
@@ -47,22 +47,22 @@ describe('dropdown-text', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BDropdownText, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prop text', () => {
     const wrapper = mount(BDropdownText, {
-      props: {text: 'foobar'},
+      props: { text: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders default slot over prop text', () => {
     const wrapper = mount(BDropdownText, {
-      slots: {default: 'slots'},
-      props: {text: 'props'},
+      slots: { default: 'slots' },
+      props: { text: 'props' },
     })
     expect(wrapper.text()).toBe('slots')
   })

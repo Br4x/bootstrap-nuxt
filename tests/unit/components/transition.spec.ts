@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTransition from './BTransition.vue'
+import BTransition from '@/components/BTransition.vue'
 import {type Component, Transition} from 'vue'
 
 describe('transition', () => {

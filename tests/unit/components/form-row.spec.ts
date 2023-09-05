@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BFormRow from './BFormRow.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BFormRow from '@/components/BFormRow.vue'
 
 describe('form-row', () => {
   enableAutoUnmount(afterEach)
@@ -12,7 +12,7 @@ describe('form-row', () => {
 
   it('tag is prop tag', () => {
     const wrapper = mount(BFormRow, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -34,7 +34,7 @@ describe('form-row', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BFormRow, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toContain('foobar')
   })

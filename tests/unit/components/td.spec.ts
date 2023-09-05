@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTd from './BTd.vue'
+import BTd from '@/components/BTd.vue'
 
 describe('td', () => {
   enableAutoUnmount(afterEach)

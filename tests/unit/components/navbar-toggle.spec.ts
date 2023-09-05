@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BNavbarToggle from './BNavbarToggle.vue'
+import BNavbarToggle from '@/components/BNavbarToggle.vue'
 
 describe('navbar-toggle', () => {
   enableAutoUnmount(afterEach)

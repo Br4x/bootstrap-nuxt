@@ -1,7 +1,7 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BNavItem from './BNavItem.vue'
-import BLink from './BLink.vue'
+import BNavItem from '@/components/BNavItem.vue'
+import BLink from '@/components/BLink.vue'
 
 describe('nav-item', () => {
   enableAutoUnmount(afterEach)

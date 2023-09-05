@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BPopover from './BPopover.vue'
+import BPopover from '@/components/BPopover.vue'
 
 describe('popover', () => {
   enableAutoUnmount(afterEach)

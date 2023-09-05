@@ -1,7 +1,7 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BNavbarBrand from './BNavbarBrand.vue'
-import BLink from './BLink.vue'
+import BNavbarBrand from '@/components/BNavbarBrand.vue'
+import BLink from '@/components/BLink.vue'
 
 describe('navbar-brand', () => {
   enableAutoUnmount(afterEach)

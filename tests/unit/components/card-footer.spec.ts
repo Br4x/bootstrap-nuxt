@@ -1,7 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCardFooter from './BCardFooter.vue'
-import BCardHeadFoot from './BCardHeadFoot.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCardFooter from '@/components/BCardFooter.vue'
+import BCardHeadFoot from '@/components/BCardHeadFoot.vue'
 
 describe('card-header', () => {
   enableAutoUnmount(afterEach)
@@ -19,7 +19,7 @@ describe('card-header', () => {
 
   it('gives prop text to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {text: 'foobar'},
+      props: { text: 'foobar' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('text')).toBe('foobar')
@@ -27,7 +27,7 @@ describe('card-header', () => {
 
   it('gives prop bgVariant to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {bgVariant: 'danger'},
+      props: { bgVariant: 'danger' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('bgVariant')).toBe('danger')
@@ -35,7 +35,7 @@ describe('card-header', () => {
 
   it('gives prop borderVariant to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {borderVariant: 'danger'},
+      props: { borderVariant: 'danger' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('borderVariant')).toBe('danger')
@@ -43,7 +43,7 @@ describe('card-header', () => {
 
   it('gives prop html to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {html: 'danger'},
+      props: { html: 'danger' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('html')).toBe('danger')
@@ -51,7 +51,7 @@ describe('card-header', () => {
 
   it('gives prop tag to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('tag')).toBe('span')
@@ -59,7 +59,7 @@ describe('card-header', () => {
 
   it('gives prop textVariant to child', () => {
     const wrapper = mount(BCardFooter, {
-      props: {textVariant: 'danger'},
+      props: { textVariant: 'danger' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.props('textVariant')).toBe('danger')
@@ -67,7 +67,7 @@ describe('card-header', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BCardFooter, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $headfoot = wrapper.getComponent(BCardHeadFoot)
     expect($headfoot.text()).toBe('foobar')

@@ -1,7 +1,7 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BLink from './BLink.vue'
-import BBadge from './BBadge.vue'
+import BLink from '@/components/BLink.vue'
+import BBadge from '@/components/BBadge.vue'
 
 describe('badge', () => {
   enableAutoUnmount(afterEach)

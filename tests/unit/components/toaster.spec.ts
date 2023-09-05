@@ -1,8 +1,8 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BToaster from './BToaster.vue'
-import BToast from './BToast.vue'
-import { ToastInstance } from './plugin'
+import BToaster from '@/components/BToaster.vue'
+import BToast from '@/components/BToast.vue'
+import { ToastInstance } from '@/components/BToast/plugin'
 
 describe('toaster', () => {
   enableAutoUnmount(afterEach)

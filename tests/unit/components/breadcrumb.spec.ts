@@ -1,8 +1,8 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BBreadcrumb from './BBreadcrumb.vue'
-import BBreadcrumbItem from './BBreadcrumbItem.vue'
-import type {BreadcrumbItem} from '@/types'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BBreadcrumb from '@/components/BBreadcrumb.vue'
+import BBreadcrumbItem from '@/components/BBreadcrumbItem.vue'
+import type { BreadcrumbItem } from '@/types'
 
 describe('breadcrumb', () => {
   enableAutoUnmount(afterEach)
@@ -35,35 +35,35 @@ describe('breadcrumb', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BBreadcrumb, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prepend slot', () => {
     const wrapper = mount(BBreadcrumb, {
-      slots: {prepend: 'foobar'},
+      slots: { prepend: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders append slot', () => {
     const wrapper = mount(BBreadcrumb, {
-      slots: {append: 'foobar'},
+      slots: { append: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders all slots in correct order', () => {
     const wrapper = mount(BBreadcrumb, {
-      slots: {prepend: 'prepend', default: 'default', append: 'append'},
+      slots: { prepend: 'prepend', default: 'default', append: 'append' },
     })
     expect(wrapper.text()).toBe('prependdefaultappend')
   })
 
   it('has breadcrumbitem', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: [{text: 'foo'}] as BreadcrumbItem[]},
+      props: { items: [{ text: 'foo' }] as BreadcrumbItem[] },
     })
     const $bbreadcrumbitem = wrapper.findComponent(BBreadcrumbItem)
     expect($bbreadcrumbitem.exists()).toBe(true)
@@ -71,8 +71,8 @@ describe('breadcrumb', () => {
 
   it('renders bbreadcrumbitem before default slot and after prepend slot', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: [{text: 'foo'}] as BreadcrumbItem[]},
-      slots: {default: 'default', prepend: 'prepend'},
+      props: { items: [{ text: 'foo' }] as BreadcrumbItem[] },
+      slots: { default: 'default', prepend: 'prepend' },
     })
     expect(wrapper.text()).toBe('prependfoodefault')
   })
@@ -81,10 +81,10 @@ describe('breadcrumb', () => {
     const wrapper = mount(BBreadcrumb, {
       props: {
         items: [
-          {text: 'foo', active: true, disabled: true, href: 'href', to: 'to'},
+          { text: 'foo', active: true, disabled: true, href: 'href', to: 'to' },
         ] as BreadcrumbItem[],
       },
-      slots: {default: 'default', prepend: 'prepend'},
+      slots: { default: 'default', prepend: 'prepend' },
     })
     const $bbreadcrumbitem = wrapper.findComponent(BBreadcrumbItem)
     expect($bbreadcrumbitem.exists()).toBe(true)
@@ -94,10 +94,10 @@ describe('breadcrumb', () => {
     const wrapper = mount(BBreadcrumb, {
       props: {
         items: [
-          {text: 'foo', active: true, disabled: true, href: 'href', to: 'to'},
+          { text: 'foo', active: true, disabled: true, href: 'href', to: 'to' },
         ] as BreadcrumbItem[],
       },
-      slots: {default: 'default', prepend: 'prepend'},
+      slots: { default: 'default', prepend: 'prepend' },
     })
     const $bbreadcrumbitem = wrapper.getComponent(BBreadcrumbItem)
     expect($bbreadcrumbitem.props('text')).toBe('foo')
@@ -109,7 +109,7 @@ describe('breadcrumb', () => {
 
   it('breadcrumbitem exists when items array item is string', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: ['foobar']},
+      props: { items: ['foobar'] },
     })
     const $bbreadcrumbitem = wrapper.findComponent(BBreadcrumbItem)
     expect($bbreadcrumbitem.exists()).toBe(true)
@@ -117,7 +117,7 @@ describe('breadcrumb', () => {
 
   it('breadcrumbitem has prop text to be string when prop items array item is string', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: ['foobar']},
+      props: { items: ['foobar'] },
     })
     const $bbreadcrumbitem = wrapper.getComponent(BBreadcrumbItem)
     expect($bbreadcrumbitem.props('text')).toBe('foobar')
@@ -125,7 +125,7 @@ describe('breadcrumb', () => {
 
   it('breadcrumbitem components have prop href to be # when their index is less than items length', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: ['foo', 'bar']},
+      props: { items: ['foo', 'bar'] },
     })
     const [$bbreadcrumbitem] = wrapper.findAllComponents(BBreadcrumbItem)
     expect($bbreadcrumbitem.props('href')).toBe('#')
@@ -133,7 +133,7 @@ describe('breadcrumb', () => {
 
   it('breadcrumbitem components dont have prop href to be # when their index is items length', () => {
     const wrapper = mount(BBreadcrumb, {
-      props: {items: ['foo', 'bar']},
+      props: { items: ['foo', 'bar'] },
     })
     const [, $bbreadcrumbitem] = wrapper.findAllComponents(BBreadcrumbItem)
     expect($bbreadcrumbitem.props('href')).toBeUndefined()

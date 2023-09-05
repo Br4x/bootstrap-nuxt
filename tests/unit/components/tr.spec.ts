@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTr from './BTr.vue'
+import BTr from '@/components/BTr.vue'
 
 describe('tr', () => {
   enableAutoUnmount(afterEach)

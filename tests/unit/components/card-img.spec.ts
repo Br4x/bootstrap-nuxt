@@ -1,7 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCardImg from './BCardImg.vue'
-import BImg from '../BImg.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCardImg from '@/components/BCardImg.vue'
+import BImg from '@/components/BImg.vue'
 
 describe('card-img', () => {
   enableAutoUnmount(afterEach)
@@ -25,47 +25,47 @@ describe('card-img', () => {
 
   it('has class card-img-top when prop top', async () => {
     const wrapper = mount(BCardImg, {
-      props: {top: true},
+      props: { top: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-top')
-    await wrapper.setProps({top: false})
+    await wrapper.setProps({ top: false })
     expect($img.classes()).not.toContain('card-img-top')
   })
 
   it('has class card-img-right when prop end', async () => {
     const wrapper = mount(BCardImg, {
-      props: {end: true},
+      props: { end: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-right')
-    await wrapper.setProps({end: false})
+    await wrapper.setProps({ end: false })
     expect($img.classes()).not.toContain('card-img-right')
   })
 
   it('has class card-img-bottom when prop bottom', async () => {
     const wrapper = mount(BCardImg, {
-      props: {bottom: true},
+      props: { bottom: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-bottom')
-    await wrapper.setProps({bottom: false})
+    await wrapper.setProps({ bottom: false })
     expect($img.classes()).not.toContain('card-img-bottom')
   })
 
   it('has class card-img-left when prop start', async () => {
     const wrapper = mount(BCardImg, {
-      props: {start: true},
+      props: { start: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-left')
-    await wrapper.setProps({start: false})
+    await wrapper.setProps({ start: false })
     expect($img.classes()).not.toContain('card-img-left')
   })
 
   it('class card-img-top takes priority over prop right', () => {
     const wrapper = mount(BCardImg, {
-      props: {top: true, right: true},
+      props: { top: true, right: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-top')
@@ -74,7 +74,7 @@ describe('card-img', () => {
 
   it('class card-img-top takes priority over prop end', () => {
     const wrapper = mount(BCardImg, {
-      props: {top: true, end: true},
+      props: { top: true, end: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-top')
@@ -83,7 +83,7 @@ describe('card-img', () => {
 
   it('class card-img-right when prop end takes priority over prop bottom', () => {
     const wrapper = mount(BCardImg, {
-      props: {bottom: true, end: true},
+      props: { bottom: true, end: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-right')
@@ -92,7 +92,7 @@ describe('card-img', () => {
 
   it('class card-img-bottom takes priority over prop left', () => {
     const wrapper = mount(BCardImg, {
-      props: {bottom: true, left: true},
+      props: { bottom: true, left: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-bottom')
@@ -101,7 +101,7 @@ describe('card-img', () => {
 
   it('class card-img-bottom takes priority over prop start', () => {
     const wrapper = mount(BCardImg, {
-      props: {bottom: true, start: true},
+      props: { bottom: true, start: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.classes()).toContain('card-img-bottom')
@@ -110,87 +110,87 @@ describe('card-img', () => {
 
   it('BImg is given prop height', async () => {
     const wrapper = mount(BCardImg, {
-      props: {height: '100'},
+      props: { height: '100' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('height')).toBe('100')
-    await wrapper.setProps({height: undefined})
+    await wrapper.setProps({ height: undefined })
     expect($img.props('height')).toBeUndefined()
   })
 
   it('BImg is given prop src', async () => {
     const wrapper = mount(BCardImg, {
-      props: {src: '100'},
+      props: { src: '100' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('src')).toBe('100')
-    await wrapper.setProps({src: undefined})
+    await wrapper.setProps({ src: undefined })
     expect($img.props('src')).toBeUndefined()
   })
 
   it('BImg is given prop lazy', async () => {
     const wrapper = mount(BCardImg, {
-      props: {lazy: true},
+      props: { lazy: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('lazy')).toBe(true)
-    await wrapper.setProps({lazy: false})
+    await wrapper.setProps({ lazy: false })
     expect($img.props('lazy')).toBe(false)
   })
 
   it('BImg is given prop width', async () => {
     const wrapper = mount(BCardImg, {
-      props: {width: '100'},
+      props: { width: '100' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('width')).toBe('100')
-    await wrapper.setProps({width: undefined})
+    await wrapper.setProps({ width: undefined })
     expect($img.props('width')).toBeUndefined()
   })
 
   it('BImg is given prop blank', async () => {
     const wrapper = mount(BCardImg, {
-      props: {blank: true},
+      props: { blank: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('blank')).toBe(true)
-    await wrapper.setProps({blank: false})
+    await wrapper.setProps({ blank: false })
     expect($img.props('blank')).toBe(false)
   })
 
   it('BImg is given prop blankColor', async () => {
     const wrapper = mount(BCardImg, {
-      props: {blankColor: 'abc'},
+      props: { blankColor: 'abc' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('blankColor')).toBe('abc')
-    await wrapper.setProps({blankColor: 'def'})
+    await wrapper.setProps({ blankColor: 'def' })
     expect($img.props('blankColor')).toBe('def')
   })
 
   it('BImg is given prop sizes', async () => {
     const wrapper = mount(BCardImg, {
-      props: {sizes: 'abc'},
+      props: { sizes: 'abc' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('sizes')).toBe('abc')
-    await wrapper.setProps({sizes: 'def'})
+    await wrapper.setProps({ sizes: 'def' })
     expect($img.props('sizes')).toBe('def')
   })
 
   it('BImg is given prop srcset', async () => {
     const wrapper = mount(BCardImg, {
-      props: {srcset: 'abc'},
+      props: { srcset: 'abc' },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('srcset')).toBe('abc')
-    await wrapper.setProps({srcset: 'def'})
+    await wrapper.setProps({ srcset: 'def' })
     expect($img.props('srcset')).toBe('def')
   })
 
   it('BImg is not given prop end', () => {
     const wrapper = mount(BCardImg, {
-      props: {end: true},
+      props: { end: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('end')).toBe(false)
@@ -198,7 +198,7 @@ describe('card-img', () => {
 
   it('BImg is not given prop start', () => {
     const wrapper = mount(BCardImg, {
-      props: {start: true},
+      props: { start: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('start')).toBe(false)
@@ -206,7 +206,7 @@ describe('card-img', () => {
 
   it('BImg is not given prop top', () => {
     const wrapper = mount(BCardImg, {
-      props: {top: true},
+      props: { top: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('top')).toBeUndefined()
@@ -214,7 +214,7 @@ describe('card-img', () => {
 
   it('BImg is not given prop bottom', () => {
     const wrapper = mount(BCardImg, {
-      props: {bottom: true},
+      props: { bottom: true },
     })
     const $img = wrapper.getComponent(BImg)
     expect($img.props('bottom')).toBeUndefined()

@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BAvatar from './BAvatar.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BAvatar from '@/components/BAvatar.vue'
 
 describe('avatar', () => {
   enableAutoUnmount(afterEach)
@@ -12,28 +12,28 @@ describe('avatar', () => {
 
   it('tag is button when prop button is true', () => {
     const wrapper = mount(BAvatar, {
-      props: {button: true},
+      props: { button: true },
     })
     expect(wrapper.element.tagName).toBe('BUTTON')
   })
 
   it('has attr type when prop button to be default button', () => {
     const wrapper = mount(BAvatar, {
-      props: {button: true},
+      props: { button: true },
     })
     expect(wrapper.attributes('type')).toBe('button')
   })
 
   it('has attr type when prop button to be prop buttonType', () => {
     const wrapper = mount(BAvatar, {
-      props: {button: true, buttonType: 'submit'},
+      props: { button: true, buttonType: 'submit' },
     })
     expect(wrapper.attributes('type')).toBe('submit')
   })
 
   it('does not have attr type when prop buttonType but not prop button', () => {
     const wrapper = mount(BAvatar, {
-      props: {button: false, buttonType: 'submit'},
+      props: { button: false, buttonType: 'submit' },
     })
     expect(wrapper.attributes('type')).toBeUndefined()
   })

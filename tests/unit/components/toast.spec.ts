@@ -1,8 +1,8 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
 import { nextTick } from 'vue'
-import { waitRAF } from '../../../tests/utils'
-import BToast from './BToast.vue'
+import { waitRAF } from '@/tests/utils'
+import BToast from '@/components/BToast.vue'
 
 describe('toast', () => {
   enableAutoUnmount(afterEach)

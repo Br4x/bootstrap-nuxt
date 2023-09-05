@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BInputGroupText from './BInputGroupText.vue'
-import {afterEach, describe, expect, it} from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BInputGroupText from '@/components/BInputGroupText.vue'
 
 describe('input-group-text', () => {
   enableAutoUnmount(afterEach)
@@ -12,7 +12,7 @@ describe('input-group-text', () => {
 
   it('tag is prop tag', () => {
     const wrapper = mount(BInputGroupText, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -24,22 +24,22 @@ describe('input-group-text', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BInputGroupText, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prop text', () => {
     const wrapper = mount(BInputGroupText, {
-      props: {text: 'foobar'},
+      props: { text: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders default slot over prop text', () => {
     const wrapper = mount(BInputGroupText, {
-      slots: {default: 'slots'},
-      props: {text: 'props'},
+      slots: { default: 'slots' },
+      props: { text: 'props' },
     })
     expect(wrapper.text()).toBe('slots')
   })

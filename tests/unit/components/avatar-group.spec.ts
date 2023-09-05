@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BAvatarGroup from './BAvatarGroup.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BAvatarGroup from '@/components/BAvatarGroup.vue'
 
 describe('avatar-group', () => {
   enableAutoUnmount(afterEach)
@@ -22,7 +22,7 @@ describe('avatar-group', () => {
 
   it('tag changes with prop tag', () => {
     const wrapper = mount(BAvatarGroup, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.element.tagName).toBe('SPAN')
   })
@@ -41,7 +41,7 @@ describe('avatar-group', () => {
 
   it('renders default slot', () => {
     const wrapper = mount(BAvatarGroup, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const [, $div] = wrapper.findAll('div')
     expect($div.text()).toBe('foobar')

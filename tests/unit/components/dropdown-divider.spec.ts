@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownDivider from './BDropdownDivider.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownDivider from '@/components/BDropdownDivider.vue'
 
 describe('dropdown-divider', () => {
   enableAutoUnmount(afterEach)
@@ -23,7 +23,7 @@ describe('dropdown-divider', () => {
 
   it('has child hr is prop tag', () => {
     const wrapper = mount(BDropdownDivider, {
-      props: {tag: 'h4'},
+      props: { tag: 'h4' },
     })
     const $hr = wrapper.find('hr')
     const $h4 = wrapper.find('h4')

@@ -1,10 +1,10 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {ref} from 'vue'
 import {afterEach, describe, expect, it} from 'vitest'
-import BTab from './BTab.vue'
+import BTab from '@/components/BTab.vue'
 import {tabsInjectionKey} from '@/utils'
 
-describe.skip('tab', () => {
+describe('tab', () => {
   enableAutoUnmount(afterEach)
 
   it('tag is default div', () => {

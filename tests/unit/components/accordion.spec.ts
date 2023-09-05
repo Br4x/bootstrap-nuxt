@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BAccordion from './BAccordion.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BAccordion from '@/components/BAccordion.vue'
 
 describe('accordion', () => {
   enableAutoUnmount(afterEach)
@@ -17,23 +17,23 @@ describe('accordion', () => {
 
   it('has id when prop id is set', () => {
     const wrapper = mount(BAccordion, {
-      props: {id: 'abc'},
+      props: { id: 'abc' },
     })
     expect(wrapper.attributes('id')).toBe('abc')
   })
 
   it('has class accordion-flush when flush is true', async () => {
     const wrapper = mount(BAccordion, {
-      props: {flush: true},
+      props: { flush: true },
     })
     expect(wrapper.classes()).toContain('accordion-flush')
-    await wrapper.setProps({flush: false})
+    await wrapper.setProps({ flush: false })
     expect(wrapper.classes()).not.toContain('accordion-flush')
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BAccordion, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })

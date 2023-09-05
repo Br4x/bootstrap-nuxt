@@ -1,9 +1,9 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BAlert from './BAlert.vue'
-import BCloseButton from '../BButton/BCloseButton.vue'
-import BButton from '../BButton/BButton.vue'
-import BTransition from '../BTransition/BTransition.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCloseButton from '@/components/BCloseButton.vue'
+import BButton from '@/components/BButton.vue'
+import BTransition from '@/components/BTransition.vue'
+import BAlert from '@/components/BAlert.vue'
 
 describe('alert', () => {
   enableAutoUnmount(afterEach)
@@ -22,7 +22,7 @@ describe('alert', () => {
 
   it('when prop fade is true, gives BTransition false', () => {
     const wrapper = mount(BAlert, {
-      props: {fade: true},
+      props: { fade: true },
     })
     const $transition = wrapper.getComponent(BTransition)
     expect($transition.props('noFade')).toBe(false)
@@ -31,7 +31,7 @@ describe('alert', () => {
   it('BTransition is given static transProps object', () => {
     const wrapper = mount(BAlert)
     const $transition = wrapper.getComponent(BTransition)
-    expect($transition.props('transProps')).toEqual({enterToClass: 'show'})
+    expect($transition.props('transProps')).toEqual({ enterToClass: 'show' })
   })
 
   it('there is not a nested div by default', () => {
@@ -42,7 +42,7 @@ describe('alert', () => {
 
   it('there is a nested div when modelValue true', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.find('div')
     expect($div.exists()).toBe(true)
@@ -50,7 +50,7 @@ describe('alert', () => {
 
   it('there is a nested div when modelValue number > 0', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5},
+      props: { modelValue: 5 },
     })
     const $div = wrapper.find('div')
     expect($div.exists()).toBe(true)
@@ -58,7 +58,7 @@ describe('alert', () => {
 
   it('nested div has static class alert', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('alert')
@@ -66,7 +66,7 @@ describe('alert', () => {
 
   it('nested div has static attr role alert', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('role')).toBe('alert')
@@ -74,7 +74,7 @@ describe('alert', () => {
 
   it('nested div has static attr aria-live polite', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('aria-live')).toBe('polite')
@@ -82,7 +82,7 @@ describe('alert', () => {
 
   it('nested div has static attr aria-atomic true', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.get('div')
     expect($div.attributes('aria-atomic')).toBe('true')
@@ -90,7 +90,7 @@ describe('alert', () => {
 
   it('nested div has class alert-info by default', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
+      props: { modelValue: true },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('alert-info')
@@ -98,7 +98,7 @@ describe('alert', () => {
 
   it('nested div has class alert-{type} when prop variant', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, variant: 'danger'},
+      props: { modelValue: true, variant: 'danger' },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('alert-danger')
@@ -106,7 +106,7 @@ describe('alert', () => {
 
   it('nested div has class alert-dismissible when prop dismissible', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).toContain('alert-dismissible')
@@ -114,7 +114,7 @@ describe('alert', () => {
 
   it('nested div does not have class alert-dismissible when not prop dismissible', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: false},
+      props: { modelValue: true, dismissible: false },
     })
     const $div = wrapper.get('div')
     expect($div.classes()).not.toContain('alert-dismissible')
@@ -122,15 +122,15 @@ describe('alert', () => {
 
   it('nested div renders default slot', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true},
-      slots: {default: 'foobar'},
+      props: { modelValue: true },
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('nested div has BCloseButton by default when prop dismissible', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.findComponent(BCloseButton)
@@ -139,7 +139,7 @@ describe('alert', () => {
 
   it('nested div does not have BCloseButton when not prop dismissible', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: false},
+      props: { modelValue: true, dismissible: false },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.findComponent(BCloseButton)
@@ -148,8 +148,8 @@ describe('alert', () => {
 
   it('nested div does not have BCloseButton when prop dismissible but also slot close', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
-      slots: {close: 'foobar'},
+      props: { modelValue: true, dismissible: true },
+      slots: { close: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.findComponent(BCloseButton)
@@ -158,7 +158,7 @@ describe('alert', () => {
 
   it('nested div does not have BCloseButton when prop dismissible but also prop closeContent', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.findComponent(BCloseButton)
@@ -167,7 +167,7 @@ describe('alert', () => {
 
   it('nested div has BButton when prop dismissible but also prop closeContent', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.findComponent(BButton)
@@ -176,8 +176,8 @@ describe('alert', () => {
 
   it('nested div has BButton when prop dismissible but also slot close', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
-      slots: {close: 'foobar'},
+      props: { modelValue: true, dismissible: true },
+      slots: { close: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.findComponent(BButton)
@@ -186,7 +186,7 @@ describe('alert', () => {
 
   it('nested div does not have BButton when prop dismissible and nothing else', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.findComponent(BButton)
@@ -195,7 +195,7 @@ describe('alert', () => {
 
   it('nested div BButton has static attr type to be button', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -204,7 +204,7 @@ describe('alert', () => {
 
   it('nested div BButton renders prop closeContent', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -213,8 +213,8 @@ describe('alert', () => {
 
   it('nested div BButton renders slot close', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
-      slots: {close: 'foobar'},
+      props: { modelValue: true, dismissible: true },
+      slots: { close: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -223,8 +223,8 @@ describe('alert', () => {
 
   it('nested div BButton renders slot over props', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'props'},
-      slots: {close: 'slots'},
+      props: { modelValue: true, dismissible: true, closeContent: 'props' },
+      slots: { close: 'slots' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -233,7 +233,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton has aria-label to be Close by default', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -242,7 +242,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton has aria-label to be prop dismissLabel', () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, dismissLabel: 'foobar'},
+      props: { modelValue: true, dismissible: true, dismissLabel: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -252,7 +252,7 @@ describe('alert', () => {
   // BCloseButton variant
   it('nested div BCloseButton emits update:modelValue when clicked when modelValue boolean', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -262,7 +262,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton clicked update:modelValue emits arg false when modelValue boolean', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true},
+      props: { modelValue: true, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -273,7 +273,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton emits update:modelValue when clicked when modelValue number > 0', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true},
+      props: { modelValue: 5, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -283,7 +283,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton clicked update:modelValue emits arg 0 when modelValue number > 0', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true},
+      props: { modelValue: 5, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -294,7 +294,7 @@ describe('alert', () => {
 
   it('nested div BCloseButton clicked emits closed', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true},
+      props: { modelValue: 5, dismissible: true },
     })
     const $div = wrapper.get('div')
     const $bclosebutton = $div.getComponent(BCloseButton)
@@ -304,7 +304,7 @@ describe('alert', () => {
   // BButton variant
   it('nested div BButton emits update:modelValue when clicked when modelValue boolean', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -314,7 +314,7 @@ describe('alert', () => {
 
   it('nested div BButton clicked update:modelValue emits arg false when modelValue boolean', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: true, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: true, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -325,7 +325,7 @@ describe('alert', () => {
 
   it('nested div BButton emits update:modelValue when clicked when modelValue number > 0', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: 5, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -335,7 +335,7 @@ describe('alert', () => {
 
   it('nested div BButton clicked update:modelValue emits arg 0 when modelValue number > 0', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: 5, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)
@@ -346,7 +346,7 @@ describe('alert', () => {
 
   it('nested div BButton clicked emits closed', async () => {
     const wrapper = mount(BAlert, {
-      props: {modelValue: 5, dismissible: true, closeContent: 'foobar'},
+      props: { modelValue: 5, dismissible: true, closeContent: 'foobar' },
     })
     const $div = wrapper.get('div')
     const $bbutton = $div.getComponent(BButton)

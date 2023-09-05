@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCardText from './BCardText.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCardText from '@/components/BCardText.vue'
 
 describe('card-text', () => {
   enableAutoUnmount(afterEach)
@@ -17,29 +17,29 @@ describe('card-text', () => {
 
   it('tag is prop tag', () => {
     const wrapper = mount(BCardText, {
-      props: {tag: 'div'},
+      props: { tag: 'div' },
     })
     expect(wrapper.element.tagName).toBe('DIV')
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BCardText, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders prop text', () => {
     const wrapper = mount(BCardText, {
-      props: {text: 'foobar'},
+      props: { text: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
 
   it('renders default slot over prop text', () => {
     const wrapper = mount(BCardText, {
-      props: {text: 'props'},
-      slots: {default: 'slots'},
+      props: { text: 'props' },
+      slots: { default: 'slots' },
     })
     expect(wrapper.text()).toBe('slots')
   })

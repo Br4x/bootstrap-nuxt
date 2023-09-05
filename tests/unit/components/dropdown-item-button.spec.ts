@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BDropdownItemButton from './BDropdownItemButton.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BDropdownItemButton from '@/components/BDropdownItemButton.vue'
 
 describe('dropdown-item-button', () => {
   enableAutoUnmount(afterEach)
@@ -41,17 +41,17 @@ describe('dropdown-item-button', () => {
 
   it('child button has class of prop activeClass when prop active', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {active: true, activeClass: 'foo'},
+      props: { active: true, activeClass: 'foo' },
     })
     const $button = wrapper.get('button')
     expect($button.classes()).toContain('foo')
-    await wrapper.setProps({active: false})
+    await wrapper.setProps({ active: false })
     expect($button.classes()).not.toContain('foo')
   })
 
   it('child button has class of prop activeClass to be active by default', () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {active: true},
+      props: { active: true },
     })
     const $button = wrapper.get('button')
     expect($button.classes()).toContain('active')
@@ -59,37 +59,37 @@ describe('dropdown-item-button', () => {
 
   it('child button has class disabled when prop disabled', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {disabled: true},
+      props: { disabled: true },
     })
     const $button = wrapper.get('button')
     expect($button.classes()).toContain('disabled')
-    await wrapper.setProps({disabled: false})
+    await wrapper.setProps({ disabled: false })
     expect($button.classes()).not.toContain('disabled')
   })
 
   it('child button has class text-{type} when prop variant', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {variant: 'danger'},
+      props: { variant: 'danger' },
     })
     const $button = wrapper.get('button')
     expect($button.classes()).toContain('text-danger')
-    await wrapper.setProps({variant: undefined})
+    await wrapper.setProps({ variant: undefined })
     expect($button.classes()).not.toContain('text-danger')
   })
 
   it('child button has attr disabled', async () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {disabled: true},
+      props: { disabled: true },
     })
     const $button = wrapper.get('button')
     expect($button.attributes('disabled')).toBe('')
-    await wrapper.setProps({disabled: false})
+    await wrapper.setProps({ disabled: false })
     expect($button.attributes('disabled')).toBeUndefined()
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BDropdownItemButton, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.text()).toBe('foobar')
   })
@@ -111,7 +111,7 @@ describe('dropdown-item-button', () => {
 
   it('button has class to include prop buttonClass', () => {
     const wrapper = mount(BDropdownItemButton, {
-      props: {buttonClass: ['foo']},
+      props: { buttonClass: ['foo'] },
     })
     const $button = wrapper.get('button')
     expect($button.classes()).toContain('foo')

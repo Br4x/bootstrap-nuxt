@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BPlaceholderWrapper from './BPlaceholderWrapper.vue'
+import BPlaceholderWrapper from '@/components/BPlaceholderWrapper.vue'
 
 describe('placeholder-wrapper', () => {
   enableAutoUnmount(afterEach)

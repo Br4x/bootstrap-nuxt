@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BSpinner from './BSpinner.vue'
+import BSpinner from '@/components/BSpinner.vue'
 
 describe('spinner', () => {
   enableAutoUnmount(afterEach)

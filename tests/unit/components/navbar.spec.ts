@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BNavbar from './BNavbar.vue'
+import BNavbar from '@/components/BNavbar.vue'
 
 describe('navbar', () => {
   enableAutoUnmount(afterEach)

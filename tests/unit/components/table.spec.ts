@@ -2,7 +2,7 @@ import {enableAutoUnmount, flushPromises, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
 import {ref} from 'vue'
 import type {TableField, TableItem} from '@/types'
-import BTable from './BTable.vue'
+import BTable from '@/components/BTable.vue'
 
 const fields: TableField[] = [{key: 'name'}, {key: 'age'}]
 const items: TableItem[] = [
@@ -22,7 +22,7 @@ describe('table', () => {
     expect($th.classes()).toContain('b-table-sortable-column')
   })
 
-  it.skip('th does not have class b-table-sortable-column from field sortable in TableField from prop fields but field is not sortable', () => {
+  it('th does not have class b-table-sortable-column from field sortable in TableField from prop fields but field is not sortable', () => {
     // TODO I'm unsure how to make the isSortable value eval to false
     const fields: TableField[] = [{key: 'abc', sortable: true}]
     const wrapper = mount(BTable, {

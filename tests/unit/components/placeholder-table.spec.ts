@@ -1,10 +1,10 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BPlaceholderTable from './BPlaceholderTable.vue'
-import BPlaceholder from './BPlaceholder.vue'
-import BTableSimple from '../BTable//BTableSimple.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BPlaceholderTable from '@/components/BPlaceholderTable.vue'
+import BPlaceholder from '@/components/BPlaceholder.vue'
+import BTableSimple from '@/components/BTableSimple.vue'
 
-describe.skip('placeholder-table', () => {
+describe('placeholder-table', () => {
   enableAutoUnmount(afterEach)
 
   it('has BTableSimple', () => {
@@ -15,7 +15,7 @@ describe.skip('placeholder-table', () => {
 
   it('renders slot thead', () => {
     const wrapper = mount(BPlaceholderTable, {
-      slots: {thead: 'foobar'},
+      slots: { thead: 'foobar' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('foobar')
@@ -30,8 +30,8 @@ describe.skip('placeholder-table', () => {
 
   it('renders slot thead if not prop hideHeader', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {hideHeader: false},
-      slots: {thead: 'foobar'},
+      props: { hideHeader: false },
+      slots: { thead: 'foobar' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('foobar')
@@ -39,8 +39,8 @@ describe.skip('placeholder-table', () => {
 
   it('does not render slot thead if prop hideHeader', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {hideHeader: true},
-      slots: {thead: 'foobar'},
+      props: { hideHeader: true },
+      slots: { thead: 'foobar' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('')
@@ -48,7 +48,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead does not exist if prop hideHeader', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {hideHeader: true},
+      props: { hideHeader: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.find('thead')
@@ -65,7 +65,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th when prop columns', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 1},
+      props: { columns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -76,7 +76,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th when prop headerColumns', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -87,7 +87,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr does not have child th when prop headerColumns 0', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 0},
+      props: { headerColumns: 0 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -98,7 +98,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr does not have child th when prop columns 0', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 0},
+      props: { columns: 0 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -109,7 +109,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th has child BPlaceholder', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -121,7 +121,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop size to be prop headerSize', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1, headerSize: 'xs'},
+      props: { headerColumns: 1, headerSize: 'xs' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -133,7 +133,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop size to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -145,7 +145,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop variant to be prop headerVariant', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1, headerVariant: 'danger'},
+      props: { headerColumns: 1, headerVariant: 'danger' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -157,7 +157,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop variant to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -169,7 +169,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop animation to be prop headerAnimation', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1, headerAnimation: 'glow'},
+      props: { headerColumns: 1, headerAnimation: 'glow' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -181,7 +181,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop animation to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -193,7 +193,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop width to be prop headerCellWidth', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1, headerCellWidth: 1000},
+      props: { headerColumns: 1, headerCellWidth: 1000 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -205,7 +205,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr has child th child BPlaceholder has prop width to 100 by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 1},
+      props: { headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -217,7 +217,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr children th length equal to the number of headerColumns when headerColumns is number', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 3},
+      props: { headerColumns: 3 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -231,7 +231,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr children th length equal to the number of headerColumns when headerColumns is string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: '3'},
+      props: { headerColumns: '3' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -245,7 +245,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr children th length equal to the number of columns headerColumns is incorrect string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {headerColumns: 'foo', columns: 1},
+      props: { headerColumns: 'foo', columns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -257,7 +257,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr children th length equal to the number of columns when prop headerColumns undefined', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 3},
+      props: { columns: 3 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -271,7 +271,7 @@ describe.skip('placeholder-table', () => {
 
   it('child thead child tr children th length equal to the number of prop headerColumns over prop columns', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 2, headerColumns: 1},
+      props: { columns: 2, headerColumns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $thead = $tablesimple.get('thead')
@@ -283,7 +283,7 @@ describe.skip('placeholder-table', () => {
 
   it('renders slot default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('foobar')
@@ -335,7 +335,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr child td child BPlaceholder has prop size to be prop size', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {size: 'xs'},
+      props: { size: 'xs' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -357,7 +357,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr child td child BPlaceholder has prop variant to be prop variant', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {variant: 'danger'},
+      props: { variant: 'danger' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -379,7 +379,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr child td child BPlaceholder has prop animation to be prop animation', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {animation: 'glow'},
+      props: { animation: 'glow' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -401,7 +401,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr child td child BPlaceholder has prop width to be prop cellWidth', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {cellWidth: 1000},
+      props: { cellWidth: 1000 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -413,7 +413,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr children td length equal to the number of prop columns when is number', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 2},
+      props: { columns: 2 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -426,7 +426,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr children td length equal to the number of prop columns when is string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: '2'},
+      props: { columns: '2' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -439,7 +439,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody child tr children td length equal to 5 when prop columns is incorrect string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {columns: 'foo'},
+      props: { columns: 'foo' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -455,7 +455,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody children tr length equal to the number of prop rows when is number', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {rows: 2},
+      props: { rows: 2 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -467,7 +467,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody children tr length equal to the number of prop rows when is string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {rows: '2'},
+      props: { rows: '2' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -479,7 +479,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tbody children tr length equal to 3 when prop rows is incorrect string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {rows: 'foo'},
+      props: { rows: 'foo' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tbody = $tablesimple.get('tbody')
@@ -492,8 +492,8 @@ describe.skip('placeholder-table', () => {
 
   it('renders slot tfoot when prop showFooter', () => {
     const wrapper = mount(BPlaceholderTable, {
-      slots: {tfoot: 'foobar'},
-      props: {showFooter: true},
+      slots: { tfoot: 'foobar' },
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('foobar')
@@ -501,8 +501,8 @@ describe.skip('placeholder-table', () => {
 
   it('does not render slot tfoot when not prop showFooter', () => {
     const wrapper = mount(BPlaceholderTable, {
-      slots: {tfoot: 'foobar'},
-      props: {showFooter: false},
+      slots: { tfoot: 'foobar' },
+      props: { showFooter: false },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('')
@@ -517,7 +517,7 @@ describe.skip('placeholder-table', () => {
 
   it('has tfoot when prop showFooter', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.find('tfoot')
@@ -526,7 +526,7 @@ describe.skip('placeholder-table', () => {
 
   it('tfoot has child tr', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -536,7 +536,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr has child th', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -547,7 +547,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th has child BPlaceholder', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -559,7 +559,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot children tr length equal to the number of footerColumns when footerColumns is number', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerColumns: 2},
+      props: { showFooter: true, footerColumns: 2 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -572,7 +572,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot children tr length equal to the number of footerColumns when footerColumns is string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerColumns: '2'},
+      props: { showFooter: true, footerColumns: '2' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -585,7 +585,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot children tr length equal to the number of footerColumns when footerColumns is incorrect string', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerColumns: 'foo', columns: 1},
+      props: { showFooter: true, footerColumns: 'foo', columns: 1 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -597,7 +597,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot children tr length equal to the number of columns when prop footerColumns undefined', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, columns: 2},
+      props: { showFooter: true, columns: 2 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -610,7 +610,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot children tr length equal to the number of prop footerColumns over prop columns', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, columns: 3, footerColumns: 2},
+      props: { showFooter: true, columns: 3, footerColumns: 2 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -623,7 +623,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop size to be prop footerSize', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerSize: 'xs'},
+      props: { showFooter: true, footerSize: 'xs' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -635,7 +635,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop size to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -647,7 +647,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop variant to be prop footerVariant', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerVariant: 'danger'},
+      props: { showFooter: true, footerVariant: 'danger' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -659,7 +659,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop variant to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -671,7 +671,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop animation to be prop footerAnimation', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerAnimation: 'glow'},
+      props: { showFooter: true, footerAnimation: 'glow' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -683,7 +683,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop animation to be undefined by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -695,7 +695,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop width to be prop footerCellWidth', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true, footerCellWidth: 1000},
+      props: { showFooter: true, footerCellWidth: 1000 },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -707,7 +707,7 @@ describe.skip('placeholder-table', () => {
 
   it('child tfoot child tr child th child BPlaceholder has prop width to be 100 by default', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
+      props: { showFooter: true },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     const $tfoot = $tablesimple.get('tfoot')
@@ -719,8 +719,8 @@ describe.skip('placeholder-table', () => {
 
   it('renders all in correct order', () => {
     const wrapper = mount(BPlaceholderTable, {
-      props: {showFooter: true},
-      slots: {default: 'default', thead: 'thead', tfoot: 'tfoot'},
+      props: { showFooter: true },
+      slots: { default: 'default', thead: 'thead', tfoot: 'tfoot' },
     })
     const $tablesimple = wrapper.getComponent(BTableSimple)
     expect($tablesimple.text()).toBe('theaddefaulttfoot')

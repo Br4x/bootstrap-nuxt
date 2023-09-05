@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BPagination from './BPagination.vue'
+import BPagination from '@/components/BPagination.vue'
 
 describe('pagination', () => {
   enableAutoUnmount(afterEach)

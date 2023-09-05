@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BCollapse from './BCollapse.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCollapse from '@/components/BCollapse.vue'
 
 describe('collapse', () => {
   enableAutoUnmount(afterEach)
@@ -18,7 +18,7 @@ describe('collapse', () => {
 
   it('is tag when prop tag', () => {
     const wrapper = mount(BCollapse, {
-      props: {tag: 'span'},
+      props: { tag: 'span' },
     })
     expect(wrapper.findAll('*')[0].element.tagName).toBe('SPAN')
   })
@@ -30,23 +30,23 @@ describe('collapse', () => {
 
   it('has id as prop id', () => {
     const wrapper = mount(BCollapse, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     expect(wrapper.findAll('*')[0].attributes?.('id')).toBe('foobar')
   })
 
   it('has attribute is-nav when prop is nav', async () => {
     const wrapper = mount(BCollapse, {
-      props: {isNav: true},
+      props: { isNav: true },
     })
     expect(wrapper.findAll('*')[0].attributes('is-nav')).toBe('true')
-    await wrapper.setProps({isNav: false})
+    await wrapper.setProps({ isNav: false })
     expect(wrapper.findAll('*')[0].attributes('is-nav')).toBe('false')
   })
 
   it('renders default slot', () => {
     const wrapper = mount(BCollapse, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     expect(wrapper.findAll('*')[0].text()).toBe('foobar')
   })

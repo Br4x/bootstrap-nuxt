@@ -1,8 +1,8 @@
 import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
 import type { TableField, TableItem } from '@/types'
-import BTable from './BTable.vue'
-import BTableSimple from './BTableSimple.vue'
+import BTable from '@/components/BTable.vue'
+import BTableSimple from '@/components/BTableSimple.vue'
 
 const fields: TableField[] = [{ key: 'name' }, { key: 'age' }]
 const items: TableItem[] = [

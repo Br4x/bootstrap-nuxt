@@ -1,7 +1,7 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { afterEach, describe, expect, it } from 'vitest'
-import BDropdownItem from './BDropdownItem.vue'
-import BLink from './BLink.vue'
+import BDropdownItem from '@/components/BDropdownItem.vue'
+import BLink from '@/components/BLink.vue'
 
 describe('dropdown-item', () => {
   enableAutoUnmount(afterEach)

@@ -1,6 +1,6 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BFormTags from './BFormTags.vue'
-import {afterEach, describe, expect, it} from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BFormTags from '@/components/BFormTags.vue'
 
 describe('form-tags', () => {
   enableAutoUnmount(afterEach)
@@ -34,7 +34,7 @@ describe('form-tags', () => {
     expect($tagStateEmitted).toBeDefined()
     expect($tagStateEmitted[0][0]).toEqual(['test'])
 
-    await $input.trigger('keydown', {key: 'Enter'})
+    await $input.trigger('keydown', { key: 'Enter' })
 
     expect(wrapper.emitted('update:modelValue')).toBeDefined()
   })
@@ -69,7 +69,7 @@ describe('form-tags', () => {
   })
 
   it('splits on the separator before adding new tag', async () => {
-    const wrapper = mount(BFormTags, {props: {separator: ','}})
+    const wrapper = mount(BFormTags, { props: { separator: ',' } })
 
     const $input = wrapper.get('input')
     $input.element.value = 'test1,test2'
@@ -80,7 +80,7 @@ describe('form-tags', () => {
     expect($tagStateEmitted).toBeDefined()
     expect($tagStateEmitted[0][0]).toEqual(['test1,test2'])
 
-    await $input.trigger('keydown', {key: 'Enter'})
+    await $input.trigger('keydown', { key: 'Enter' })
 
     const $tagsStateEmitted = wrapper.emitted('update:modelValue') as unknown[][]
 

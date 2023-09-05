@@ -1,7 +1,7 @@
-import {enableAutoUnmount, mount} from '@vue/test-utils'
-import {afterEach, describe, expect, it} from 'vitest'
-import BAccordionItem from './BAccordionItem.vue'
-import BCollapse from '../BCollapse.vue'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
+import BCollapse from '@/components/BCollapse.vue'
+import BAccordionItem from '@/components/BAccordionItem.vue'
 
 describe('accordion-item', () => {
   enableAutoUnmount(afterEach)
@@ -44,7 +44,7 @@ describe('accordion-item', () => {
 
   it('b-collapse child div contains default slot', () => {
     const wrapper = mount(BAccordionItem, {
-      slots: {default: 'foobar'},
+      slots: { default: 'foobar' },
     })
     const $bcollapse = wrapper.findComponent(BCollapse)
     const [, $div] = $bcollapse.findAll('div')
@@ -59,7 +59,7 @@ describe('accordion-item', () => {
 
   it('b-collapse has id attr has prop id', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {id: 'spam&eggs'},
+      props: { id: 'spam&eggs' },
     })
     const [, $bcollapse] = wrapper.findComponent(BCollapse).findAll('*')
     expect($bcollapse.attributes('id')).toBe('spam&eggs')
@@ -67,17 +67,17 @@ describe('accordion-item', () => {
 
   it('b-collapse has prop visible', async () => {
     const wrapper = mount(BAccordionItem, {
-      props: {visible: true},
+      props: { visible: true },
     })
     const $bcollapse = wrapper.findComponent(BCollapse)
     expect($bcollapse.props('visible')).toBe(true)
-    await wrapper.setProps({visible: false})
+    await wrapper.setProps({ visible: false })
     expect($bcollapse.props('visible')).toBe(false)
   })
 
   it('b-collapse has aria-labelledby with prop id', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const [, $bcollapse] = wrapper.findComponent(BCollapse).findAll('*')
     expect($bcollapse.attributes('aria-labelledby')).toBe('foobar-heading')
@@ -91,7 +91,7 @@ describe('accordion-item', () => {
 
   it('header tag is prop headerTag', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {headerTag: 'h3'},
+      props: { headerTag: 'h3' },
     })
     const $h3 = wrapper.find('h3')
     expect($h3.exists()).toBe(true)
@@ -111,7 +111,7 @@ describe('accordion-item', () => {
 
   it('h2 child has id attr has prop id', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const $h2 = wrapper.get('h2')
     expect($h2.attributes('id')).toBe('foobar-heading')
@@ -147,7 +147,7 @@ describe('accordion-item', () => {
 
   it('h2 child button child has aria-expanded true when visible true', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {visible: true},
+      props: { visible: true },
     })
     const $h2 = wrapper.get('h2')
     const $button = $h2.get('button')
@@ -156,7 +156,7 @@ describe('accordion-item', () => {
 
   it('h2 child button child has aria-controls as id', () => {
     const wrapper = mount(BAccordionItem, {
-      props: {id: 'foobar'},
+      props: { id: 'foobar' },
     })
     const $h2 = wrapper.get('h2')
     const $button = $h2.get('button')
@@ -165,12 +165,12 @@ describe('accordion-item', () => {
 
   it('h2 child button child class collapsed when visible false', async () => {
     const wrapper = mount(BAccordionItem, {
-      props: {visible: false},
+      props: { visible: false },
     })
     const $h2 = wrapper.get('h2')
     const $button = $h2.get('button')
     expect($button.classes()).toContain('collapsed')
-    await wrapper.setProps({visible: true})
+    await wrapper.setProps({ visible: true })
     expect($button.classes()).not.toContain('collapsed')
   })
 })

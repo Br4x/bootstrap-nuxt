@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
 import {afterEach, describe, expect, it} from 'vitest'
-import BRow from './BRow.vue'
+import BRow from '@/components/BRow.vue'
 
 describe('row', () => {
   enableAutoUnmount(afterEach)

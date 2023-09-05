@@ -1,6 +1,6 @@
 import {enableAutoUnmount, mount} from '@vue/test-utils'
-import BProgress from './BProgress.vue'
-import BProgressBar from './BProgressBar.vue'
+import BProgress from '@/components/BProgress.vue'
+import BProgressBar from '@/components/BProgressBar.vue'
 import {afterEach, describe, expect, it} from 'vitest'
 
 describe('progress', () => {
